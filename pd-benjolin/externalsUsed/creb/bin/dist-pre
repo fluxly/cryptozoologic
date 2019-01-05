@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# change permissions
+make bootstrap
+
+# remove scripts that only make sense in darcs archive
+rm bin/dist-*
+
+
+

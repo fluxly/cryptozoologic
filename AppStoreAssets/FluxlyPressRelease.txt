@@ -1,0 +1,52 @@
+FOR IMMEDIATE RELEASE
+
+Fluxly, the Musical Physics Looper
+
+A new type of sonic game for iPhone, iPad and Android devices
+
+Fluxly is a musical electronic sampling synthesizer where you create new instrument scenes by moving and spinning colorful Fluxum sound sample players. A built-in 2D physics engine brings a whole new approach to knob twiddling and sound making. 
+
+You can choose from a bank of built-in sound samples, or record your own samples and play them back in either direction at any speed. By touching two Fluxum and pushing them together you can link them into looping gear train machines. You can also enable movement and let the physics engine take over as the Fluxum bounce around the instrument for random sonic fun.
+
+Recording can be done right in the app, and sample loops can be up to about 10 seconds long. You can also customize all of the sounds in Bank 1 by using iTunes and the filesharing features of your phone or tablet to upload any sound samples from your computer.
+
+Fluxly was created by artist Shawn Wallace, who is also part of the Fluxama art collective that has created the apps Noisemusick and DR-OM. Fluxly is open source software and was buit using openFrameworks, Box2d, libPd and Pure Data. 
+
+99 cents in all app stores.
+
+Free reviewer code for the Apple App Store 
+(https://itunes.apple.com/us/app/fluxly/id1376844813):
+
+   X73NA7NTPTMY
+   
+Media Contact
+-------------
+Shawn Wallace <fluxama@gmail.com>
+
+Resources
+---------
+
+Fluxly's web page
+   http://fluxly.com
+   
+The app store page (see free download code above)
+    http://itunes.apple.com/us/app/fluxly/id1376844813
+
+High resolution screenshot downloads
+    http://fluxly.com/downloads/
+	
+App Preview on Vimeo
+    https://vimeo.com/267117994
+    
+Making Fluxly, some background on how the app was made
+    http://fluxly.com/MakingFluxly.html
+
+Fluxama artist collective, home of Noisemusick and DR-OM
+   http://fluxama.com
+   
+The open source code for Fluxly
+    https://github.com/fluxly/ofxFluxly
+	
+More about openFrameworks
+    http://openframeworks.cc
+	

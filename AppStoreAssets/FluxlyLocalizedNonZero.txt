@@ -1,0 +1,135 @@
+Now with Retina Display support.
+
+Minor user interface improvements.
+
+This is the full version of Fluxly, the musical physics looper. This version has access to pre-recorded samples and can record samples.
+
+Fluxly is a musical electronic synthesizer inspired by Leon Theremin where you create new instrument scenes by moving and spinning colorful Fluxum sound sample players. Fluxly brings a whole new approach to knob twiddling and sound making. 
+
+You can choose from a bank of built-in sound samples, or record your own samples and play them back in either direction at any speed. By touching two Fluxum and pushing them together you can link them into looping gear train machines. You can also enable movement and let the built-in physics engine take over as the Fluxum bounce around the instrument for random sonic fun.
+
+Recording can be done right in the app, and loops can be up to about 10 seconds long. You can also customize all of the sounds in Bank 1 by using iTunes and the filesharing features of your iPhone or iPad to upload any sound samples from your computer.
+
+Fluxly was built using openFrameworks, Box2d, libPd and Pure Data. See more at fluxly.com.
+
+
+
+Subtitle: Musical-Physik-Looper
+
+Jetzt mit Retina Display-Unterstützung.
+
+
+Geringfügige Verbesserungen der Benutzeroberfläche
+
+Dies ist die Vollversion von Fluxly, dem musikalischen Physik-Looper. Diese Version hat Zugriff auf vorab aufgenommene Samples und kann Samples aufnehmen.
+
+
+Fluxly ist ein musikalisches Physik-Looper-Spiel, in dem du neue Instrumentenszenen erstellst, indem du bunte Fluxum Sound Sample-Spieler bewegst und drehst. Fluxly bringt einen völlig neuen Ansatz zum Knob Twiddling und Sound Making.
+
+Sie können aus einer Reihe von eingebauten Sound-Samples auswählen oder Ihre eigenen Samples aufnehmen und in jeder Richtung mit jeder Geschwindigkeit abspielen. Indem Sie zwei Fluxum berühren und zusammen drücken, können Sie sie in Looping-Getriebe-Maschinen verbinden. Sie können auch Bewegung aktivieren und die eingebaute Physik-Engine übernehmen lassen, während der Fluxum um das Instrument herum schwankt, um zufälligen Klangspaß zu erzeugen.
+
+Die Aufzeichnung kann direkt in der App erfolgen und die Schleifen können bis zu 10 Sekunden lang sein. Sie können auch alle Sounds in Bank 1 anpassen, indem Sie iTunes und die Filesharing-Funktionen Ihres iPhone oder iPad verwenden, um Soundbeispiele von Ihrem Computer hochzuladen.
+
+Fluxly wurde mit openFrameworks, Box2d, libPd und Pure Data erstellt. Sehen Sie mehr bei fluxly.com.
+
+
+SUbtitle: Looper de la physique musicale
+
+Maintenant avec le support de Retina Display.
+
+Améliorations mineures de l'interface utilisateur.
+
+Ceci est la version complète de Fluxly, le looper de la physique musicale. Cette version a accès à des échantillons pré-enregistrés et peut enregistrer des échantillons.
+
+
+Fluxly est un jeu de looper de la physique musicale où vous créez de nouvelles scènes d'instruments en déplaçant et en faisant tourner des lecteurs d'échantillons sonores Fluxum colorés. Fluxly apporte une toute nouvelle approche à la manipulation de son et de son.
+
+Vous pouvez choisir parmi une banque d'échantillons sonores intégrés, ou enregistrer vos propres échantillons et les lire dans n'importe quelle direction à n'importe quelle vitesse. En touchant deux Fluxum et en les rapprochant, vous pouvez les relier à des machines à engrenages en boucle. Vous pouvez également activer le mouvement et laisser le moteur physique intégré prendre le relais pendant que le Fluxum rebondit autour de l'instrument pour un plaisir sonore aléatoire.
+
+L'enregistrement peut être effectué directement dans l'application et les boucles peuvent durer jusqu'à 10 secondes. Vous pouvez également personnaliser tous les sons de la banque 1 en utilisant iTunes et les fonctionnalités de partage de fichiers de votre iPhone ou iPad pour télécharger des échantillons sonores depuis votre ordinateur.
+
+Fluxly a été construit en utilisant openFrameworks, Box2d, libPd et Pure Data. Voir plus à fluxly.com.
+
+
+
+Subtitle: Looper de física musical
+
+Ahora con soporte Retina Display.
+
+Pequeñas mejoras en la interfaz de usuario.
+
+Esta es la versión completa de Fluxly, el looper de física musical. Esta versión tiene acceso a muestras pregrabadas y puede grabar muestras.
+
+
+
+Fluxly es un juego de looper de física musical en el que creas nuevas escenas de instrumentos moviendo y haciendo girar coloridos reproductores de samples de sonido Fluxum. Fluxly trae un enfoque completamente nuevo a la perilla twiddling y la creación de sonido.
+
+Puede elegir entre un banco de muestras de sonido integradas, o grabar sus propias muestras y reproducirlas en cualquier dirección a cualquier velocidad. Al tocar dos Fluxum y unirlos, puedes vincularlos en máquinas de tren de engranajes de bucle. También puede habilitar el movimiento y dejar que el motor de física incorporado se haga cargo mientras Fluxum rebota alrededor del instrumento para una diversión sónica aleatoria.
+
+La grabación se puede hacer directamente en la aplicación, y los bucles pueden durar hasta 10 segundos. También puede personalizar todos los sonidos del Banco 1 utilizando iTunes y las funciones de intercambio de archivos de su iPhone o iPad para cargar cualquier muestra de sonido de su computadora.
+
+Fluxly se creó utilizando openFrameworks, Box2d, libPd y Pure Data. Vea más en fluxly.com.
+
+
+Subtitle: 動きのあるミュージカルルーパー
+
+今網膜ディスプレイをサポートしています。
+
+マイナーなユーザーインターフェイスの改善。
+
+これはFluxlyの完全版で、音楽物理学者のルーパーです。 このバージョンは、事前に記録されたサンプルにアクセスし、サンプルを記録することができます。
+
+
+
+Fluxlyは、カラフルなFluxumサウンドサンプルプレーヤーを移動して回転させることで、新しい楽器シーンを作成するムービングゲームのミュージカルルーパーです。 Fluxlyは、つまずきや音作りに全く新しいアプローチをもたらします。
+
+内蔵のサウンドサンプルのバンクから選択するか、独自のサンプルを録音して、どんなスピードでどちらの方向にも再生することができます。 2つのFluxumに触れ、それらを一緒に押すことで、ループギアトレインマシンにそれらをリンクすることができます。 また、Fluxumが楽器の周りをバウンスしてランダムな音楽を楽しめるように、動きを有効にして内蔵の物理エンジンを引き継ぐこともできます。
+
+録画はアプリですぐに行え、ループは最長で約10秒です。 また、iTunesとiPhoneまたはiPadのファイル共有機能を使用して、コンピュータからサウンドサンプルをアップロードして、バンク1のすべてのサウンドをカスタマイズすることもできます。
+
+FluxlyはopenFrameworks、Box2d、libPd、Pure Dataを使用して構築されました。 詳しくはfluxly.comをご覧ください。
+
+
+
+Subtitle ьная физика Looper
+
+Теперь с поддержкой Retina Display.
+
+Небольшие улучшения пользовательского интерфейса.
+
+Это полная версия Fluxly, петлителя музыкальной физики. Эта версия имеет доступ к предварительно записанным образцам и может записывать образцы.
+
+
+
+
+Fluxly - это музыкальный электронный синтезатор, вдохновленный Леон Термен, где вы создаете новые сцены инструмента, перемещая и вращая красочные звуковые проигрыватели Fluxum. Fluxly привносит совершенно новый подход к ручке и созданию звука.
+
+Вы можете выбрать из банка встроенных образцов звука или записать свои собственные образцы и воспроизвести их в любом направлении с любой скоростью. Прикоснувшись к двум Fluxum и подталкивая их вместе, вы можете связать их с петлевыми зубчатыми передачами. Вы также можете включить движение и позволить встроенному физическому движку взять верх, как Fluxum отскочит вокруг инструмента для случайного звукового удовольствия.
+
+Запись может быть выполнена прямо в приложении, а петли могут занимать до 10 секунд. Вы также можете настроить все звуки в банке 1, используя iTunes и функции обмена файлами вашего iPhone или iPad для загрузки любых образцов звука с вашего компьютера.
+
+Fluxly был создан с использованием openFrameworks, Box2d, libPd и Pure Data. См. Больше на fluxly.com.
+
+
+
+
+Subtitle 与运动的音乐圈
+
+现在支持Retina Display。
+
+次要的用户界面改进。
+
+这是Fluxly的完整版本，是音乐物理学的lo子手。 该版本可以访问预先记录的样本并可以记录样本。
+
+
+
+Fluxly是一个音乐物理学家，您可以通过移动和旋转多个Fluxum声音采样播放器来创建新的乐器场景。 Fluxly带来了全新的旋钮旋转和声音制作方法。
+
+您可以从一组内置的声音样本中进行选择，或者录制自己的样本并以任意速度在任一方向播放。 通过触摸两个Fluxum并将它们推到一起，您可以将它们连接成循环齿轮机器。 当Fluxum在仪器周围反弹以获得随机的音乐乐趣时，您也可以启用移动并让内置物理引擎接管。
+
+录制可以在应用程序中完成，并且循环可以长达约10秒。 您还可以使用iTunes和iPhone或iPad的文件共享功能自定义Bank 1中的所有声音，以从计算机上传任何声音样本。
+
+Fluxly是使用openFrameworks，Box2d，libPd和Pure Data构建的。 在fluxly.com上查看更多内容。
+
+
+

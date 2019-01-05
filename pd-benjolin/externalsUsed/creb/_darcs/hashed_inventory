@@ -1,0 +1,218 @@
+pristine:426b81e1e0c46c8e7c8195a3375f2423f0684c3171116436913c09025b446fba
+Starting with inventory:
+0000000964-b4f318415ea152ab121f2c43ccea964cbcd4f53b7eed6f51aadcef1f56fbe609
+[TAG 0.9.2
+tom@goto10.org**20060815150137] 
+hash: 0000000441-11990f5646f2fa4b267c05c173f5278a714cef4147ee75e3f38cf39f28e0730c
+[configure.ac fix + make gcc-3.3 shut up with -Werror
+tom@goto10.org**20060825222445] 
+hash: 0000001457-cbdaaf28947ce696ff611e214c2857dffc7162a48bc727ec7b1bb568b8a0449b
+[CREB_EXTLIB_UTIL_H
+tom@goto10.org**20060825223358] 
+hash: 0000000216-5da7e20044cef2daf8ff08ad10e6b4577e393a91389f57488fb475e9d47ba748
+[hc changes : milliseconds_2_one_minus_realpole() moved to the ear~.c etc.. files
+tom@goto10.org**20060825223751] 
+hash: 0000003524-1c1a6e072905a91f46634f9dfa11823140fa584ae98a1e26c93e7de68f572ba7
+[removed envelope_utils.c - moved milliseconds_2_one_minus_realpole() to extlib_util.h as static inline
+tom@goto10.org**20060825230512] 
+hash: 0000005182-97513e897e844dd9d6dbf450ff1d7f1e9e042a4279285388411a4434fb0e6968
+[README.darcs
+tom@goto10.org**20060826212535] 
+hash: 0000000267-e109bbc4d415b7d71465f15b6a15b8aaf271445265a82bae07adc6a06757b53b
+[README.darcs
+tom@goto10.org**20060826212658] 
+hash: 0000000231-b60406c1c3ad76b135ebbb6b61cdc4225959901fd12623ee399ff8e20585eb06
+[removed -Werror
+tom@zwizwa.be**20080208142937] 
+hash: 0000000156-273932a2a87c492a3e8f411dd56c701f77709e986480ba5e7770df224e9b6023
+[.header.html
+tom@zwizwa.be**20080208143314] 
+hash: 0000000600-3010c9f3c2613e066f2ec3eefdcdf5bd143c056ddf4b872ab61d1eee7795ad44
+[www docs
+tom@zwizwa.be**20080208144122] 
+hash: 0000000688-24d52cce8e5286f21abc29db5bf17f46a9474a7f4c06d2e87c2823abc94be679
+[address changes
+tom@zwizwa.be**20080219104425] 
+hash: 0000001756-53fc4fcedc453370dc0e416f3aafdb468f14f88a17446ddc432bdb387190fcfc
+[snapshotting
+tom@zwizwa.be**20080219111235] 
+hash: 0000000907-7790a82b17278496948a2672ad4a00beecc0607f081e4dd388333dfa35cc505b
+[commented out release in makefile, leave only snapshot
+tom@zwizwa.be**20080219111406] 
+hash: 0000000246-b8fb16c3d70b7091cfdb33a2096950cef909f949f90dec19d07365bb0fad6fe6
+[onecomp~
+tom@zwizwa.be**20080619171136] 
+hash: 0000000308-9b0bcbcd48c87b35ea855df97c1e1b602db9c9cc6b1cf6bd4c456f9fcd1f7be8
+[url
+tom@zwizwa.be**20090214225623] 
+hash: 0000000173-d68d1be97d3c75cbfb3951b3a7c512a6d4cedcc469d9d84fdf8d19043e5b8c0d
+[audiorate, wrap messages: Damian Stewart
+tom@zwizwa.be**20101120223455
+ Ignore-this: ad977c8983fd949d561a8816b69444e1
+] 
+hash: 0000003709-4189565e98574ee80e32fe15c1bbdad3df257e0ab017f612fcc7aa9aa4466479
+[export_dynamic
+tom@zwizwa.be**20101120231808
+ Ignore-this: fdcafcd082b72f31eaffca505f604207
+] 
+hash: 0000000199-88e4c720b96a41544f7fa2b57ec48888ac97bca31ecdfb41c6363a48a83c7631
+[1 -> 1L
+tom@zwizwa.be**20101120231817
+ Ignore-this: 36007feb3a23cb4d2d1699805b812e37
+] 
+hash: 0000000275-eb6a666fc44114567feabec8e3fbe8e601b6bb2b3e8cd900ebf7cc3d6ef7bf6a
+[from pd svn: bwin_tilde_setup
+tom@zwizwa.be**20101120231616
+ Ignore-this: 727c1da083bbc7182cf6cc60646342e3
+] 
+hash: 0000000196-30188c1490164e9f4bb8689e3da9e298c96f6806105ab48708d0a4a1de336cc2
+[draft sawtooth~ : broken
+tom@zwizwa.be**20110110174724
+ Ignore-this: 656db54ddcc17092cef6c80dcbb82ae9
+] 
+hash: 0000004072-d340d0f6d805f6f3556d51d605a2041cf123cc86b4c424aa7db84193b16d5e46
+[revert to svn revision 16490
+tom@zwizwa.be**20121027032924
+ Ignore-this: 86963854f7dba85b2dc19818d8a4084a
+] 
+hash: 0000062445-aa69b4e8dd7546514e036a95994c6090684395dcb773ebe17691cac576ab12f4
+[tabreadmix patch: unknown origin
+tom@zwizwa.be**20121027034150
+ Ignore-this: dbb9380bb16cc2d6f259658ac5b3cc79
+] 
+hash: 0000003510-4bda433cbf98ccd7842a2f068099aefe838b3fb9e176eae8bdc1a2183cbb92ef
+[-rdynamic
+tom@zwizwa.be**20121027035039
+ Ignore-this: e7cb9ad3bd0dcf80e8801adfb1ad23d0
+] 
+hash: 0000000195-ec7c1278f1e71cb9c1abc13a7785d64aff528ca84b5e149517864e73189b6abe
+[CT_ASSERT + u32/u64 fixes
+tom@zwizwa.be**20121027043440
+ Ignore-this: 2618f00a8993d150746dee8ab1002015
+] 
+hash: 0000001167-03c2999ee4ff0ddd69754876a31c10ac7d8f58c680c80a5bb2fc58f59223f8e7
+[CT_ASSERT workaround for -DMACOSX
+tom@zwizwa.be**20121030190131
+ Ignore-this: 9521e39ca4b1f8c3519aa424ff586ab5
+] 
+hash: 0000000456-ec42d91ac53fe0beaabd90c12b5893c92f0fa0815f74ff20babe64e51d7968ff
+[creb.mk
+tom@zwizwa.be**20121031014651
+ Ignore-this: 4d54e42281e5caff9ba1363baf7249e6
+] 
+hash: 0000002170-8ead12990372747560b6d62534dc7c378b441e5dd25443d803e6743b31e9711c
+[creb: CT_ASSERT workaround for __APPLE__
+tom@zwizwa.be**20121031154431
+ Ignore-this: 55a6d1fdb42fba35f4e8d170f3b47141
+] 
+hash: 0000000725-17f8d7863f80fab3a30421442b3761e0d59240a16b07481568561d4cca798bde
+[proper ifdef for __COUNTER__ based on gcc version
+tom@zwizwa.be**20121101210432
+ Ignore-this: 2fed2a17ff902488eb2b7c156069b387
+] 
+hash: 0000001448-14e2383b34cd9aca27f8f5c3736cae46c9e8807f0a56fca5b6073873d19eec20
+[merge
+tom@zwizwa.be**20121101221825
+ Ignore-this: a5f9044c92f3c05b098c2931996df0e5
+] 
+hash: 0000000719-0282118e781904b3e6e4f44146bd0b1e79bdce6bea6af9b429c481e2a081879e
+[added __clang__ to __COUNTER__ ifdef
+tom@zwizwa.be**20121101234540
+ Ignore-this: 4408d0805cc81262005cb3867a33956a
+] 
+hash: 0000000783-525dcb2d1ee6ce5be347890bf0c076b8aa61d6931a1333e9ad99070669352087
+[renamed help patches: abc.pd -> abc-help.pd
+tom@zwizwa.be**20121102000601
+ Ignore-this: 5921d3a3d3f350e589b2c6ce208f3e07
+] 
+hash: 0000001485-22ae52ad01d2accaff3a250abfc7f70eac87cd8da67d7c835590c2cbac74ac1e
+[help patch modifications from svn
+tom@zwizwa.be**20121102000722
+ Ignore-this: 7d9458e8d900e684bbf5fd34e5c60188
+] 
+hash: 0000039193-2d1efdb85acba232be540abb55b02b0e803bb2c7babc5bf5ed15de21665719ca
+[new help patches from svn
+tom@zwizwa.be**20121102000740
+ Ignore-this: 701c21dd65c8b4ba59a3527c38e6543d
+] 
+hash: 0000029499-3d5aaa17b27a31658c2252a647582d9cb59a66100fd650db5588442fa6340295
+[sput: stubs
+tom@zwizwa.be**20121112005637
+ Ignore-this: c7e559e473cbaf4d0efe5f6307edf7d5
+] 
+hash: 0000005483-61af1a019af69391ac2773a0be2d85d0cbe3b22d03b9fec63d9d8a54fd011739
+[dt_ms.c: missing file
+tom@zwizwa.be**20121112005818
+ Ignore-this: 1d8cd2665ae7bc3518348b6838971d7c
+] 
+hash: 0000002398-9b1e9ddac9a1240f675e596752896756b91cf03a626fe1f74d8706dfca58f740
+[silent build
+tom@zwizwa.be**20121112030947
+ Ignore-this: f063867e70ae2b2e3ab349208dfbeb3f
+] 
+hash: 0000000300-4d9f7077b6422e1e484f57a37203bbfb94a336d05ce9e16f4313834e15c41b90
+[sput: basic synth arch
+tom@zwizwa.be**20121112204958
+ Ignore-this: a6d68d8ae2b6fd99c22fc6148a370a02
+] 
+hash: 0000002299-fd5978df96d33a94d137a71e97703a379074a689815b68fd5e1ef0b86a9121c0
+[sput voice allocator + cleanup
+tom@zwizwa.be**20121113235557
+ Ignore-this: dd8f2682db3a0191d5dc4b2cc5df0e4f
+] 
+hash: 0000003910-a9aae9c7491683d34711f4711477c1ac126a9ee1ba611527f4d17588917e07de
+[sput: midi->note table
+tom@zwizwa.be**20121114020926
+ Ignore-this: 279fcc799572e71183dd40e009ad012e
+] 
+hash: 0000003815-7ed13a7344a80849184639e84cc78302361c8720a03eb0a032d3232adb8b63ec
+[sput: hacking + rambling
+tom@zwizwa.be**20121114040606
+ Ignore-this: 68c7aa941431746c0a9fc61495cdb16b
+] 
+hash: 0000001810-a3426dfcba86eb458291143f2efebb44c465bb6a31995c8aa679c15d1418fca5
+[sput: squarewave and/or
+tom@zwizwa.be**20121116190512
+ Ignore-this: 3321fd829e9a6dd2ce156e3b657bd0dd
+] 
+hash: 0000000308-ece64c156ef88631bc78845e4e89496c4b689922e698a588b5cc9dbe23bd4bde
+[sput
+tom@zwizwa.be**20121210043528
+ Ignore-this: d908553e0df9dd3ec96998ac535e6e
+] 
+hash: 0000000785-a2189454be82e3418588fc4f7309d41ec25e791edbab2a8cdc8e025b23fac80d
+[removed sput
+tom@zwizwa.be**20130106160634
+ Ignore-this: 2b50d88ddebb14d6eec9c55a0ddae3c7
+] 
+hash: 0000010584-0a689b4a1de9a5ab452ed1480f661ab9d2506efbf981437004297f29f52366ac
+[bugs.txt
+tom@zwizwa.be**20130309170621
+ Ignore-this: 6fc50ac83e1552abc939fe0961a348bf
+] 
+hash: 0000001638-bbf8cd41fa60f6909ea5273a6771818a5ccac576eb29742e4b3354969b20745b
+[build fix
+tom@zwizwa.be**20130523132248
+ Ignore-this: 26ca953105f4c569e1b0a4a80668de4e
+] 
+hash: 0000000128-ce9ffc271128b9966c61d0a2086b16983175e40afc0f6c0ab22d99249b339761
+[IOhannes zmoelnig: 0001-do-not-use-t_int-as-a-numeric-type.patch
+tom@zwizwa.be**20151030214445
+ Ignore-this: 22d590515c99dd00ecb3107bde81510b
+] 
+hash: 0000014464-08a0779a229158e258540578f7cdaaac34bbe2c50b2ac303dc364276d4cddab0
+[IOhannes zmoelnig: 0001-simplified-buildsystem-pd-lib-builder.patch
+tom@zwizwa.be**20151031140123
+ Ignore-this: 7252bffd2a9c14e51ec0c7075217d209
+] 
+hash: 0000044931-a441e335b630003e5d3a285ef9dbd969fa370dcb2b5b4128e5cc887ec5c217c5
+[patches
+tom@zwizwa.be**20151031140246
+ Ignore-this: c3223712f7d2d43773871c157a0d659b
+] 
+hash: 0000086557-dc7accf7796d600659e1b6ae5fa8b94e3a6b9d06f1dbb428c142b9499aed340e
+[fix unused variable warnings
+tom@zwizwa.be**20151031143131
+ Ignore-this: aa06c212b9f918bb318ba6377a7c59e4
+] 
+hash: 0000008600-a575c2240ca943491fbff1aad3a020629714d509dc01b36a87d9bd583d161f7b

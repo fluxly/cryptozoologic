@@ -1,0 +1,127 @@
+Fluxly is a new type of sonic game, a musical physics looper.
+
+Fluxly is a musical electronic sampling synthesizer where you create new instrument scenes by moving and spinning colorful Fluxum sound sample players. A built-in 2D physics engine brings a whole new approach to knob twiddling and sound making. 
+
+You can choose from a bank of built-in sound samples, or record your own samples and play them back in either direction at any speed. By touching two Fluxum and pushing them together you can link them into looping gear train machines. You can also enable movement and let the physics engine take over as the Fluxum bounce around the instrument for random sonic fun.
+
+Recording can be done right in the app, and sample loops can be up to about 10 seconds long. You can also customize all of the sounds in Bank 1 by using filesharing features of your phone or tabley to upload any sound samples from your computer.
+
+Fluxly was created by artist Shawn Wallace, who is also part of the Fluxama art collective that has created the apps Noisemusick and DR-OM. Fluxly is open source software and was built using openFrameworks, Box2d, libPd and Pure Data. See more at fluxly.com.
+
+
+
+Fluxly ist eine neue Art von Sound-Spiel, ein musikalischer Physik-Looper.
+
+Fluxly ist ein musikalischer elektronischer Sampling-Synthesizer, bei dem Sie neue Instrumentenszenen erstellen, indem Sie bunte Fluxum Sound Sample-Player bewegen und drehen. Eine eingebaute 2D-Physik-Engine bringt einen völlig neuen Ansatz für Knob Twiddling und Sound Making.
+
+Sie können aus einer Reihe von eingebauten Sound-Samples auswählen oder Ihre eigenen Samples aufnehmen und in jeder Richtung mit jeder Geschwindigkeit abspielen. Indem Sie zwei Fluxum berühren und zusammen drücken, können Sie sie in Looping-Getriebe-Maschinen verbinden. Sie können auch Bewegung aktivieren und die eingebaute Physik-Engine übernehmen lassen, während der Fluxum um das Instrument herum schwankt, um zufälligen Klangspaß zu erzeugen.
+
+Die Aufzeichnung kann direkt in der App erfolgen und die Schleifen können bis zu 10 Sekunden lang sein. Sie können auch alle Sounds in Bank 1 anpassen, indem Sie und die Filesharing-Funktionen Ihres phone oder tablet verwenden, um Soundbeispiele von Ihrem Computer hochzuladen.
+
+Fluxly wurde mit openFrameworks, Box2d, libPd und Pure Data erstellt. Sehen Sie mehr bei fluxly.com.
+
+• 15 verschiedene Instrumentenszenen
+• 15 integrierte Sample-Loops für den Einstieg
+• 25 beschreibbare Sample-Looper
+• Integrierte Physik-Engine für zufälligen Klangspaß
+
+
+Fluxly est un nouveau type de jeu sonore, un looper de la physique musicale.
+
+Fluxly est un synthétiseur d'échantillonnage électronique musical où vous créez de nouvelles scènes d'instrument en déplaçant et en faisant tourner des lecteurs d'échantillons sonores Fluxum colorés. Un moteur de physique 2D intégré apporte une toute nouvelle approche à la manipulation de boutons et à la création sonore.
+
+Vous pouvez choisir parmi une banque d'échantillons sonores intégrés, ou enregistrer vos propres échantillons et les lire dans n'importe quelle direction à n'importe quelle vitesse. En touchant deux Fluxum et en les rapprochant, vous pouvez les relier à des machines à engrenages en boucle. Vous pouvez également activer le mouvement et laisser le moteur physique intégré prendre le relais pendant que le Fluxum rebondit autour de l'instrument pour un plaisir sonore aléatoire.
+
+L'enregistrement peut être effectué directement dans l'application et les boucles peuvent durer jusqu'à 10 secondes. Vous pouvez également personnaliser tous les sons de la banque 1 en utilisant et les fonctionnalités de partage de fichiers de votre phone ou tablet pour télécharger des échantillons sonores depuis votre ordinateur.
+
+Fluxly a été construit en utilisant openFrameworks, Box2d, libPd et Pure Data. Voir plus à fluxly.com.
+
+• 15 scènes d'instrument différentes
+• 15 boucles d'échantillonnage intégrées pour vous aider à démarrer
+• 25 boucleurs d'échantillons enregistrables
+• Moteur physique intégré pour un plaisir sonore aléatoire
+
+
+Fluxly es un nuevo tipo de juego sónico, un looper de física musical.
+
+Fluxly es un sintetizador musical de muestreo electrónico en el que creas nuevas escenas de instrumentos moviendo y haciendo girar coloridos reproductores de muestras de sonido Fluxum. Un motor de física 2D incorporado ofrece un enfoque completamente nuevo para el giro y el sonido.
+
+Puede elegir entre un banco de muestras de sonido integradas, o grabar sus propias muestras y reproducirlas en cualquier dirección a cualquier velocidad. Al tocar dos Fluxum y unirlos, puedes vincularlos en máquinas de tren de engranajes de bucle. También puede habilitar el movimiento y dejar que el motor de física incorporado se haga cargo mientras Fluxum rebota alrededor del instrumento para una diversión sónica aleatoria.
+
+La grabación se puede hacer directamente en la aplicación, y los bucles pueden durar hasta 10 segundos. También puede personalizar todos los sonidos del Banco 1 utilizando las funciones de intercambio de archivos de su phone o tablet para cargar cualquier muestra de sonido de su computadora.
+
+Fluxly se creó utilizando openFrameworks, Box2d, libPd y Pure Data. Vea más en fluxly.com.
+
+• 15 escenas de instrumentos diferentes
+• 15 loops de muestra incorporados para que comiences
+• 25 loopers de muestra grabables
+• Motor de física incorporado para diversión sónica al azar
+
+
+Fluxlyは、新しいタイプのソニックゲームであり、音楽物理ルーパです。
+
+Fluxlyは、カラフルなFluxumサウンドサンプルプレーヤーを移動して回転させることにより、新しい楽器シーンを作成する、ミュージカル電子サンプリングシンセサイザーです。 2D物理エンジンを内蔵しているので、つまずきや音作りに全く新しいアプローチが可能です。
+
+内蔵のサウンドサンプルのバンクから選択するか、独自のサンプルを録音して、どんなスピードでどちらの方向にも再生することができます。 2つのFluxumに触れ、それらを一緒に押すことで、ループギアトレインマシンにそれらをリンクすることができます。 また、Fluxumが楽器の周りをバウンスしてランダムな音楽を楽しめるように、動きを有効にして内蔵の物理エンジンを引き継ぐこともできます。
+
+録画はアプリですぐに行え、ループは最長で約10秒です。 また、とphoneまたはtabletのファイル共有機能を使用して、コンピュータからサウンドサンプルをアップロードして、バンク1のすべてのサウンドをカスタマイズすることもできます。
+
+FluxlyはopenFrameworks、Box2d、libPd、Pure Dataを使用して構築されました。 詳しくはfluxly.comをご覧ください。
+
+•15種類の楽器シーン
+•開始するための15のビルトインサンプルループ
+25個の記録可能なサンプルループ
+•ランダムな音の楽しみのための組み込みの物理エンジン
+
+
+Fluxly - это новый тип звуковой игры, петлевой петли музыкальной физики.
+
+Fluxly - это музыкальный электронный синтезатор сэмплирования, в котором вы создаете новые сцены инструментов, перемещая и вращая красочные проигрыватели звука Fluxum. Встроенный 2D-движок физики привносит совершенно новый подход к ручке и созданию звука.
+
+Вы можете выбрать из банка встроенных образцов звука или записать свои собственные образцы и воспроизвести их в любом направлении с любой скоростью. Прикоснувшись к двум Fluxum и подталкивая их вместе, вы можете связать их с петлевыми зубчатыми передачами. Вы также можете включить движение и позволить встроенному физическому движку взять верх, как Fluxum отскочит вокруг инструмента для случайного звукового удовольствия.
+
+Запись может быть выполнена прямо в приложении, а петли могут занимать до 10 секунд. Вы также можете настроить все звуки в банке 1, используя функции обмена файлами вашего phone или tablet для загрузки любых образцов звука с вашего компьютера.
+
+Fluxly был создан с использованием openFrameworks, Box2d, libPd и Pure Data. См. Больше на fluxly.com.
+
+• 15 различных сцен инструментов
+• 15 встроенных контуров, чтобы вы начали
+• 25 записываемых пробоотборников
+• Встроенный физический движок для случайного звукового удовольствия
+
+
+
+
+
+Fluxly是一种新型的声音游戏，音乐物理活跃者。
+
+Fluxly是一款音乐电子采样合成器，您可以通过移动和旋转彩色的Fluxum声音采样播放器来创建新的乐器场景。 内置的2D物理引擎为旋钮和声音制作带来了全新的方法。
+
+您可以从一组内置的声音样本中进行选择，或者录制自己的样本并以任意速度在任一方向播放。 通过触摸两个Fluxum并将它们推到一起，您可以将它们连接成循环齿轮机器。 当Fluxum在仪器周围反弹以获得随机的音乐乐趣时，您也可以启用移动并让内置物理引擎接管。
+
+录制可以在应用程序中完成，并且循环可以长达约10秒。 您还可以使用和phone或tablet的文件共享功能自定义Bank 1中的所有声音，以从计算机上传任何声音样本。
+
+Fluxly是使用openFrameworks，Box2d，libPd和Pure Data构建的。 在fluxly.com上查看更多内容。
+
+•15种不同的乐器场景
+•15个内置示例循环，帮助您入门
+•25个可记录的样品弯针
+•内置物理引擎，提供随机的声音乐趣
+
+
+Fluxly é um novo tipo de jogo sonoro, um looper de física musical.
+
+Fluxly é um sintetizador musical de amostragem eletrônica onde você cria novas cenas de instrumentos movendo e girando os coloridos samples de samples Fluxum. Um mecanismo de física 2D integrado traz uma abordagem totalmente nova para o girar de botões e a criação de som.
+
+Você pode escolher entre um banco de amostras de som incorporadas ou gravar suas próprias amostras e reproduzi-las em qualquer direção, a qualquer velocidade. Ao tocar dois Fluxum e empurrá-los juntos, você pode ligá-los em máquinas de trem de engrenagens em looping. Você também pode ativar o movimento e deixar o motor de física assumir o controle enquanto o Fluxum salta ao redor do instrumento para diversão sonora aleatória.
+
+A gravação pode ser feita diretamente no aplicativo e os loops de amostra podem ter até 10 segundos de duração. Você também pode personalizar todos os sons do Banco 1 usando os recursos de compartilhamento de arquivos do telefone ou da mesa para fazer o upload de qualquer amostra de som do seu computador.
+
+Fluxly foi criado pelo artista Shawn Wallace, que também faz parte do coletivo de arte Fluxama que criou os aplicativos Noisemusick e DR-OM. Fluxly é um software de código aberto e foi construído usando openFrameworks, Box2d, libPd e Pure Data. Veja mais em fluxly.com.
+
+• 15 cenas de instrumentos diferentes
+• 15 loops de amostra incorporados para você começar
+• 25 loopers de amostra graváveis
+• Motor de física integrado para diversão sonora aleatória
+
+

@@ -1,0 +1,19 @@
+Creb dev log
+
+Entry: A full synth
+Date: Sun Nov 11 17:55:47 EST 2012
+
+So, time to make some things come together.  I'd like to wrap up some
+of the experiments with dynwav~ into a single, MIDI-controlled synth,
+which is somewhat hard to do in Pd + it's not so easy to port to a
+simple device / small code size.  Anyways, I'd like to go through the
+motions once and what is better than bootstrapping it inside Pd.  The
+product is a virtual analog (of course) using oversampled modules,
+with no distinction between control or data signals.  It's also
+supposed to be a playground for code generated with [1], but I'm
+probably going for C first.
+
+[1] http://zwizwa.be/-/meta/
+
+
+

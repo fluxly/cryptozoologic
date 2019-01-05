@@ -1,0 +1,7 @@
+to update type
+
+	darcs pull
+
+then run
+
+	make

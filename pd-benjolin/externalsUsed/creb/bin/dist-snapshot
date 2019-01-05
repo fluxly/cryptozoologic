@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[ "$1" == "-d" ] && shift && APPEND=".`date +%Y%m%d`"
+BASE=$1
+[ -z "$BASE" ] && BASE=`bin/version | sed s/.darcs//`
+
+VER="$BASE$APPEND"
+NAME=creb-$VER
+
+# create archive
+darcs dist -d "$NAME" >/dev/null
+
+# echo the name
+echo "$NAME"

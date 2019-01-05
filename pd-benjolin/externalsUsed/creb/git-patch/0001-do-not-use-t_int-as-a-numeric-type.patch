@@ -1,0 +1,1231 @@
+From 841b0aa4874d2249bc82927565e5a893b8b97c7e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?IOhannes=20m=20zm=C3=B6lnig?=
+ <zmoelnig@umlautQ.umlaeute.mur.at>
+Date: Tue, 27 Oct 2015 17:15:28 +0100
+Subject: [PATCH] do not use t_int as a numeric type
+
+---
+ modules++/biquadseries~.cc |  4 ++--
+ modules++/blosc~.cc        | 36 ++++++++++++++++++------------------
+ modules++/filterortho~.cc  |  4 ++--
+ modules/bdiag~.c           |  4 ++--
+ modules/bfft~.c            | 26 +++++++++++++-------------
+ modules/bitsplit~.c        |  8 ++++----
+ modules/blocknorm~.c       | 10 +++++-----
+ modules/bwin~.c            |  4 ++--
+ modules/cheby~.c           |  6 +++---
+ modules/cmath.c            | 16 ++++++++--------
+ modules/diag~.c            |  4 ++--
+ modules/dist~.c            |  4 ++--
+ modules/dwt.c              | 46 +++++++++++++++++++++++-----------------------
+ modules/dynwav~.c          |  6 +++---
+ modules/eadsr~.c           |  4 ++--
+ modules/ead~.c             |  6 +++---
+ modules/ear~.c             |  4 ++--
+ modules/eblosc~.c          | 18 +++++++++---------
+ modules/fdn~.c             | 46 +++++++++++++++++++++++-----------------------
+ modules/ffpoly.c           | 16 ++++++++--------
+ modules/junction~.c        |  8 ++++----
+ modules/lattice~.c         | 16 ++++++++--------
+ modules/matrix~.c          |  6 +++---
+ modules/permut~.c          | 18 +++++++++---------
+ modules/qmult~.c           |  4 ++--
+ modules/qnorm~.c           |  4 ++--
+ modules/ramp~.c            |  6 +++---
+ modules/resofilt~.c        |  4 ++--
+ modules/sawtooth~.c        |  6 +++---
+ modules/scrollgrid1D~.c    |  6 +++---
+ modules/xfm~.c             |  6 +++---
+ 31 files changed, 178 insertions(+), 178 deletions(-)
+
+diff --git a/modules++/biquadseries~.cc b/modules++/biquadseries~.cc
+index 9a952c5..1346878 100644
+--- a/modules++/biquadseries~.cc
++++ b/modules++/biquadseries~.cc
+@@ -57,8 +57,8 @@ static t_int *biquadseries_perform(t_int *w)
+   t_float *in    = (t_float *)(w[3]);
+   t_float *out    = (t_float *)(w[4]);
+   DSPIfilterSeries* biquadseries  = (DSPIfilterSeries *)(w[1]);
+-  t_int n = (t_int)(w[2]);
+-  t_int i;
++  int n = (int)(w[2]);
++  int i;
+   t_float x;
+ 
+   // dit kan beter 
+diff --git a/modules++/blosc~.cc b/modules++/blosc~.cc
+index 8934904..ce837c2 100644
+--- a/modules++/blosc~.cc
++++ b/modules++/blosc~.cc
+@@ -56,10 +56,10 @@ static t_float blr[N]; // band limited ramp
+ 
+ typedef struct bloscctl
+ {
+-    t_int c_index[VOICES];      // array of indices in sample table
++    int c_index[VOICES];      // array of indices in sample table
+     t_float c_frac[VOICES];     // array of fractional indices
+     t_float c_vscale[VOICES];   // array of scale factors
+-    t_int c_next_voice;         // next voice to steal (round robin)
++    int c_next_voice;         // next voice to steal (round robin)
+     u32 c_phase;                // phase of main oscillator
+     u32 c_phase2;               // phase of secondairy oscillator
+     t_float c_state;            // state of the square wave
+@@ -86,7 +86,7 @@ static inline u32 _float_to_phase(t_float f){return ((u32)(f * 4294967296.0)) &
+ 
+ 
+ /* flat table: better for linear interpolation */
+-static inline t_float _play_voice_lint(t_float *table, t_int *index, t_float frac, t_float scale)
++static inline t_float _play_voice_lint(t_float *table, int *index, t_float frac, t_float scale)
+ {
+     int i = *index;
+ 
+@@ -316,12 +316,12 @@ static void _bang_hardsync_phasor(t_bloscctl *ctl, t_float freq, t_float freq2)
+ 
+ static t_int *blosc_perform_hardsync_saw(t_int *w)
+ {
+-    t_float *freq     = (t_float *)(w[3]);
+-    t_float *freq2     = (t_float *)(w[4]);
+-    t_float *out      = (t_float *)(w[5]);
+-    t_bloscctl *ctl  = (t_bloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    t_float *freq   = (t_float *)(w[3]);
++    t_float *freq2  = (t_float *)(w[4]);
++    t_float *out    = (t_float *)(w[5]);
++    t_bloscctl *ctl = (t_bloscctl *)(w[1]);
++    int n           = (int)(w[2]);
++    int i;
+ 
+     /* set postfilter cutoff */
+     ctl->c_butter->setButterHP(0.85 * (*freq / sys_getsr()));
+@@ -354,9 +354,9 @@ static t_int *blosc_perform_saw(t_int *w)
+ {
+     t_float *freq     = (t_float *)(w[3]);
+     t_float *out      = (t_float *)(w[4]);
+-    t_bloscctl *ctl  = (t_bloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    t_bloscctl *ctl   = (t_bloscctl *)(w[1]);
++    int n             = (int)(w[2]);
++    int i;
+     
+     while (n--) {
+ 	t_float frequency = *freq++;
+@@ -384,9 +384,9 @@ static t_int *blosc_perform_pulse(t_int *w)
+ {
+     t_float *freq     = (t_float *)(w[3]);
+     t_float *out      = (t_float *)(w[4]);
+-    t_bloscctl *ctl  = (t_bloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    t_bloscctl *ctl   = (t_bloscctl *)(w[1]);
++    int n             = (int)(w[2]);
++    int i;
+ 
+ 
+     /* set postfilter cutoff */
+@@ -416,9 +416,9 @@ static t_int *blosc_perform_comparator(t_int *w)
+ {
+     t_float *amp      = (t_float *)(w[3]);
+     t_float *out      = (t_float *)(w[4]);
+-    t_bloscctl *ctl  = (t_bloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    t_bloscctl *ctl   = (t_bloscctl *)(w[1]);
++    int n             = (int)(w[2]);
++    int i;
+     t_float prev_amp = ctl->c_prev_amp;
+     
+     while (n--) {
+diff --git a/modules++/filterortho~.cc b/modules++/filterortho~.cc
+index b792729..091a791 100644
+--- a/modules++/filterortho~.cc
++++ b/modules++/filterortho~.cc
+@@ -46,8 +46,8 @@ static t_int *filterortho_perform(t_int *w)
+   t_float *in    = (t_float *)(w[3]);
+   t_float *out    = (t_float *)(w[4]);
+   DSPIfilterOrtho* filterortho  = (DSPIfilterOrtho *)(w[1]);
+-  t_int n = (t_int)(w[2]);
+-  t_int i;
++  int n = (int)(w[2]);
++  int i;
+   t_float x;
+ 
+ 
+diff --git a/modules/bdiag~.c b/modules/bdiag~.c
+index be7df79..5fb174e 100644
+--- a/modules/bdiag~.c
++++ b/modules/bdiag~.c
+@@ -32,7 +32,7 @@ typedef struct bdiagctl
+ {
+   t_float *c_state;
+   t_float *c_eigen;
+-  t_int c_order;
++  int c_order;
+ } t_bdiagctl;
+ 
+ typedef struct bdiag
+@@ -151,7 +151,7 @@ static t_int *bdiag_perform(t_int *w)
+ 
+   t_float *eigen = ctl->c_eigen;
+   t_float *state = ctl->c_state;
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+ 
+   t_float u1,u2,a,b,s1,s2,s1new,s2new;
+ 
+diff --git a/modules/bfft~.c b/modules/bfft~.c
+index ae39ff1..00366fe 100644
+--- a/modules/bfft~.c
++++ b/modules/bfft~.c
+@@ -30,12 +30,12 @@
+ 
+ typedef struct bfftctl
+ {
+-    t_int c_levels;
++    int c_levels;
+     char c_name[16];
+-    t_int *c_clutter;
+-    t_int *c_unclutter;
+-    t_int c_kill_DC;
+-    t_int c_kill_NY;
++    int *c_clutter;
++    int *c_unclutter;
++    int c_kill_DC;
++    int c_kill_NY;
+ } t_bfftctl;
+ 
+ typedef struct bfft
+@@ -48,9 +48,9 @@ typedef struct bfft
+ t_class *bfft_class, *ibfft_class, *fht_class;
+ 
+ 
+-static inline void bfft_perform_permutation(t_float *S, int n, t_int *f)
++static inline void bfft_perform_permutation(t_float *S, int n, int *f)
+ {
+-  t_int k,l;
++  int k,l;
+   t_float swap;
+   for(k=0; k<n; k++)
+     {
+@@ -62,7 +62,7 @@ static inline void bfft_perform_permutation(t_float *S, int n, t_int *f)
+     }
+ }
+ 
+-static void bfft_permutation(t_bfft *x, t_int n){
++static void bfft_permutation(t_bfft *x, int n){
+ 
+   t_bfftctl *ctl = &x->x_ctl;
+   int i;
+@@ -70,8 +70,8 @@ static void bfft_permutation(t_bfft *x, t_int n){
+   if (ctl->c_clutter)   free(ctl->c_clutter);
+   if (ctl->c_unclutter) free(ctl->c_unclutter);
+   
+-  ctl->c_clutter = (t_int *)malloc(n*sizeof(t_int));
+-  ctl->c_unclutter = (t_int *)malloc(n*sizeof(t_int));
++  ctl->c_clutter = (int *)malloc(n*sizeof(int));
++  ctl->c_unclutter = (int *)malloc(n*sizeof(int));
+ 
+ 
+   ctl->c_unclutter[0] = 0;
+@@ -105,7 +105,7 @@ static t_int *bfft_perform(t_int *w)
+   t_float *in     = (t_float *)(w[3]);
+   t_float *out    = (t_float *)(w[4]);
+   t_bfftctl *ctl  = (t_bfftctl *)(w[1]);
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+   t_float scale = sqrt(1.0f / (t_float)(n));
+ 
+   mayer_fht(out, n);
+@@ -126,7 +126,7 @@ static t_int *ibfft_perform(t_int *w)
+   t_float *in     = (t_float *)(w[3]);
+   t_float *out    = (t_float *)(w[4]);
+   t_bfftctl *ctl  = (t_bfftctl *)(w[1]);
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+   t_float scale = sqrt(1.0f / (t_float)(n));
+ 
+ 
+@@ -154,7 +154,7 @@ static t_int *fht_perform(t_int *w)
+   t_bfftctl *ctl  = (t_bfftctl *)(w[1]);
+ 
+ 
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+ 
+   mayer_fht(out, n);
+ 
+diff --git a/modules/bitsplit~.c b/modules/bitsplit~.c
+index bed3750..8754730 100644
+--- a/modules/bitsplit~.c
++++ b/modules/bitsplit~.c
+@@ -27,7 +27,7 @@
+ 
+ typedef struct bitsplitctl
+ {
+-    t_int c_outputs;
++    int c_outputs;
+     t_float *c_input;
+     t_float **c_output;
+ } t_bitsplitctl;
+@@ -44,11 +44,11 @@ static t_int *bitsplit_perform(t_int *word)
+ {
+ 
+     t_bitsplitctl *ctl  = (t_bitsplitctl *)(word[1]);
+-    t_int n             = (t_int)(word[2]);
++    int n               = (int)(word[2]);
+     t_float *in         = ctl->c_input;
+-    t_int outputs       = ctl->c_outputs;
++    int outputs         = ctl->c_outputs;
+     t_float **out       = ctl->c_output;
+-    t_int i,j;
++    int i,j;
+ 
+     for (i=0;i<n;i++){
+ 	long word = (in[i] * (t_float)(0x7fffffff));
+diff --git a/modules/blocknorm~.c b/modules/blocknorm~.c
+index 5f90081..df09005 100644
+--- a/modules/blocknorm~.c
++++ b/modules/blocknorm~.c
+@@ -29,7 +29,7 @@
+ 
+ typedef struct blocknormctl
+ {
+-    t_int c_channels;
++    int c_channels;
+     t_float **c_input;
+     t_float **c_output;
+ } t_blocknormctl;
+@@ -45,12 +45,12 @@ typedef struct blocknorm
+ static t_int *blocknorm_perform(t_int *word)
+ {
+ 
+-    t_blocknormctl *ctl  = (t_blocknormctl *)(word[1]);
+-    t_int n             = (t_int)(word[2]);
++    t_blocknormctl *ctl = (t_blocknormctl *)(word[1]);
++    int n               = (int)(word[2]);
+     t_float **in        = ctl->c_input;
+     t_float **out       = ctl->c_output;
+-    t_int c             = ctl->c_channels;
+-    t_int i,j;
++    int c               = ctl->c_channels;
++    int i,j;
+ 
+     t_float p = 0.0f;
+     t_float x, s;
+diff --git a/modules/bwin~.c b/modules/bwin~.c
+index 5a462d4..61098f3 100644
+--- a/modules/bwin~.c
++++ b/modules/bwin~.c
+@@ -29,7 +29,7 @@ typedef struct _window
+     t_object x_obj;
+     t_float x_f;
+     t_float *x_window;
+-    t_int x_size;
++    int x_size;
+     t_symbol *x_type;
+     t_float x_typearg;
+     
+@@ -49,7 +49,7 @@ static t_int *window_perform(t_int *w)
+     return (w+5);
+ }
+ 
+-static void window_size(t_window *x, t_int n)
++static void window_size(t_window *x, int n)
+ {
+     if (x->x_size != n){
+ 	if (x->x_window) free(x->x_window);
+diff --git a/modules/cheby~.c b/modules/cheby~.c
+index 7010e36..f1e4d9d 100644
+--- a/modules/cheby~.c
++++ b/modules/cheby~.c
+@@ -27,7 +27,7 @@
+ typedef struct chebyctl
+ {
+   t_float c_gain[MAX_ORDER];
+-  t_int c_order;
++  int c_order;
+ } t_chebyctl;
+ 
+ typedef struct cheby
+@@ -60,8 +60,8 @@ static t_int *cheby_perform(t_int *w)
+   t_float *out    = (t_float *)(w[4]);
+   t_chebyctl *ctl  = (t_chebyctl *)(w[1]);
+   t_float *gain  = ctl->c_gain;
+-  t_int i;
+-  t_int n = (t_int)(w[2]), k;
++  int i;
++  int n = (int)(w[2]), k;
+   t_float x,y,t1,t2,t,acc;
+ 
+     
+diff --git a/modules/cmath.c b/modules/cmath.c
+index 5526b9f..c0968b5 100644
+--- a/modules/cmath.c
++++ b/modules/cmath.c
+@@ -37,8 +37,8 @@ static t_int *cmath_perform_clog(t_int *w)
+     t_float *iny    = (float *)(w[3]);
+     t_float *outx    = (float *)(w[5]); // clockwize addressing
+     t_float *outy    = (float *)(w[4]);
+-    t_int i;
+-    t_int n = (t_int)(w[1]);
++    int i;
++    int n = (int)(w[1]);
+     t_float x;
+ 
+     while (n--){
+@@ -63,8 +63,8 @@ static t_int *cmath_perform_cexp(t_int *w)
+     t_float *iny    = (float *)(w[3]);
+     t_float *outx    = (float *)(w[5]); // clockwize addressing
+     t_float *outy    = (float *)(w[4]);
+-    t_int i;
+-    t_int n = (t_int)(w[1]);
++    int i;
++    int n = (int)(w[1]);
+     t_float x;
+ 
+     while (n--){
+@@ -84,8 +84,8 @@ static t_int *cmath_perform_nfft(t_int *w)
+     t_float *iny    = (float *)(w[3]);
+     t_float *outx    = (float *)(w[5]); // clockwize addressing
+     t_float *outy    = (float *)(w[4]);
+-    t_int i;
+-    t_int n = (t_int)(w[1]);
++    int i;
++    int n = (int)(w[1]);
+     t_float x;
+     t_float scale = 1.0f / (sqrt((float)n));
+ 
+@@ -107,8 +107,8 @@ static t_int *cmath_perform_nifft(t_int *w)
+     t_float *iny    = (float *)(w[3]);
+     t_float *outx    = (float *)(w[5]); // clockwize addressing
+     t_float *outy    = (float *)(w[4]);
+-    t_int i;
+-    t_int n = (t_int)(w[1]);
++    int i;
++    int n = (int)(w[1]);
+     t_float x;
+     t_float scale = 1.0f / (sqrt((float)n));
+ 
+diff --git a/modules/diag~.c b/modules/diag~.c
+index 1e99682..989bd7d 100644
+--- a/modules/diag~.c
++++ b/modules/diag~.c
+@@ -32,7 +32,7 @@ typedef struct diagctl
+ {
+   t_float *c_state;
+   t_float *c_eigen;
+-  t_int c_order;
++  int c_order;
+ } t_diagctl;
+ 
+ typedef struct diag
+@@ -111,7 +111,7 @@ static t_int *diag_perform(t_int *w)
+ 
+   t_float *eigen = ctl->c_eigen;
+   t_float *state = ctl->c_state;
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+   t_float newstate;
+ 
+   int i;
+diff --git a/modules/dist~.c b/modules/dist~.c
+index 3002b94..5aa1c1d 100644
+--- a/modules/dist~.c
++++ b/modules/dist~.c
+@@ -69,8 +69,8 @@ static t_int *dist_perform(t_int *w)
+   t_float *out    = (t_float *)(w[4]);
+   t_distctl *ctl  = (t_distctl *)(w[1]);
+   t_float gain  = ctl->c_gain;
+-  t_int i;
+-  t_int n = (t_int)(w[2]);
++  int i;
++  int n = (int)(w[2]);
+   t_float x,y,v;
+   t_float z = ctl->c_delay;
+ 
+diff --git a/modules/dwt.c b/modules/dwt.c
+index 9ab3bcc..39fa861 100644
+--- a/modules/dwt.c
++++ b/modules/dwt.c
+@@ -33,16 +33,16 @@ typedef struct dwtctl
+ {
+   t_float c_update[MAXORDER];
+   t_float c_predict[MAXORDER];
+-  t_int c_nupdate;
+-  t_int c_npredict;
+-  t_int c_levels;
+-  t_int c_fakein;
++  int c_nupdate;
++  int c_npredict;
++  int c_levels;
++  int c_fakein;
+   t_float c_fakeval;
+-  t_int c_mask;
++  int c_mask;
+   char c_name[16];
+-  t_int *c_clutter;
+-  t_int *c_unclutter;
+-  t_int c_permute;
++  int *c_clutter;
++  int *c_unclutter;
++  int c_permute;
+   t_dwttype c_type;
+ } t_dwtctl;
+ 
+@@ -90,8 +90,8 @@ static void dwt_wavelet(t_dwt *x, t_floatarg f)
+   int k = (int)f;
+   t_float *p = x->x_ctl.c_predict;
+   t_float *u = x->x_ctl.c_update;
+-  t_int *np = &x->x_ctl.c_npredict;
+-  t_int *nu = &x->x_ctl.c_nupdate;
++  int *np = &x->x_ctl.c_npredict;
++  int *nu = &x->x_ctl.c_nupdate;
+   
+   switch(k)
+     {
+@@ -145,9 +145,9 @@ static void dwt_wavelet(t_dwt *x, t_floatarg f)
+     }
+ }
+ 
+-static inline void dwt_perform_permutation(t_float *S, int n, t_int *f)
++static inline void dwt_perform_permutation(t_float *S, int n, int *f)
+ {
+-  t_int k,l;
++  int k,l;
+   t_float swap;
+   for(k=0; k<n; k++)
+     {
+@@ -159,19 +159,19 @@ static inline void dwt_perform_permutation(t_float *S, int n, t_int *f)
+     }
+ }
+ 
+-static void dwt_permutation(t_dwt *x, t_int n){
++static void dwt_permutation(t_dwt *x, int n){
+ 
+   t_dwtctl *ctl = &x->x_ctl;
+-  t_int k, L=0, l, start, power;
+-  t_int nsave = n;
++  int k, L=0, l, start, power;
++  int nsave = n;
+ 
+   while(nsave>>=1) L++; 
+ 
+   if (ctl->c_clutter)   free(ctl->c_clutter);
+   if (ctl->c_unclutter) free(ctl->c_unclutter);
+   
+-  ctl->c_clutter = (t_int *)malloc(n*sizeof(t_int));
+-  ctl->c_unclutter = (t_int *)malloc(n*sizeof(t_int));
++  ctl->c_clutter = (int *)malloc(n*sizeof(int));
++  ctl->c_unclutter = (int *)malloc(n*sizeof(int));
+ 
+ 
+   for(l = L, start = n/2, power=1; l>0; l--, start /=2, power *=2)
+@@ -234,7 +234,7 @@ static void dwt_filter(t_dwt *x,  t_symbol *s, int argc, t_atom *argv)
+   float *ufilter = x->x_ctl.c_update; 
+   float *mask = NULL;
+ 
+-  t_int *length = NULL;
++  int *length = NULL;
+   float sum = 0;
+ 
+   if (s == gensym("predict"))
+@@ -435,7 +435,7 @@ static t_int *dwt_perform(t_int *w)
+   t_dwtctl *ctl  = (t_dwtctl *)(w[1]);
+ 
+ 
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+ 
+   int i;
+ 
+@@ -504,7 +504,7 @@ static t_int *idwt_perform(t_int *w)
+   t_dwtctl *ctl  = (t_dwtctl *)(w[1]);
+ 
+ 
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+ 
+   int i;
+ 
+@@ -572,7 +572,7 @@ static t_int *dwt16_perform(t_int *w)
+   t_dwtctl *ctl  = (t_dwtctl *)(w[1]);
+ 
+ 
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+ 
+   int i;
+ 
+@@ -641,7 +641,7 @@ static t_int *idwt16_perform(t_int *w)
+   t_dwtctl *ctl  = (t_dwtctl *)(w[1]);
+ 
+ 
+-  t_int n = (t_int)(w[2]);
++  int n = (int)(w[2]);
+ 
+   int i;
+ 
+@@ -776,7 +776,7 @@ static void *dwt_new_common(t_floatarg permute)
+ 
+     x->x_ctl.c_clutter = NULL;
+     x->x_ctl.c_unclutter = NULL;
+-    x->x_ctl.c_permute = (t_int) permute;
++    x->x_ctl.c_permute = (int) permute;
+ 
+     return (void *)x;
+ 
+diff --git a/modules/dynwav~.c b/modules/dynwav~.c
+index cd94907..10f195c 100644
+--- a/modules/dynwav~.c
++++ b/modules/dynwav~.c
+@@ -31,7 +31,7 @@ typedef struct dynwavctl
+ {
+   t_float *c_buf1; /* current */
+   t_float *c_buf2; /* old */
+-  t_int c_order;
++  int c_order;
+ 
+ } t_dynwavctl;
+ 
+@@ -51,7 +51,7 @@ static t_int *dynwav_perform(t_int *w)
+   t_float *freq     = (t_float *)(w[4]);
+   t_float *out      = (t_float *)(w[5]);
+   t_dynwavctl *ctl  = (t_dynwavctl *)(w[1]);
+-  t_int n           = (t_int)(w[2]);
++  int n             = (int)(w[2]);
+ 
+   t_float *buf, *dbuf, *swap;
+ 
+@@ -117,7 +117,7 @@ static t_int *dynwav_perform_8point(t_int *w)
+   t_float *freq     = (t_float *)(w[4]);
+   t_float *out      = (t_float *)(w[5]);
+   t_dynwavctl *ctl  = (t_dynwavctl *)(w[1]);
+-  t_int n           = (t_int)(w[2]);
++  int n             = (int)(w[2]);
+ 
+   t_float *buf, *dbuf, *swap;
+ 
+diff --git a/modules/eadsr~.c b/modules/eadsr~.c
+index 59a9e7c..f2a8071 100644
+--- a/modules/eadsr~.c
++++ b/modules/eadsr~.c
+@@ -89,9 +89,9 @@ static t_int *eadsr_perform(t_int *w)
+     t_float release = ctl->c_release;
+     t_float state   = ctl->c_state;
+     t_float target  = ctl->c_target;
+-    t_int n = (t_int)(w[2]);
++    int n = (int)(w[2]);
+ 
+-    t_int i;
++    int i;
+ 
+ 
+     for (i = 0; i < n; i++){
+diff --git a/modules/ead~.c b/modules/ead~.c
+index 6a9c64c..62a9ed3 100644
+--- a/modules/ead~.c
++++ b/modules/ead~.c
+@@ -29,7 +29,7 @@ typedef struct eadctl
+   t_float c_attack;
+   t_float c_decay;
+   t_float c_state;
+-  t_int c_target;
++  int c_target;
+ } t_eadctl;
+ 
+ 
+@@ -74,9 +74,9 @@ static t_int *ead_perform(t_int *w)
+     t_float attack  = ctl->c_attack;
+     t_float decay   = ctl->c_decay;
+     t_float state   = ctl->c_state;
+-    t_int n = (t_int)(w[2]);
++    int n = (int)(w[2]);
+ 
+-    t_int i;
++    int i;
+ 
+ 
+     /* A/D code */
+diff --git a/modules/ear~.c b/modules/ear~.c
+index fcdddae..688c4d2 100644
+--- a/modules/ear~.c
++++ b/modules/ear~.c
+@@ -71,9 +71,9 @@ static t_int *ear_perform(t_int *w)
+     t_float release  = ctl->c_release;
+     t_float state  = ctl->c_state;
+     t_float target = ctl->c_target;
+-    t_int n = (t_int)(w[2]);
++    int n = (int)(w[2]);
+ 
+-    t_int i;
++    int i;
+ 
+     if (target) /* attack phase */
+       for (i = 0; i < n; i++)
+diff --git a/modules/eblosc~.c b/modules/eblosc~.c
+index 45b2c38..1b3fad3 100644
+--- a/modules/eblosc~.c
++++ b/modules/eblosc~.c
+@@ -340,11 +340,11 @@ static void _bang_hardsync_phasor(t_ebloscctl *ctl, float freq, float freq2)
+ static t_int *eblosc_perform_hardsync_saw(t_int *w)
+ {
+     t_float *freq     = (t_float *)(w[3]);
+-    t_float *freq2     = (t_float *)(w[4]);
++    t_float *freq2    = (t_float *)(w[4]);
+     t_float *out      = (t_float *)(w[5]);
+     t_ebloscctl *ctl  = (t_ebloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    int n             = (int)(w[2]);
++    int i;
+ 
+     /* set postfilter cutoff */
+     ctl->c_butter->setButterHP(0.85f * (*freq / sys_getsr()));
+@@ -379,8 +379,8 @@ static t_int *eblosc_perform_saw(t_int *w)
+     t_float *freq     = (t_float *)(w[3]);
+     t_float *out      = (t_float *)(w[4]);
+     t_ebloscctl *ctl  = (t_ebloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    int n             = (int)(w[2]);
++    int i;
+     
+     while (n--) {
+ 	float frequency = *freq++;
+@@ -409,8 +409,8 @@ static t_int *eblosc_perform_pulse(t_int *w)
+     t_float *freq     = (t_float *)(w[3]);
+     t_float *out      = (t_float *)(w[4]);
+     t_ebloscctl *ctl  = (t_ebloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    int n             = (int)(w[2]);
++    int i;
+ 
+ 
+     /* set postfilter cutoff */
+@@ -442,8 +442,8 @@ static t_int *eblosc_perform_comparator(t_int *w)
+     t_float *amp      = (t_float *)(w[3]);
+     t_float *out      = (t_float *)(w[4]);
+     t_ebloscctl *ctl  = (t_ebloscctl *)(w[1]);
+-    t_int n           = (t_int)(w[2]);
+-    t_int i;
++    int n             = (int)(w[2]);
++    int i;
+     t_float prev_amp = ctl->c_prev_amp;
+     
+     while (n--) {
+diff --git a/modules/fdn~.c b/modules/fdn~.c
+index 3eef988..9dbad7d 100644
+--- a/modules/fdn~.c
++++ b/modules/fdn~.c
+@@ -75,8 +75,8 @@ static int initprimes(void)
+ 
+ typedef struct fdnctl
+ {
+-  t_int c_order;      /* veelvoud van 4 */
+-  t_int c_maxorder;
++  int c_order;      /* veelvoud van 4 */
++  int c_maxorder;
+   t_float c_leak;
+   t_float c_input;
+   t_float c_output;
+@@ -85,13 +85,13 @@ typedef struct fdnctl
+   t_float *c_gain_state;
+   t_float c_timehigh;
+   t_float c_timelow;
+-  t_int *c_tap;       /* cirular feed: N+1 pointers: 1 read, (N-1)r/w, 1 write */ 
++  int *c_tap;       /* cirular feed: N+1 pointers: 1 read, (N-1)r/w, 1 write */ 
+   t_float *c_length;  /* delay lengths in ms */
+-  t_int c_bufsize;
++  int c_bufsize;
+   t_float c_fsample;
+   t_float *c_vector[2];
+   t_float *c_vectorbuffer;
+-  t_int c_curvector;
++  int c_curvector;
+ } t_fdnctl;
+ 
+ typedef struct fdn
+@@ -102,7 +102,7 @@ typedef struct fdn
+ } t_fdn;
+ 
+ 
+-static void fdn_order(t_fdn *x, t_int order){
++static void fdn_order(t_fdn *x, int order){
+   if (order > x->x_ctl.c_maxorder) {
+     post("fdn: this should not happen (panic!) order %d "
+ 	 "is larger than maxorder %d:", 
+@@ -149,17 +149,17 @@ static t_int *fdn_perform(t_int *w)
+   t_float *outr    = (t_float *)(w[4]);
+   t_float *outl    = (t_float *)(w[5]);
+   t_fdnctl *ctl    = (t_fdnctl *)(w[1]);
+-  t_int n          = (t_int)(w[2]);
++  int n            = (int)(w[2]);
+   t_float input    = ctl->c_input;
+   t_float output   = ctl->c_output;
+-  t_float *gain_in    = ctl->c_gain_in;
++  t_float *gain_in = ctl->c_gain_in;
+   t_float *gain_state = ctl->c_gain_state;
+-  t_int order      = ctl->c_order;
+-  t_int *tap       = ctl->c_tap;
++  int order        = ctl->c_order;
++  int *tap         = ctl->c_tap;
+   t_float *buf     = ctl->c_buf;
+-  t_int mask       = ctl->c_bufsize - 1;
++  int mask         = ctl->c_bufsize - 1;
+ 
+-  t_int i,j;
++  int i,j;
+   t_float x,y,v,left,right,z;
+   t_float filt_in, filt_last;
+ 
+@@ -289,7 +289,7 @@ yk = (2 gl gh ) / (gl + gh) x + (gl - gh) / (gl + gh) yk-1
+ 
+ static void fdn_time(t_fdn *x, t_float timelow, t_float timehigh){
+   t_float elow, ehigh;
+-  t_int i;
++  int i;
+   t_float gainlow, gainhigh, gainscale;
+ 
+   if (timelow < FDN_MIN_DECAY_TIME) timelow = FDN_MIN_DECAY_TIME;
+@@ -329,7 +329,7 @@ static void fdn_setupdelayline(t_fdn *x){
+   int sum, t, n;
+   int mask = x->x_ctl.c_bufsize - 1;
+   int start =  x->x_ctl.c_tap[0];
+-  t_int *tap = x->x_ctl.c_tap;
++  int *tap = x->x_ctl.c_tap;
+   t_float *length = x->x_ctl.c_length;
+   t_float scale = sys_getsr() * .001f;
+ 
+@@ -369,9 +369,9 @@ static void fdn_list (t_fdn *x,  t_symbol *s, int argc, t_atom *argv){
+ 
+ static void fdn_linear(t_fdn *x, t_float forder, t_float min, t_float max)
+ {
+-    t_int order = ((int)forder) & 0xfffffffc;
++    int order = ((int)forder) & 0xfffffffc;
+     t_float length, inc;
+-    t_int i;
++    int i;
+ 
+     if (order < 4) return;
+     if (order > x->x_ctl.c_maxorder) return;
+@@ -395,9 +395,9 @@ static void fdn_linear(t_fdn *x, t_float forder, t_float min, t_float max)
+ 
+ static void fdn_exponential(t_fdn *x, t_float forder, t_float min, t_float max)
+ {
+-    t_int order = ((int)forder) & 0xfffffffc;
++    int order = ((int)forder) & 0xfffffffc;
+     t_float length, inc;
+-    t_int i;
++    int i;
+ 
+     if (order < 4) return;
+     if (order > x->x_ctl.c_maxorder) return;
+@@ -425,11 +425,11 @@ t_class *fdn_class;
+ 
+ static void *fdn_new(t_floatarg maxiorder, t_floatarg maxibufsize)
+ {
+-  t_int order = maxiorder;
+-  t_int bufround;
++  int order = maxiorder;
++  int bufround;
+   t_fdn *x = (t_fdn *)pd_new(fdn_class);
+   t_float scale = sys_getsr() * .001f;
+-  t_int bufsize = (t_int)(scale * maxibufsize);
++  int bufsize = (int)(scale * maxibufsize);
+ 
+ 
+   inlet_new(&x->x_obj, &x->x_obj.ob_pd, gensym("float"), gensym("timelow"));  
+@@ -455,8 +455,8 @@ static void *fdn_new(t_floatarg maxiorder, t_floatarg maxibufsize)
+   x->x_ctl.c_buf = (t_float *)malloc(sizeof(t_float) * bufsize);
+   x->x_ctl.c_bufsize = bufsize;
+   x->x_ctl.c_fsample = sys_getsr();
+-  x->x_ctl.c_tap = (t_int *)malloc((order + 1) * sizeof(t_int)); 
+-  x->x_ctl.c_length = (t_float *)malloc(order * sizeof(t_int)); 
++  x->x_ctl.c_tap = (int *)malloc((order + 1) * sizeof(int)); 
++  x->x_ctl.c_length = (t_float *)malloc(order * sizeof(t_float)); 
+   x->x_ctl.c_gain_in = (t_float *)malloc(order * sizeof(t_float));
+   x->x_ctl.c_gain_state = (t_float *)malloc(order * sizeof(t_float));
+   x->x_ctl.c_vectorbuffer = (t_float *)malloc(order * 2 * sizeof(t_float));
+diff --git a/modules/ffpoly.c b/modules/ffpoly.c
+index 844a96c..e704025 100644
+--- a/modules/ffpoly.c
++++ b/modules/ffpoly.c
+@@ -31,11 +31,11 @@ typedef struct ffpoly_struct
+     t_float x_f;
+ 
+     t_outlet *x_outlet;
+-    t_int *x_coef;
+-    t_int x_poly_order;
+-    t_int x_field_order;
++    int *x_coef;
++    int x_poly_order;
++    int x_field_order;
+ 
+-    t_int x_lastpackedcoef;
++    int x_lastpackedcoef;
+ 
+ 
+ 
+@@ -49,7 +49,7 @@ static void ffpoly_compute(t_ffpoly *x, t_floatarg fcoef)
+     int in = (int)fcoef;
+     int fo = x->x_field_order;
+     int po = x->x_poly_order;
+-    t_int* c = x->x_coef;
++    int* c = x->x_coef;
+     int i, out;
+ 
+     in %= fo;
+@@ -124,8 +124,8 @@ t_class *ffpoly_class;
+ 
+ static void *ffpoly_new(t_floatarg fpolyorder, t_floatarg ffieldorder)
+ {
+-    t_int polyorder = (int)fpolyorder;
+-    t_int fieldorder = (int)ffieldorder;
++    int polyorder = (int)fpolyorder;
++    int fieldorder = (int)ffieldorder;
+ 
+     t_ffpoly *x = (t_ffpoly *)pd_new(ffpoly_class);
+ 
+@@ -135,7 +135,7 @@ static void *ffpoly_new(t_floatarg fpolyorder, t_floatarg ffieldorder)
+     x->x_poly_order = polyorder;
+     x->x_field_order = fieldorder;
+ 
+-    x->x_coef = (t_int *)malloc((x->x_poly_order  + 1) * sizeof(int));
++    x->x_coef = (int *)malloc((x->x_poly_order  + 1) * sizeof(int));
+ 
+     /* set poly to f(x) = x */
+     ffpoly_coefficients(x, x->x_field_order);
+diff --git a/modules/junction~.c b/modules/junction~.c
+index 8ffd801..efa3c32 100644
+--- a/modules/junction~.c
++++ b/modules/junction~.c
+@@ -26,7 +26,7 @@
+ 
+ typedef struct junctionctl
+ {
+-  t_int c_channels;
++  int c_channels;
+   t_float **c_in;
+   t_float **c_out;
+   t_float *c_buffer;
+@@ -75,11 +75,11 @@ static t_int *junction_perform(t_int *w)
+ 
+ 
+   t_junctionctl *ctl  = (t_junctionctl *)(w[1]);
+-  t_int n             = (t_int)(w[2]);
+-  t_int i,j;
++  int n               = (int)(w[2]);
++  int i,j;
+   t_float x,y;
+ 
+-  t_int c             = ctl->c_channels;
++  int c               = ctl->c_channels;
+   t_float **in        = ctl->c_in;
+   t_float **out       = ctl->c_out;
+   t_float *buf        = ctl->c_buffer;
+diff --git a/modules/lattice~.c b/modules/lattice~.c
+index d9f07de..f6eac89 100644
+--- a/modules/lattice~.c
++++ b/modules/lattice~.c
+@@ -34,7 +34,7 @@ typedef struct latticesegment
+ typedef struct latticectl
+ {
+     t_latticesegment c_segment[MAXORDER]; // array of lattice segment data
+-    t_int c_segments;
++    int c_segments;
+ } t_latticectl;
+ 
+ typedef struct lattice
+@@ -53,12 +53,12 @@ static t_int *lattice_perform(t_int *w)
+   t_float *in    = (t_float *)(w[3]);
+   t_float *out    = (t_float *)(w[4]);
+   t_latticectl *ctl  = (t_latticectl *)(w[1]);
+-  t_int i,j;
+-  t_int n = (t_int)(w[2]);
++  int i,j;
++  int n = (int)(w[2]);
+   t_float x,rc,d;
+ 
+   t_latticesegment* seg = ctl->c_segment;
+-  t_int segments = ctl->c_segments;
++  int segments = ctl->c_segments;
+   for (i=0; i<n; i++)
+   {
+       x = *in++;
+@@ -98,7 +98,7 @@ t_class *lattice_class;
+ 
+ static void lattice_rc(t_lattice *x, t_float segment, t_float refco)
+ {
+-    t_int seg = (t_float)segment;
++    int seg = (t_float)segment;
+     if ((seg >= 0) && (seg < x->x_ctl.c_segments)){
+ 	if (refco >= MAXREFCO) refco = MAXREFCO;
+ 	if (refco <= -MAXREFCO) refco = -MAXREFCO;
+@@ -109,15 +109,15 @@ static void lattice_rc(t_lattice *x, t_float segment, t_float refco)
+ static void lattice_reset(t_lattice *x)
+ {
+     t_float* buf = (t_float *)x->x_ctl.c_segment;
+-    t_int n = x->x_ctl.c_segments;
+-    t_int i;
++    int n = x->x_ctl.c_segments;
++    int i;
+     for (i=0; i<n; i++) buf[i]=0;
+ }
+ 
+ static void *lattice_new(t_floatarg segments)
+ {
+     t_lattice *x = (t_lattice *)pd_new(lattice_class);
+-    t_int seg = (t_int)segments;
++    int seg = (int)segments;
+ 
+     outlet_new(&x->x_obj, gensym("signal")); 
+ 
+diff --git a/modules/matrix~.c b/modules/matrix~.c
+index b59d4d6..3780553 100644
+--- a/modules/matrix~.c
++++ b/modules/matrix~.c
+@@ -31,7 +31,7 @@ typedef struct matrixctl
+ {
+   t_float *c_A; /* matrix */
+   t_float *c_x; /* vector */
+-  t_int c_order;
++  int c_order;
+ 
+ } t_matrixctl;
+ 
+@@ -66,9 +66,9 @@ static t_int *matrix_perform(t_int *w)
+   t_float *in       = (float *)(w[3]);
+   t_float *out      = (float *)(w[4]);
+   t_matrixctl *ctl  = (t_matrixctl *)(w[1]);
+-  t_int n           = (t_int)(w[2]);
++  int n             = (int)(w[2]);
+ 
+-  t_int i,j;
++  int i,j;
+   t_float *A = ctl->c_A;
+   t_float *x = ctl->c_x;
+ 
+diff --git a/modules/permut~.c b/modules/permut~.c
+index 58da769..db5978a 100644
+--- a/modules/permut~.c
++++ b/modules/permut~.c
+@@ -24,7 +24,7 @@
+ #include <stdlib.h>
+ //#include "m_pd.h"
+ #include "extlib_util.h"
+-                               
++
+ typedef union
+ {
+     float f;
+@@ -35,7 +35,7 @@ typedef union
+ typedef struct permutctl
+ {
+   char c_type;
+-  t_int *c_permutationtable;
++  int *c_permutationtable;
+   int c_blocksize;
+ } t_permutctl;
+ 
+@@ -48,9 +48,9 @@ typedef struct permut
+ } t_permut;
+ 
+ 
+-static inline void permut_perform_permutation(t_float *S, int n, t_int *f)
++static inline void permut_perform_permutation(t_float *S, int n, int *f)
+ {
+-  t_int k,l;
++  int k,l;
+   t_float swap;
+   for(k=0; k<n; k++)
+     {
+@@ -68,7 +68,7 @@ static void permut_random(t_permut *x, t_floatarg seed)
+   int i,j;
+   int N = x->x_ctl.c_blocksize;
+   int mask = N-1;
+-  t_int *p = x->x_ctl.c_permutationtable;
++  int *p = x->x_ctl.c_permutationtable;
+   int r, last = 0;
+   t_permutflint flintseed;
+   
+@@ -111,7 +111,7 @@ static void permut_resize_table(t_permut *x, int size)
+     {
+       if (x->x_ctl.c_permutationtable)
+ 	free(x->x_ctl.c_permutationtable);
+-      x->x_ctl.c_permutationtable = (t_int *)malloc(sizeof(int)*size);
++      x->x_ctl.c_permutationtable = (int *)malloc(sizeof(int)*size);
+       x->x_ctl.c_blocksize = size;
+ 
+       /* make sure it's initialized */
+@@ -131,10 +131,10 @@ static t_int *permut_perform(t_int *w)
+   t_float *in    = (t_float *)(w[3]);
+   t_float *out    = (t_float *)(w[4]);
+   t_permutctl *ctl  = (t_permutctl *)(w[1]);
+-  t_int i;
+-  t_int n = (t_int)(w[2]);
++  int i;
++  int n = (int)(w[2]);
+   t_float x,y;
+-  t_int *p =  ctl->c_permutationtable;
++  int *p =  ctl->c_permutationtable;
+ 
+ 
+   if (in != out)
+diff --git a/modules/qmult~.c b/modules/qmult~.c
+index 56898ac..11981b9 100644
+--- a/modules/qmult~.c
++++ b/modules/qmult~.c
+@@ -45,8 +45,8 @@ static t_int *qmult_perform(t_int *word)
+ 
+ 
+   t_qmultctl *ctl     = (t_qmultctl *)(word[1]);
+-  t_int n             = (t_int)(word[2]);
+-  t_int i;
++  int n               = (int)(word[2]);
++  int i;
+ 
+   t_float *in0l        = ctl->c_inputleft[0];
+   t_float *in1l        = ctl->c_inputleft[1];
+diff --git a/modules/qnorm~.c b/modules/qnorm~.c
+index 98548d9..dffb725 100644
+--- a/modules/qnorm~.c
++++ b/modules/qnorm~.c
+@@ -44,8 +44,8 @@ static t_int *qnorm_perform(t_int *word)
+ 
+ 
+   t_qnormctl *ctl     = (t_qnormctl *)(word[1]);
+-  t_int n             = (t_int)(word[2]);
+-  t_int i;
++  int n               = (int)(word[2]);
++  int i;
+ 
+   t_float *in0        = ctl->c_input[0];
+   t_float *in1        = ctl->c_input[1];
+diff --git a/modules/ramp~.c b/modules/ramp~.c
+index fa87809..7212868 100644
+--- a/modules/ramp~.c
++++ b/modules/ramp~.c
+@@ -25,7 +25,7 @@
+ typedef struct rampctl
+ {
+     t_float c_offset;
+-    t_int c_blockscale;
++    int c_blockscale;
+ } t_rampctl;
+ 
+ typedef struct ramp
+@@ -53,8 +53,8 @@ static t_int *ramp_perform(t_int *w)
+ {
+     t_float *out    = (t_float *)(w[3]);
+     t_rampctl *ctl  = (t_rampctl *)(w[1]);
+-    t_int i;
+-    t_int n = (t_int)(w[2]);
++    int i;
++    int n = (int)(w[2]);
+     t_float x;
+ 
+     t_float scale = ctl->c_blockscale ? 1.0 / (t_float)n : 1.0;
+diff --git a/modules/resofilt~.c b/modules/resofilt~.c
+index 3dd6af1..cfeecbe 100644
+--- a/modules/resofilt~.c
++++ b/modules/resofilt~.c
+@@ -68,7 +68,7 @@ static t_int *resofilt_perform_fourpole(t_int *w)
+ {
+ 
+   t_resofiltctl *ctl = (t_resofiltctl *)(w[1]);
+-  t_int n            = (t_int)(w[2]);
++  int n              = (int)(w[2]);
+   t_float *in        = (t_float *)(w[3]);
+   t_float *freq      = (t_float *)(w[4]);
+   t_float *reso      = (t_float *)(w[5]);
+@@ -211,7 +211,7 @@ static t_int *resofilt_perform_threepole(t_int *w)
+ {
+ 
+   t_resofiltctl *ctl = (t_resofiltctl *)(w[1]);
+-  t_int n            = (t_int)(w[2]);
++  int n              = (int)(w[2]);
+   t_float *in        = (t_float *)(w[3]);
+   t_float *freq      = (t_float *)(w[4]);
+   t_float *reso      = (t_float *)(w[5]);
+diff --git a/modules/sawtooth~.c b/modules/sawtooth~.c
+index a1d98ca..763181d 100644
+--- a/modules/sawtooth~.c
++++ b/modules/sawtooth~.c
+@@ -58,8 +58,8 @@ static t_int *sawtooth_perform(t_int *w)
+ {
+     t_float *out    = (float *)(w[3]);
+     t_sawtoothctl *ctl  = (t_sawtoothctl *)(w[1]);
+-    t_int i;
+-    t_int n = (t_int)(w[2]);
++    int i;
++    int n = (int)(w[2]);
+     t_float phase, x, _x;
+     t_float x1 = ctl->c_delay_1;
+     t_float x2 = ctl->c_delay_2;
+@@ -71,7 +71,7 @@ static t_int *sawtooth_perform(t_int *w)
+         phase += ctl->c_increment;
+         
+         /* Limit range to [0,1[ */
+-        x = phase - ((t_float)((t_int)phase));
++        x = phase - ((t_float)((int)phase));
+ 
+         /* Bring range to [-1,1[ */
+         x = 2 * x - 1;
+diff --git a/modules/scrollgrid1D~.c b/modules/scrollgrid1D~.c
+index b7e9aa2..8b89477 100644
+--- a/modules/scrollgrid1D~.c
++++ b/modules/scrollgrid1D~.c
+@@ -83,14 +83,14 @@ static t_int *scrollgrid1D_perform(t_int *w)
+   t_float *outy    = (t_float *)(w[8]);
+   t_float *outz    = (t_float *)(w[9]);
+   t_scrollgrid1Dctl *ctl    = (t_scrollgrid1Dctl *)(w[1]);
+-  t_int n          = (t_int)(w[2]);
++  int n            = (int)(w[2]);
+   
+-  t_int i;
++  int i;
+   t_float inv_sr = 1.0 /sys_getsr();
+   t_float state[3] = {ctl->c_x, ctl->c_y, ctl->c_z};
+   t_float c,f;
+   t_float pole[2], r1, r2;
+-  t_int o;
++  int o;
+   t_float x,y,z;
+ 
+ 
+diff --git a/modules/xfm~.c b/modules/xfm~.c
+index d02b58e..1625852 100644
+--- a/modules/xfm~.c
++++ b/modules/xfm~.c
+@@ -65,7 +65,7 @@ typedef struct xfmctl
+     //t_float c_sintab[SINSAMPLES + 1];
+     t_float c_x1, c_y1; /* state osc 1 */
+     t_float c_x2, c_y2; /* state osc 2 */
+-    t_int c_type; /* type of algo */
++    int c_type; /* type of algo */
+ 
+ } t_xfmctl;
+ 
+@@ -108,7 +108,7 @@ static t_int *xfm_perform(t_int *w)
+   t_float *outA    = (t_float *)(w[7]);
+   t_float *outB    = (t_float *)(w[8]);
+   t_xfmctl *ctl    = (t_xfmctl *)(w[1]);
+-  t_int n          = (t_int)(w[2]);
++  int n            = (int)(w[2]);
+   //t_float *tab     = ctl->c_sintab;
+ 
+   t_float x1 = ctl->c_x1, y1 = ctl->c_y1,   z1, dx1, dy1, inv_norm1;
+@@ -116,7 +116,7 @@ static t_int *xfm_perform(t_int *w)
+ 
+   t_float scale = 2 * M_PI / sys_getsr();
+ 
+-  t_int i;
++  int i;
+ 
+   switch(ctl->c_type){
+   default:
+-- 
+2.6.2
+
