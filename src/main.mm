@@ -13,7 +13,7 @@ int main() {
     settings.enableHardwareOrientationAnimation = false; // enables native orientation changes to be animated.
     settings.glesVersion = OFXIOS_RENDERER_ES1; // type of renderer to use, ES1, ES2, ES3
     settings.windowMode = OF_FULLSCREEN;
-    settings.setupOrientation = OF_ORIENTATION_DEFAULT;  
+    settings.setupOrientation = OF_ORIENTATION_90_LEFT;
     // Was, pre-Audiobus:
     //ofCreateWindow(settings);
 	//return ofRunApp(new ofApp);

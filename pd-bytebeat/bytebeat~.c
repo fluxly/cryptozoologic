@@ -250,7 +250,6 @@ void bytebeat_tilde_setup(void) {
     CLASS_MAINSIGNALIN(bytebeat_class, t_bytebeat, x_f);
     class_addmethod(bytebeat_class, (t_method)bytebeat_dsp, gensym("dsp"), 0);
 	class_addmethod(bytebeat_class, (t_method)bytebeat_changeFormula, gensym("formula"), A_FLOAT, A_NULL);
-	//addmess((method)bytebeat_changeFormula, "formula", A_INT32, 0);
 	
     post("bytebeat~");
 }

@@ -43,6 +43,16 @@ public:
     int w;
     int x;
     int y;
+    int bx;
+    int by;
+    int bw;
+    int bh;
+    int a1x;
+    int a1y;
+    int a2x;
+    int a2y;
+    int a3x;
+    int a3y;
     int displayW;
     bool eyeState = false;
     bool onOffState = false;
@@ -167,6 +177,12 @@ public:
         }
     }
     
+    void drawHelpBubble() {
+        ofSetColor(255);
+        ofDrawRectRounded(bx, by, bw, bh, 10);
+        //ofDrawTriangle(bx+a1x, by+a1y, x+a3x, y+a3y, bx+a2x, by+a2y);
+    }
+    
     void drawAnimation(int stroke) {
         x = ofxBox2dBaseShape::getPosition().x;
         y = ofxBox2dBaseShape::getPosition().y;
@@ -205,8 +221,8 @@ public:
             for(int j = 0; j < scopeArray.size()-1; j++) {
               //  ofDrawLine(x,scopeArray[j]*soundWaveH, x+soundWaveW,scopeArray[j+1]*soundWaveH);
                 //ofDrawLine(x-soundWaveStart,scopeArray[j]*soundWaveH, x-soundWaveStart+soundWaveW,scopeArray[j+1]*soundWaveH);
-                ofDrawLine(x1,scopeArray[j]*soundWaveH, x1+soundWaveStep,scopeArray[j+1]*soundWaveH);
-                ofDrawLine(x1-soundWaveStart,scopeArray[j]*soundWaveH, x1-soundWaveStart+soundWaveStep,scopeArray[j+1]*soundWaveH);
+             //   ofDrawLine(x1,scopeArray[j]*soundWaveH, x1+soundWaveStep,scopeArray[j+1]*soundWaveH);
+              //  ofDrawLine(x1-soundWaveStart,scopeArray[j]*soundWaveH, x1-soundWaveStart+soundWaveStep,scopeArray[j+1]*soundWaveH);
                 x1 += soundWaveStep;
             }
             ofFill();
@@ -586,10 +602,10 @@ public:
     float menuY = 0;
     int menuW;
     int menuH;
-    int menuTitleW = 320;
-    int menuTitleH = 124;
+    int menuTitleW = 0;
+    int menuTitleH = 0;
     int uniqueId;
-    int maxPanes = 1;
+    int maxPanes = 5;
     int currentPane = 1;
     float menuMoveStep = 0;
     int scrollingState = 0;
@@ -663,7 +679,7 @@ public:
             menuItemH = menuH*((float)menuItemW/menuW);
             //float ratio =((float)menuItemW/menuW);
             //maxPanes = ceil(nMenuItems/menuItemsPerRow);
-            maxPanes = 5;  // hardcoded for now
+            maxPanes = 6;  // hardcoded for now
             //ofLog(OF_LOG_VERBOSE, "maxPanes %i", maxPanes);
         }
         
@@ -673,18 +689,11 @@ public:
             for (int col=0; col < menuItemsPerRow; col++) {
                 int index = col+row*menuItemsPerRow;
                 if (index < nMenuItems) {
-                    if (type == SAMPLE_MENU) {
-                        if (index > 14) {
-                            bankMargin = bankTitleH*2*retinaScale;
-                        } else {
-                            bankMargin = bankTitleH*retinaScale;
-                        }
-                    }
                   menuItems[index]->type = type;
                   menuItems[index]->w = menuItemW;
                   menuItems[index]->h = menuItemH;
                   menuItems[index]->x = margin+col*(menuItemW + margin);
-                  menuItems[index]->y = margin+row * (menuItemH+margin)+menuTitleH+1+ bankMargin*2;
+                  menuItems[index]->y = margin+row * (menuItemH+margin);
                   //ofLog(OF_LOG_VERBOSE, "bankMargin, y , scale %d %d %f",bankMargin,menuItems[index]->y, retinaScale );
                     
                   //ofLog(OF_LOG_VERBOSE, "Menu Item X, Y %d, %d:",menuItems[col+row*menuItemsPerRow]->x, menuItems[col+row*menuItemsPerRow]->y);
@@ -695,7 +704,7 @@ public:
     
     void changePaneState(int dir) {
         int newPaneState = currentPane - dir;
-        //ofLog(OF_LOG_VERBOSE, "New pane state: %i", newPaneState);
+        ofLog(OF_LOG_VERBOSE, "New pane state: %i", newPaneState);
         if (type == MAIN_MENU) {
             if ((newPaneState > 0) && (newPaneState < maxPanes)) {
                 if (newPaneState == 1) {
@@ -704,25 +713,11 @@ public:
                 }
                 if (newPaneState == 2) {
                     menuOriginX = 0;
-                    menuOriginY = -menuTitleH - menuItemH - 3 * margin;
+                    menuOriginY = - menuItemH - 3 * margin;
                 }
                 if (newPaneState > 2) {
                     menuOriginX = 0;
-                    menuOriginY = -menuTitleH - menuItemH * (newPaneState-1) - 3 * margin ;
-                }
-                currentPane = newPaneState;
-            }
-        }
-        if (type == SAMPLE_MENU) {
-            ofLog(OF_LOG_VERBOSE, "New pane state %d:",newPaneState);
-            if ((newPaneState > 0) && (newPaneState < maxPanes)) {
-                if (newPaneState == 1) {
-                    menuOriginX = 0;
-                    menuOriginY = consoleH;    // consoleH
-                }
-                if (newPaneState == 2) {
-                    menuOriginX = 0;
-                    menuOriginY = 3*(-menuItemH)- 4 * margin-bankMargin + consoleH;    // + consoleH
+                    menuOriginY = - menuItemH * (newPaneState-1) - 3 * margin ;
                 }
                 currentPane = newPaneState;
             }

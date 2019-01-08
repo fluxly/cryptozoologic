@@ -115,6 +115,7 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
         void setupPostSplashscreen();
         void update();
         void draw();
+        void drawVisualization(int gameId);
         void exit();
 	
         void loadMenu();
@@ -291,6 +292,7 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     vector <shared_ptr<FluxlyCircle> > circles;
     vector <shared_ptr<FluxlyJointConnection> > joints;
     vector <shared_ptr<FluxlyConnection> > connections;
+    vector<float> backgroundScopeArray{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
     bool midiSaveState[8] = { false, false, false, false, false, false, false, false };
     bool midiPlayState[8] = { false, false, false, false, false, false, false, false };

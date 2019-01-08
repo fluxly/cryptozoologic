@@ -393,35 +393,11 @@
 		9DFDC12920792AB200BBDB9B /* game0.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11620792AAF00BBDB9B /* game0.xml */; };
 		9DFDC12A20792AB200BBDB9B /* sampleSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11720792AAF00BBDB9B /* sampleSettings.xml */; };
 		9DFDC12B20792AB200BBDB9B /* game3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11820792AAF00BBDB9B /* game3.xml */; };
-		9DFDC12C20792AB200BBDB9B /* game7.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11920792AB000BBDB9B /* game7.xml */; };
-		9DFDC12D20792AB200BBDB9B /* game8.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11A20792AB000BBDB9B /* game8.xml */; };
 		9DFDC12E20792AB200BBDB9B /* game2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11B20792AB000BBDB9B /* game2.png */; };
-		9DFDC12F20792AB200BBDB9B /* game5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11C20792AB000BBDB9B /* game5.png */; };
 		9DFDC13020792AB200BBDB9B /* game2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11D20792AB000BBDB9B /* game2.xml */; };
-		9DFDC13120792AB200BBDB9B /* game4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11E20792AB000BBDB9B /* game4.png */; };
-		9DFDC13220792AB200BBDB9B /* game6.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC11F20792AB100BBDB9B /* game6.xml */; };
 		9DFDC13320792AB200BBDB9B /* game1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12020792AB100BBDB9B /* game1.png */; };
-		9DFDC13420792AB200BBDB9B /* game4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12120792AB100BBDB9B /* game4.xml */; };
 		9DFDC13520792AB200BBDB9B /* game0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12220792AB100BBDB9B /* game0.png */; };
-		9DFDC13620792AB200BBDB9B /* game6.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12320792AB100BBDB9B /* game6.png */; };
-		9DFDC13720792AB200BBDB9B /* game5.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12420792AB100BBDB9B /* game5.xml */; };
-		9DFDC13820792AB200BBDB9B /* game8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12520792AB200BBDB9B /* game8.png */; };
-		9DFDC13920792AB200BBDB9B /* game7.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12620792AB200BBDB9B /* game7.png */; };
 		9DFDC13A20792AB200BBDB9B /* menuSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC12720792AB200BBDB9B /* menuSettings.xml */; };
-		9DFDC1492079391C00BBDB9B /* game9.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC13B2079391A00BBDB9B /* game9.xml */; };
-		9DFDC14A2079391C00BBDB9B /* game15.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC13C2079391A00BBDB9B /* game15.png */; };
-		9DFDC14B2079391C00BBDB9B /* game10.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC13D2079391A00BBDB9B /* game10.png */; };
-		9DFDC14C2079391C00BBDB9B /* game10.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC13E2079391A00BBDB9B /* game10.xml */; };
-		9DFDC14D2079391C00BBDB9B /* game14.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC13F2079391B00BBDB9B /* game14.xml */; };
-		9DFDC14E2079391C00BBDB9B /* game12.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1402079391B00BBDB9B /* game12.xml */; };
-		9DFDC14F2079391C00BBDB9B /* game9.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1412079391B00BBDB9B /* game9.png */; };
-		9DFDC1502079391C00BBDB9B /* game11.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1422079391B00BBDB9B /* game11.xml */; };
-		9DFDC1512079391C00BBDB9B /* game12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1432079391B00BBDB9B /* game12.png */; };
-		9DFDC1522079391C00BBDB9B /* game14.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1442079391B00BBDB9B /* game14.png */; };
-		9DFDC1532079391C00BBDB9B /* game13.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1452079391C00BBDB9B /* game13.png */; };
-		9DFDC1542079391C00BBDB9B /* game11.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1462079391C00BBDB9B /* game11.png */; };
-		9DFDC1552079391C00BBDB9B /* game15.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1472079391C00BBDB9B /* game15.xml */; };
-		9DFDC1562079391C00BBDB9B /* game13.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC1482079391C00BBDB9B /* game13.xml */; };
 		9EBAF5B1949B2AFC1A34E934 /* m_glob.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E06D6055662272D6A767A06 /* m_glob.c */; };
 		9F9D49CFC30BA1589822E7AB /* b2PulleyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEED18744D2E82C919D7D152 /* b2PulleyJoint.cpp */; };
 		A2A5D4DFB18C0542F8648BA9 /* x_interface.c in Sources */ = {isa = PBXBuildFile; fileRef = 067C8E708140C9C4F165EF57 /* x_interface.c */; };
@@ -995,35 +971,11 @@
 		9DFDC11620792AAF00BBDB9B /* game0.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game0.xml; sourceTree = "<group>"; };
 		9DFDC11720792AAF00BBDB9B /* sampleSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sampleSettings.xml; sourceTree = "<group>"; };
 		9DFDC11820792AAF00BBDB9B /* game3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game3.xml; sourceTree = "<group>"; };
-		9DFDC11920792AB000BBDB9B /* game7.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game7.xml; sourceTree = "<group>"; };
-		9DFDC11A20792AB000BBDB9B /* game8.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game8.xml; sourceTree = "<group>"; };
 		9DFDC11B20792AB000BBDB9B /* game2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game2.png; sourceTree = "<group>"; };
-		9DFDC11C20792AB000BBDB9B /* game5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game5.png; sourceTree = "<group>"; };
 		9DFDC11D20792AB000BBDB9B /* game2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game2.xml; sourceTree = "<group>"; };
-		9DFDC11E20792AB000BBDB9B /* game4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game4.png; sourceTree = "<group>"; };
-		9DFDC11F20792AB100BBDB9B /* game6.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game6.xml; sourceTree = "<group>"; };
 		9DFDC12020792AB100BBDB9B /* game1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game1.png; sourceTree = "<group>"; };
-		9DFDC12120792AB100BBDB9B /* game4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game4.xml; sourceTree = "<group>"; };
 		9DFDC12220792AB100BBDB9B /* game0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game0.png; sourceTree = "<group>"; };
-		9DFDC12320792AB100BBDB9B /* game6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game6.png; sourceTree = "<group>"; };
-		9DFDC12420792AB100BBDB9B /* game5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game5.xml; sourceTree = "<group>"; };
-		9DFDC12520792AB200BBDB9B /* game8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game8.png; sourceTree = "<group>"; };
-		9DFDC12620792AB200BBDB9B /* game7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game7.png; sourceTree = "<group>"; };
 		9DFDC12720792AB200BBDB9B /* menuSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = menuSettings.xml; sourceTree = "<group>"; };
-		9DFDC13B2079391A00BBDB9B /* game9.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game9.xml; sourceTree = "<group>"; };
-		9DFDC13C2079391A00BBDB9B /* game15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game15.png; sourceTree = "<group>"; };
-		9DFDC13D2079391A00BBDB9B /* game10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game10.png; sourceTree = "<group>"; };
-		9DFDC13E2079391A00BBDB9B /* game10.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game10.xml; sourceTree = "<group>"; };
-		9DFDC13F2079391B00BBDB9B /* game14.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game14.xml; sourceTree = "<group>"; };
-		9DFDC1402079391B00BBDB9B /* game12.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game12.xml; sourceTree = "<group>"; };
-		9DFDC1412079391B00BBDB9B /* game9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game9.png; sourceTree = "<group>"; };
-		9DFDC1422079391B00BBDB9B /* game11.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game11.xml; sourceTree = "<group>"; };
-		9DFDC1432079391B00BBDB9B /* game12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game12.png; sourceTree = "<group>"; };
-		9DFDC1442079391B00BBDB9B /* game14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game14.png; sourceTree = "<group>"; };
-		9DFDC1452079391C00BBDB9B /* game13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game13.png; sourceTree = "<group>"; };
-		9DFDC1462079391C00BBDB9B /* game11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game11.png; sourceTree = "<group>"; };
-		9DFDC1472079391C00BBDB9B /* game15.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game15.xml; sourceTree = "<group>"; };
-		9DFDC1482079391C00BBDB9B /* game13.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game13.xml; sourceTree = "<group>"; };
 		9E4379C040A2C0896393EEAB /* b2CollidePolygon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2CollidePolygon.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Collision/b2CollidePolygon.cpp; sourceTree = SOURCE_ROOT; };
 		A296623A714C9F8EDB4BCA26 /* b2Body.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2Body.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Dynamics/b2Body.cpp; sourceTree = SOURCE_ROOT; };
 		A2BDF137E2A9EFF3694B25B4 /* g_graph.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = g_graph.c; path = "../../../addons/ofxPd/libs/libpd/pure-data/src/g_graph.c"; sourceTree = SOURCE_ROOT; };
@@ -1645,20 +1597,6 @@
 				9D8B0B0C207D177700AC404F /* consoleRecStop.png */,
 				9DC20405207BAE4200F036E5 /* navMenuExit.png */,
 				9DC20326207ABD5400F036E5 /* fluxlyTitle.png */,
-				9DFDC1412079391B00BBDB9B /* game9.png */,
-				9DFDC13B2079391A00BBDB9B /* game9.xml */,
-				9DFDC13D2079391A00BBDB9B /* game10.png */,
-				9DFDC13E2079391A00BBDB9B /* game10.xml */,
-				9DFDC1462079391C00BBDB9B /* game11.png */,
-				9DFDC1422079391B00BBDB9B /* game11.xml */,
-				9DFDC1432079391B00BBDB9B /* game12.png */,
-				9DFDC1402079391B00BBDB9B /* game12.xml */,
-				9DFDC1452079391C00BBDB9B /* game13.png */,
-				9DFDC1482079391C00BBDB9B /* game13.xml */,
-				9DFDC1442079391B00BBDB9B /* game14.png */,
-				9DFDC13F2079391B00BBDB9B /* game14.xml */,
-				9DFDC13C2079391A00BBDB9B /* game15.png */,
-				9DFDC1472079391C00BBDB9B /* game15.xml */,
 				9DFDC12220792AB100BBDB9B /* game0.png */,
 				9DFDC11620792AAF00BBDB9B /* game0.xml */,
 				9DFDC12020792AB100BBDB9B /* game1.png */,
@@ -1666,16 +1604,6 @@
 				9DFDC11D20792AB000BBDB9B /* game2.xml */,
 				9DFDC11520792AAF00BBDB9B /* game3.png */,
 				9DFDC11820792AAF00BBDB9B /* game3.xml */,
-				9DFDC11E20792AB000BBDB9B /* game4.png */,
-				9DFDC12120792AB100BBDB9B /* game4.xml */,
-				9DFDC11C20792AB000BBDB9B /* game5.png */,
-				9DFDC12420792AB100BBDB9B /* game5.xml */,
-				9DFDC12320792AB100BBDB9B /* game6.png */,
-				9DFDC11F20792AB100BBDB9B /* game6.xml */,
-				9DFDC12620792AB200BBDB9B /* game7.png */,
-				9DFDC11920792AB000BBDB9B /* game7.xml */,
-				9DFDC12520792AB200BBDB9B /* game8.png */,
-				9DFDC11A20792AB000BBDB9B /* game8.xml */,
 				9DFDC12720792AB200BBDB9B /* menuSettings.xml */,
 				9DFDC11720792AAF00BBDB9B /* sampleSettings.xml */,
 				9D0044162062E523001DFF83 /* game1.xml */,
@@ -2354,16 +2282,12 @@
 				9D5F1DEA216FE9A700B2F973 /* README.md in Resources */,
 				9D0043BC205F63B9001DFF83 /* mesh82.png in Resources */,
 				9D00439F205F63B9001DFF83 /* mesh107.png in Resources */,
-				9DFDC13220792AB200BBDB9B /* game6.xml in Resources */,
-				9DFDC14D2079391C00BBDB9B /* game14.xml in Resources */,
 				9D0043BF205F63B9001DFF83 /* mesh33.png in Resources */,
 				9D0043F82061A2FE001DFF83 /* background3.png in Resources */,
-				9DFDC12C20792AB200BBDB9B /* game7.xml in Resources */,
 				9D0043D6205F63B9001DFF83 /* mesh93.png in Resources */,
 				9DC407F821DC403E0022CD3A /* complex_div.mmb~.pd in Resources */,
 				9D69A11D208D282200F789C6 /* game13-ipad.png in Resources */,
 				9DC407FC21DC403E0022CD3A /* sample0.wav in Resources */,
-				9DFDC14C2079391C00BBDB9B /* game10.xml in Resources */,
 				9D8B0B0D207D177800AC404F /* consolePlayStop.png in Resources */,
 				9DF4133420925FAF00D0358F /* mesh75.png in Resources */,
 				9D8B0B1E208B8FDF00AC404F /* bank1.png in Resources */,
@@ -2407,9 +2331,6 @@
 				9DF4136020925FB000D0358F /* mesh86.png in Resources */,
 				9D0043A7205F63B9001DFF83 /* mesh105.png in Resources */,
 				9D004397205F63B9001DFF83 /* mesh143.png in Resources */,
-				9DFDC14E2079391C00BBDB9B /* game12.xml in Resources */,
-				9DFDC13420792AB200BBDB9B /* game4.xml in Resources */,
-				9DFDC12F20792AB200BBDB9B /* game5.png in Resources */,
 				9DF4134320925FAF00D0358F /* mesh122.png in Resources */,
 				9DF4135720925FB000D0358F /* mesh61.png in Resources */,
 				9DF4134220925FAF00D0358F /* mesh121.png in Resources */,
@@ -2422,7 +2343,6 @@
 				9DC4080721DC403E0022CD3A /* complex_mul.mmb~.pd in Resources */,
 				9D69A114208D282200F789C6 /* game8-ipad.png in Resources */,
 				9DF4134B20925FB000D0358F /* mesh144.png in Resources */,
-				9DFDC14A2079391C00BBDB9B /* game15.png in Resources */,
 				9DF4133A20925FAF00D0358F /* mesh108.png in Resources */,
 				9DC4080921DC403E0022CD3A /* pd-vivianLoopBox.pd in Resources */,
 				9DFDC13320792AB200BBDB9B /* game1.png in Resources */,
@@ -2435,7 +2355,6 @@
 				9DC407F521DC403E0022CD3A /* pd-bytebeat.pd in Resources */,
 				9DF4135520925FB000D0358F /* mesh123.png in Resources */,
 				9D0043A8205F63B9001DFF83 /* mesh23.png in Resources */,
-				9DFDC12D20792AB200BBDB9B /* game8.xml in Resources */,
 				9DF4135A20925FB000D0358F /* mesh112.png in Resources */,
 				9DF4132E20925FAF00D0358F /* mesh97.png in Resources */,
 				9D69A11A208D282200F789C6 /* game6-ipad.png in Resources */,
@@ -2447,16 +2366,13 @@
 				9D0043A4205F63B9001DFF83 /* mesh119.png in Resources */,
 				9DF4135020925FB000D0358F /* mesh24.png in Resources */,
 				9DC4080521DC403E0022CD3A /* sample4.wav in Resources */,
-				9DFDC13920792AB200BBDB9B /* game7.png in Resources */,
 				9DF4134420925FAF00D0358F /* mesh28.png in Resources */,
 				9DF4133520925FAF00D0358F /* mesh133.png in Resources */,
 				9DFDC12B20792AB200BBDB9B /* game3.xml in Resources */,
 				9D004398205F63B9001DFF83 /* mesh94.png in Resources */,
-				9DFDC1552079391C00BBDB9B /* game15.xml in Resources */,
 				9D004393205F63B9001DFF83 /* mesh128.png in Resources */,
 				9DF4132C20925FAF00D0358F /* mesh120.png in Resources */,
 				9DC4080221DC403E0022CD3A /* pd-benjolin2.pd in Resources */,
-				9DFDC1562079391C00BBDB9B /* game13.xml in Resources */,
 				9DF4133E20925FAF00D0358F /* mesh85.png in Resources */,
 				9DF412F320925F8E00D0358F /* mesh16.png in Resources */,
 				9D0043A5205F63B9001DFF83 /* mesh126.png in Resources */,
@@ -2464,7 +2380,6 @@
 				9DF412EF20925F8E00D0358F /* mesh14.png in Resources */,
 				9DC4080121DC403E0022CD3A /* lin-xfade.mmb~.pd in Resources */,
 				9DF4135B20925FB000D0358F /* mesh37.png in Resources */,
-				9DFDC13620792AB200BBDB9B /* game6.png in Resources */,
 				9DC407FF21DC403E0022CD3A /* drum3.wav in Resources */,
 				9DF4134C20925FB000D0358F /* mesh38.png in Resources */,
 				9DF4135E20925FB000D0358F /* mesh64.png in Resources */,
@@ -2493,7 +2408,6 @@
 				9DF412F220925F8E00D0358F /* mesh15.png in Resources */,
 				9D0044172062E523001DFF83 /* game1.xml in Resources */,
 				9D00416E20476157001DFF83 /* mesh1.png in Resources */,
-				9DFDC14B2079391C00BBDB9B /* game10.png in Resources */,
 				9D69A136208D2A1400F789C6 /* game3-ipad.xml in Resources */,
 				9D69A100208BE87D00F789C6 /* background7.png in Resources */,
 				9D0043AA205F63B9001DFF83 /* mesh90.png in Resources */,
@@ -2537,13 +2451,10 @@
 				9DF4135D20925FB000D0358F /* mesh60.png in Resources */,
 				9D0043A2205F63B9001DFF83 /* mesh142.png in Resources */,
 				9D69A118208D282200F789C6 /* game3-ipad.png in Resources */,
-				9DFDC1532079391C00BBDB9B /* game13.png in Resources */,
 				9D0043BD205F63B9001DFF83 /* mesh103.png in Resources */,
 				9DF412F120925F8E00D0358F /* mesh12.png in Resources */,
 				9DF4134520925FAF00D0358F /* mesh73.png in Resources */,
 				9DF4136220925FB000D0358F /* mesh132.png in Resources */,
-				9DFDC13820792AB200BBDB9B /* game8.png in Resources */,
-				9DFDC13720792AB200BBDB9B /* game5.xml in Resources */,
 				9D0043B0205F63B9001DFF83 /* mesh55.png in Resources */,
 				9D0043CC205F63B9001DFF83 /* mesh140.png in Resources */,
 				9D004394205F63B9001DFF83 /* mesh9.png in Resources */,
@@ -2574,15 +2485,12 @@
 				9D8B0B11207D179F00AC404F /* consoleRec.png in Resources */,
 				9D256038202C0802003989FB /* eyesClosed.png in Resources */,
 				9DC407F921DC403E0022CD3A /* multimode.mmb~.pd in Resources */,
-				9DFDC13120792AB200BBDB9B /* game4.png in Resources */,
 				9D0043B8205F63B9001DFF83 /* mesh77.png in Resources */,
 				9D69A11B208D282200F789C6 /* game14-ipad.png in Resources */,
 				9DF412F020925F8E00D0358F /* mesh13.png in Resources */,
 				9DF4135C20925FB000D0358F /* mesh39.png in Resources */,
 				9D0043DA205F63B9001DFF83 /* mesh0.png in Resources */,
 				9D8B0B0F207D177800AC404F /* consoleRecStop.png in Resources */,
-				9DFDC1492079391C00BBDB9B /* game9.xml in Resources */,
-				9DFDC1522079391C00BBDB9B /* game14.png in Resources */,
 				9DF4134A20925FB000D0358F /* mesh76.png in Resources */,
 				9D00416C20476157001DFF83 /* mesh6.png in Resources */,
 				9DF4133220925FAF00D0358F /* mesh25.png in Resources */,
@@ -2590,10 +2498,8 @@
 				9DF4133020925FAF00D0358F /* mesh27.png in Resources */,
 				9D00417120476157001DFF83 /* mesh5.png in Resources */,
 				9D0043DC205F63B9001DFF83 /* mesh80.png in Resources */,
-				9DFDC1502079391C00BBDB9B /* game11.xml in Resources */,
 				9D0043AF205F63B9001DFF83 /* mesh70.png in Resources */,
 				9DF4134020925FAF00D0358F /* mesh124.png in Resources */,
-				9DFDC14F2079391C00BBDB9B /* game9.png in Resources */,
 				9DC4080621DC403E0022CD3A /* drum0.wav in Resources */,
 				9D0043D2205F63B9001DFF83 /* mesh20.png in Resources */,
 				9D00439B205F63B9001DFF83 /* mesh116.png in Resources */,
@@ -2612,12 +2518,10 @@
 				9D00439E205F63B9001DFF83 /* mesh43.png in Resources */,
 				9D0043AC205F63B9001DFF83 /* mesh81.png in Resources */,
 				9D0043B6205F63B9001DFF83 /* mesh21.png in Resources */,
-				9DFDC1542079391C00BBDB9B /* game11.png in Resources */,
 				9DC407F321DC403E0022CD3A /* sample5.wav in Resources */,
 				9D69A13F208D2A1400F789C6 /* game9-ipad.xml in Resources */,
 				9DF4133320925FAF00D0358F /* mesh72.png in Resources */,
 				9DFDC12A20792AB200BBDB9B /* sampleSettings.xml in Resources */,
-				9DFDC1512079391C00BBDB9B /* game12.png in Resources */,
 				9D004323205C3A97001DFF83 /* sample9.wav in Resources */,
 				9DF4135320925FB000D0358F /* mesh63.png in Resources */,
 				9D0043C9205F63B9001DFF83 /* mesh139.png in Resources */,

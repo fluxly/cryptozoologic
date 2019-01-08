@@ -1,4 +1,4 @@
-#N canvas 423 219 753 458 10;
+#N canvas 363 28 599 587 10;
 #N canvas 92 67 793 577 benjolinOsc1 0;
 #X obj 237 180 *~;
 #X obj 252 154 line~;
@@ -38,7 +38,7 @@
 #X connect 15 0 17 0;
 #X connect 15 0 16 0;
 #X restore 31 25 pd benjolinOsc1;
-#N canvas 143 69 829 528 comparator 1;
+#N canvas 143 69 829 528 comparator 0;
 #X obj 102 76 +~;
 #X obj 102 157 s~ PWMmix;
 #X obj 98 113 expr~ if ($v1 > 0.5 \, 1 \, 0);
@@ -429,48 +429,59 @@
 #X connect 68 0 66 0;
 #X connect 70 0 64 0;
 #X restore 31 128 pd scopes;
-#X obj 172 53 s oscFreq1;
-#X obj 176 31 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 213 67 s oscFreq1;
+#X obj 217 45 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 174 76 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 215 117 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 171 98 s oscFreq2;
-#X obj 363 31 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 212 139 s oscFreq2;
+#X obj 404 45 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 362 76 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 403 117 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 360 53 s oscRungle1;
-#X obj 359 98 s oscRungle2;
-#X obj 172 144 hsl 128 15 50 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 401 67 s oscRungle1;
+#X obj 400 139 s oscRungle2;
+#X obj 213 185 hsl 128 15 50 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 171 189 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 400 184 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 360 144 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 211 256 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 359 189 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 399 257 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 169 166 s filterFreq;
-#X obj 357 166 s filterRungle;
-#X obj 168 211 s filterSweep;
-#X obj 356 211 s filterRes;
-#X floatatom 136 54 5 0 0 0 - - -, f 5;
-#X floatatom 134 98 5 0 0 0 - - -, f 5;
-#X floatatom 325 53 5 0 0 0 - - -, f 5;
-#X floatatom 321 99 5 0 0 0 - - -, f 5;
-#X floatatom 321 167 5 0 0 0 - - -, f 5;
-#X floatatom 319 210 5 0 0 0 - - -, f 5;
-#X floatatom 133 168 5 0 0 0 - - -, f 5;
-#X floatatom 131 211 5 0 0 0 - - -, f 5;
-#X msg 33 252 \; oscFreq1 100 \; oscFreq2 30 \; oscRungle1 100 \; oscRungle2
-80 \; filterFreq 80 \; filterSweep 50 \; filterRungle 30 \; filterRes
-75 \; \;;
-#X msg 156 250 \; oscFreq1 40 \; oscFreq2 3 \; oscRungle1 10 \; oscRungle2
+#X obj 210 207 s filterFreq;
+#X obj 208 278 s filterRungle;
+#X obj 397 206 s filterSweep;
+#X obj 396 279 s filterRes;
+#X floatatom 177 68 5 0 0 0 - - -, f 5;
+#X floatatom 175 139 5 0 0 0 - - -, f 5;
+#X floatatom 366 67 5 0 0 0 - - -, f 5;
+#X floatatom 362 140 5 0 0 0 - - -, f 5;
+#X floatatom 172 279 5 0 0 0 - - -, f 5;
+#X floatatom 359 278 5 0 0 0 - - -, f 5;
+#X floatatom 174 209 5 0 0 0 - - -, f 5;
+#X floatatom 360 206 5 0 0 0 - - -, f 5;
+#X msg 288 397 \; oscFreq1 40 \; oscFreq2 3 \; oscRungle1 10 \; oscRungle2
 10 \; filterFreq 50 \; filterSweep 50 \; filterRungle 30 \; filterRes
 127 \; \;;
-#X msg 278 247 \; oscFreq1 121 \; oscFreq2 25 \; oscRungle1 88 \; oscRungle2
+#X msg 410 394 \; oscFreq1 121 \; oscFreq2 25 \; oscRungle1 88 \; oscRungle2
 68 \; filterFreq 119 \; filterSweep 85 \; filterRungle 13 \; filterRes
 72 \; \;;
-#X obj 31 197 loadbang;
+#X obj 37 342 loadbang;
+#X msg 165 399 \; oscFreq1 100 \; oscFreq2 30 \; oscRungle1 100 \;
+oscRungle2 80 \; filterFreq 80 \; filterSweep 50 \; filterRungle 30
+\; filterRes 75 \; \;;
+#X msg 42 399 \; oscFreq1 0 \; oscFreq2 0 \; oscRungle1 0 \; oscRungle2
+0 \; filterFreq 50 \; filterSweep 50 \; filterRungle 0 \; filterRes
+0 \; \;;
+#X obj 214 21 r control0;
+#X obj 400 21 r control1;
+#X obj 213 94 r control2;
+#X obj 402 93 r control3;
+#X obj 210 163 r control4;
+#X obj 398 163 r control5;
+#X obj 209 232 r control6;
+#X obj 398 232 r control7;
 #X connect 8 0 7 0;
 #X connect 8 0 23 0;
 #X connect 9 0 10 0;
@@ -487,4 +498,11 @@
 #X connect 17 0 27 0;
 #X connect 18 0 22 0;
 #X connect 18 0 28 0;
-#X connect 34 0 31 0;
+#X connect 33 0 35 0;
+#X connect 36 0 8 0;
+#X connect 37 0 11 0;
+#X connect 38 0 9 0;
+#X connect 39 0 12 0;
+#X connect 40 0 15 0;
+#X connect 42 0 17 0;
+#X connect 43 0 18 0;

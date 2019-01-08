@@ -27,19 +27,19 @@ static NSString *const AUDIOBUS_API_KEY= @"H4sIAAAAAAAAA2WOy47CMAxF/8VrIJRXpW7nM
             interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
             break;
         case OF_ORIENTATION_180:
-            interfaceOrientation = UIInterfaceOrientationLandscapeRight;
+            interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
             break;
         case OF_ORIENTATION_90_RIGHT:
             interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
             break;
         case OF_ORIENTATION_90_LEFT:
-            interfaceOrientation = UIInterfaceOrientationLandscapeRight;
+            interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
             break;
         case OF_ORIENTATION_UNKNOWN:
             interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
             break;
     }
-    ofLog(OF_LOG_VERBOSE, "Rotate to portrait");
+    ofLog(OF_LOG_VERBOSE, "Rotate to landscape");
     [self.glViewController rotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft animated:false];
     ofLog(OF_LOG_VERBOSE, "Set up audio stream");
     app->setupAudioStream();

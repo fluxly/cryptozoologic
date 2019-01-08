@@ -6,6 +6,7 @@
 
 #include "ofApp.h"
 #import <AVFoundation/AVFoundation.h>
+//#import <sys/utsname.h>
 
 ABiOSSoundStream* ofApp::getSoundStream(){
     return stream;
@@ -21,6 +22,22 @@ void ofApp::setupAudioStream(){
 void ofApp::setup(){
     ofSetLogLevel(OF_LOG_VERBOSE);       // OF_LOG_VERBOSE for testing, OF_LOG_SILENT for production
     ofSetLogLevel("Pd", OF_LOG_SILENT);  // see verbose info from Pd
+
+   /* NSString *deviceOSVersion = [UIDevice currentDevice].systemVersion;
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    int version = [[NSNumber numberWithChar:[platform characterAtIndex:(4)]] intValue] - 48;
+    int subversion = [[NSNumber numberWithChar:[platform characterAtIndex:(6)]] intValue] - 48;
+    
+    NSLog(@"deviceOSVersion: %@", deviceOSVersion);
+    NSLog(@"deviceOSVersion: %@", platform);
+    NSLog(@"iPad version: %i", version);
+    NSLog(@"iPad subversion: %i", subversion);
+    
+    */
+    
+    ofSetOrientation(OF_ORIENTATION_90_LEFT);
     
     // enables the network midi session between iOS and Mac OSX on a
     // local wifi network
@@ -34,9 +51,9 @@ void ofApp::setup(){
     // list the number of available input & output ports
     ofxMidiIn input;
     input.listInPorts();
-    
+
     // create and open input ports
-    for(int i = 0; i < input.getNumInPorts(); ++i) {
+    for (int i = 0; i < input.getNumInPorts(); ++i) {
         
         // new object
         inputs.push_back(new ofxMidiIn);
@@ -141,7 +158,8 @@ void ofApp::setupPostSplashscreen() {
         }
         //cout << "Path at index " << i << " = " << dir.getName(i) << endl;
     }
-    if (firstRun) {
+   // if (firstRun) {
+    // FIXME: overwrites each time
         // ofLog(OF_LOG_VERBOSE, "First Run: copies files to documents from bundle.");
         file.copyFromTo("menuSettings.xml", ofxiOSGetDocumentsDirectory()+"menuSettings.xml", true, true);
         file.copyFromTo("sampleSettings.xml", ofxiOSGetDocumentsDirectory()+"sampleSettings.xml", true, true);
@@ -154,7 +172,7 @@ void ofApp::setupPostSplashscreen() {
                 file.copyFromTo("game"+to_string(i)+".png", ofxiOSGetDocumentsDirectory()+"game"+to_string(i)+".png", true, true);
             }
         }
-    }
+    //}
     ofLog(OF_LOG_VERBOSE, "set samplerate");
     // try to set the preferred iOS sample rate, but get the actual sample rate
     // being used by the AVSession since newer devices like the iPhone 6S only
@@ -214,20 +232,6 @@ void ofApp::setupPostSplashscreen() {
     // audio processing on
     ofLog(OF_LOG_VERBOSE, "start libPd");
     pd.start();
-    //pd.openPatch("pd-bytebeat.pd");
-    //pd.openPatch("pd-irishYeti.pd");
-    //pd.openPatch("pd-vivianLoopBox.pd");
-    pd.openPatch("pd-benjolin2.pd");
-    // scope mappings for benjolin:
-    // osc1 = scope0
-    // osc1Rungle = scope1
-    // osc2 = scope2
-    // oscRungle = scope3
-    // FilterFreq = osc~
-    // Filter Sweep = PWM? =
-    // Rungle = rungler * amt
-    // Resonance = smaller filter out
-    
     
     // Load all images
     for (int i=0; i<8; i++) {
@@ -260,17 +264,7 @@ void ofApp::setupPostSplashscreen() {
     
     mainMenu = new SlidingMenu();
     
-    mainMenu->menuTitleW = screenW;
-    
-    if (device==TABLET) {
-        //mainMenu->menuTitleFilename = "fluxlyTitle-ipad.png";
-        mainMenu->menuTitleH = (574*((float)screenW/2048));
-
-    } else {
-        //mainMenu->menuTitleFilename = "fluxlyTitle.png";
-        mainMenu->menuTitleH = (247*((float)screenW/640));
-
-    }
+    //mainMenu->menuTitleW = screenW;
     
     appIconW = 180*retinaScaling;
     appIconX = screenW/2;
@@ -327,6 +321,13 @@ void ofApp::loadGame(int gameId) {
     // the world bounds
     currentGame = gameId;
     
+    switch (gameId) {
+        case 0: pd.openPatch("pd-bytebeat.pd"); break;
+        case 1: pd.openPatch("pd-benjolin2.pd"); break;
+        case 2: pd.openPatch("pd-vivianLoopBox.pd"); break;
+        case 3: pd.openPatch("pd-irishYeti.pd"); break;
+    }
+    
     //send screen width for panning calculation in Pd
     pd.sendFloat("screenW", screenW);
     
@@ -353,10 +354,16 @@ void ofApp::loadGame(int gameId) {
             c->instrument =  gameSettings.getValue("instrument", 0);
             c->dampingX =  gameSettings.getValue("dampingX", 0);
             c->dampingY =  gameSettings.getValue("dampingY", 0);
-            c->connections[0] =  gameSettings.getValue("connection1", 0);
-            c->connections[1] =  gameSettings.getValue("connection2", 0);
-            c->connections[2] =  gameSettings.getValue("connection3", 0);
-            c->connections[3] =  gameSettings.getValue("connection4", 0);
+            c->bx =  gameSettings.getValue("bx", 0);
+            c->by =  gameSettings.getValue("by", 0);
+            c->bw =  gameSettings.getValue("bw", 0);
+            c->bh =  gameSettings.getValue("bh", 0);
+            c->a1x =  gameSettings.getValue("a1x", 0);
+            c->a1y =  gameSettings.getValue("a1y", 0);
+            c->a2x =  gameSettings.getValue("a2x", 0);
+            c->a2y =  gameSettings.getValue("a2y", 0);
+            c->a3x =  gameSettings.getValue("a3x", 0);
+            c->a3y =  gameSettings.getValue("a3y", 0);
             c->x = gameSettings.getValue("x", 0);
             c->y = gameSettings.getValue("y", 0);
             c->w = gameSettings.getValue("w", 0);
@@ -377,6 +384,16 @@ void ofApp::loadGame(int gameId) {
             c->x = c->x*retinaScaling;
             c->y = c->y*retinaScaling;
             c->w = c->w*retinaScaling;
+            c->bx = c->bx*retinaScaling;
+            c->by = c->by*retinaScaling;
+            c->bw = c->bw*retinaScaling;
+            c->bh = c->bh*retinaScaling;
+            c->a1x = c->a1x*retinaScaling;
+            c->a1y = c->a1y*retinaScaling;
+            c->a2x = c->a2x*retinaScaling;
+            c->a2y = c->a2y*retinaScaling;
+            c->a3x= c->a3x*retinaScaling;
+            c->a3y= c->a3y*retinaScaling;
             c->soundWaveStep *= retinaScaling;
             c->soundWaveH *= retinaScaling;
             c->animationStep *=retinaScaling;
@@ -389,7 +406,9 @@ void ofApp::loadGame(int gameId) {
             bd->boxId = c->id;
             c->body->SetUserData(bd);
             c->init();
-            if ((c->type < SAMPLES_IN_BUNDLE)) {
+            
+            
+            /*if ((c->type < SAMPLES_IN_BUNDLE)) {
                 // The built-in samples are in the bundle
                 pd.sendSymbol("filename"+to_string(circles[i].get()->instrument), sampleMenu->menuItems[circles[i].get()->type]->link);
             } else {
@@ -398,8 +417,9 @@ void ofApp::loadGame(int gameId) {
                     pd.sendSymbol("filename"+to_string(circles[i].get()->instrument),
                                   ofxiOSGetDocumentsDirectory()+sampleMenu->menuItems[circles[i].get()->type]->link);
                 }
-            }
-            pd.sendFloat("tempo8", 0.0);    // Set reverb to 0
+            }*/
+            
+           // pd.sendFloat("tempo8", 0.0);    // Set reverb to 0
             gameSettings.popTag();
         }
         gameSettings.popTag();
@@ -408,8 +428,8 @@ void ofApp::loadGame(int gameId) {
         //ofLog(OF_LOG_VERBOSE, "nJoints: %d", nJoints);
         for(int i = 0; i < nJoints; i++){
             gameSettings.pushTag("joint", i);
-            int id1 = gameSettings.getValue("id1", 0);
-            int id2 = gameSettings.getValue("id2", 0);
+           // int id1 = gameSettings.getValue("id1", 0);
+           // int id2 = gameSettings.getValue("id2", 0);
             //ofLog(OF_LOG_VERBOSE, "Joint: id1, id2: %d, %d", id1, id2);
             gameSettings.popTag();
         }
@@ -484,8 +504,14 @@ void ofApp::update() {
                     circles[i].get()->checkToSendTempo();
                     if (circles[i]->tempo != 0) midiSavedAngularVelocity[i] = circles[i]->body->GetAngularVelocity();
                     if (circles[i].get()->sendTempo) {
-                        ofLog(OF_LOG_VERBOSE, "Changed tempo %d: %f", i, circles[i]->tempo);
-                        pd.sendFloat("tempo"+to_string(circles[i].get()->instrument), circles[i]->tempo);
+                       
+                        if ((currentGame == 0) && (i==2)) {
+                            ofLog(OF_LOG_VERBOSE, "Changed x %d: %f", i, ((float)circles[i]->x/screenW)*94);
+                            pd.sendFloat("control"+to_string(circles[i].get()->id), ((float)circles[i]->x/screenW)*94);    // HACK: FIXME
+                        } else {
+                             ofLog(OF_LOG_VERBOSE, "Changed tempo %d: %f", i, circles[i]->tempo);
+                            pd.sendFloat("control"+to_string(circles[i].get()->id), circles[i]->tempo);
+                        }
                         circles[i].get()->sendTempo = false;
                     }
                     if (circles[i].get()->sendOn) {
@@ -496,51 +522,21 @@ void ofApp::update() {
                         pd.sendFloat("toggle"+to_string(circles[i].get()->instrument), 0.0);
                         circles[i].get()->sendOff = false;
                     }
-                    if (circles[i].get()->type < 144) pd.readArray("scope"+to_string(circles[i].get()->instrument), circles[i].get()->scopeArray);
+                   // if (circles[i].get()->type < 144) pd.readArray("scope"+to_string(circles[i].get()->instrument), circles[i].get()->scopeArray);
                 }
-                
-                if (connections.size() > 0) {
-                    // if (false) {
-                    for (int i=0; i<connections.size(); i++) {
-                        //ofLog(OF_LOG_VERBOSE, "List size: %d  id1: %d  id2: %d", connections.size(), connections[i]->id1, connections[i]->id2);
-                        
-                        ofLog(OF_LOG_VERBOSE, "TEST CONNECT: %d -> %d", connections[i]->id1, connections[i]->id2);
-                        
-                        tempId1 = connections[i]->id1;
-                        tempId2 = connections[i]->id2;
-                        if ((tempId1 <144) && (tempId1 >=0) && (tempId2 <144) && (tempId2 >=0)) {
-                            // Add joints
-                            if ((circles[tempId1]->nJoints < maxJoints) && (circles[tempId2]->nJoints < maxJoints)
-                                && notConnectedYet(tempId1, tempId2) && bothTouched(tempId1, tempId2)) { //&& complementaryColors(tempId1, tempId2)) {
-                                
-                                //  ofLog(OF_LOG_VERBOSE, "CONNECT: %d -> %d", tempId1, tempId2);
-                                
-                                shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
-                                ofxBox2dJoint *j = new ofxBox2dJoint;
-                                j->setup(box2d.getWorld(), circles[tempId1].get()->body, circles[tempId2].get()->body);
-                                if (device == PHONE) j->setLength(circles[tempId1]->w/2 + circles[tempId2]->w/2 - 2);
-                                if (device == TABLET) j->setLength(circles[tempId1]->w/2 + circles[tempId2]->w/2);
-                                jc.get()->id1 = tempId1;
-                                jc.get()->id2 = tempId2;
-                                jc.get()->joint = j;
-                                joints.push_back(jc);
-                                circles[tempId1]->nJoints++;
-                                circles[tempId2]->nJoints++;
-                            }
-                        }
-                    }
-                }
-                // Remove everything from connections vector
-                ofRemove(connections, shouldRemoveConnection);
-                //ofLog(OF_LOG_VERBOSE, "Connections after remove: %d", connections.size());
+                // Get scopes
             }
-            break;
-        case SELECT_SAMPLE_SCENE:
-            instrumentOn = true;
-            sampleMenu->updateScrolling();
-            if (!playRecordConsole->playing && !playRecordConsole->recording) pd.readArray("previewScope", playRecordConsole->scopeArray);
-            if (playRecordConsole->playing) pd.readArray("previewScope", playRecordConsole->scopeArray);
-            if (playRecordConsole->recording) pd.readArray("inputScope", playRecordConsole->scopeArray);
+            switch (currentGame) {
+                case 0:
+                    pd.readArray("scope0", backgroundScopeArray);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
             break;
     }
     if ((helpOn) || (helpOn2)) {
@@ -575,15 +571,19 @@ void ofApp::draw() {
             ofSetHexColor(0xFFFFFF);
             ofSetRectMode(OF_RECTMODE_CORNER);
             background[backgroundId].draw(0, 0, screenW, screenH);
+            if ((globalTick % 1) == 0) drawVisualization(currentGame);
+            
             ofSetRectMode(OF_RECTMODE_CENTER);
             
-            for (int i=0; i<circles.size(); i++) {
-                circles[i].get()->drawAnimation(1);
+            if (helpOn) {
+                for (int i=0; i<circles.size(); i++) {
+                    circles[i].get()->drawHelpBubble();
+                }
             }
             //if (device == PHONE) {
             
             for (int i=0; i<circles.size(); i++) {
-                circles[i].get()->drawSoundWave(1);
+              //  circles[i].get()->drawSoundWave(1);
             }
             // }
             ofSetRectMode(OF_RECTMODE_CENTER);
@@ -660,7 +660,7 @@ void ofApp::draw() {
             background[backgroundId].draw(0, 0, worldW, worldH);
             ofSetRectMode(OF_RECTMODE_CENTER);
             for (int i=0; i<circles.size(); i++) {
-                circles[i].get()->drawSoundWave(3);
+               // circles[i].get()->drawSoundWave(3);
             }
             for (int i=0; i<circles.size(); i++) {
                 circles[i].get()->draw();
@@ -670,21 +670,68 @@ void ofApp::draw() {
                 joints[i]->joint->draw();
             }
             ofSetHexColor(0xFFFFFF);
-            screenshot.grabScreen(0, 0, screenW, screenH);
-            saving.draw(screenW/2, screenH/2);
+            //screenshot.grabScreen(0, 0, screenW, screenH);
+            //saving.draw(screenW/2, screenH/2);
             scene = SAVE_EXIT_PART_2;
             break;
         case SAVE_EXIT_PART_2:
-            screenshot.save( mainMenu->menuItems[currentGame]->filename);
+           // screenshot.save( mainMenu->menuItems[currentGame]->filename);
             //ofLog(OF_LOG_VERBOSE, "Screenshot");
             saveGame();
             destroyGame();
             scene = MENU_SCENE;
-            mainMenu->menuItems[currentGame]->reloadThumbnail();
+           // mainMenu->menuItems[currentGame]->reloadThumbnail();
             break;
     }
     if (helpOn && (scene == GAME_SCENE)) helpLayerDisplay(currentHelpState);
     if (helpOn2 && (scene == SELECT_SAMPLE_SCENE)) helpLayerDisplay(currentHelpState2);
+}
+
+void ofApp::drawVisualization(int gameId) {
+    int radius = screenW / 48;
+    
+    int dw = 0;
+    int dh = 0;
+    
+    switch (gameId) {
+        case 0:
+            for (int i=0; i<8; i++) {
+                int t = (int)(backgroundScopeArray[i*2] * 255);
+                for (int j=0; j<8; j++) {
+                    if (((t >> j) & 0x01) == 1) {
+                   // if (backgroundScopeArray[i*j+j] > .5)
+                        ofSetColor(255);
+                        //dw = (int)ofRandom(-10, 10);
+                        //dh = (int)ofRandom(-10, 10);
+                        //dw = j;
+                    } else {
+                        ofSetColor(0);
+                        //dw = 10; dh=10;
+                    }
+                    if (circles[0]->tempo == 0) ofSetColor(0);
+                    /*
+                    ofDrawEllipse(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawEllipse(17*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawEllipse(33*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawEllipse(radius+i*2*radius,   17*radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawEllipse(17*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawEllipse(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);*/
+                    ofDrawRectangle(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawRectangle(17*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawRectangle(33*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawRectangle(radius+i*2*radius,   17*radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawRectangle(17*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawRectangle(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
+                }
+            }
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
@@ -1019,16 +1066,6 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
                 }
                 
                 // Check appIcon click
-#ifdef FLUXLY_FREE
-                //ofLog(OF_LOG_VERBOSE, "Checking appIcon start, touch: %i, %i, %f, %f", startTouchX, startTouchY, touch.x, touch.y);
-                //ofLog(OF_LOG_VERBOSE, "Checking appIcon bounds: %i, %i, %i, %i", appIconX+45, appIconY+45, appIconX-45, appIconY-45);
-                if ((touch.x < (appIconX+appIconW/2)) && (touch.x > (appIconX-appIconW/2)) &&
-                    (touch.y < (appIconY+appIconW/2)) && (touch.y > (appIconY-appIconW/2))) {
-                    ofLog(OF_LOG_VERBOSE, "AppIconpressed");
-                    [[UIApplication sharedApplication]
-                     openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/fluxly/id1376844813?ls=1&mt=8"]];
-                }
-#endif
                 int button = playRecordConsole->checkConsoleButtons(touch.x, touch.y);
                 if (button == 1) {  //Play button
                     ofLog(OF_LOG_VERBOSE, "Yup, play pressed");
@@ -1063,8 +1100,8 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     //--------------------------------------------------------------
     void ofApp::touchDoubleTap(ofTouchEventArgs & touch) {
         ofLog(OF_LOG_VERBOSE, "TOUCH DOUBLE TAP!");
-        doubleTapped = true;
-        
+      /*  doubleTapped = true;
+     
         if (scene == GAME_SCENE) {
             ofLog(OF_LOG_VERBOSE, "1. State %d", gameState);
             
@@ -1099,6 +1136,7 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
             }
             
         }
+      */
     }
     
     //--------------------------------------------------------------
@@ -1123,7 +1161,9 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     
     //--------------------------------------------------------------
     void ofApp::deviceOrientationChanged(int newOrientation){
-        
+        if ((newOrientation == OF_ORIENTATION_90_RIGHT) || (newOrientation == OF_ORIENTATION_90_LEFT)) {
+            ofSetOrientation((ofOrientation)newOrientation);
+        }
     }
     
     void ofApp::contactStart(ofxBox2dContactArgs &e) {
@@ -1133,7 +1173,7 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     
     //--------------------------------------------------------------
     void ofApp::contactEnd(ofxBox2dContactArgs &e) {
-        if(e.a != NULL && e.b != NULL) {
+     /*   if(e.a != NULL && e.b != NULL) {
             b2Body *b1 = e.a->GetBody();
             BoxData *bd1 = (BoxData *)b1->GetUserData();
             if (bd1 !=NULL) {
@@ -1147,7 +1187,7 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
                     c->id2 = bd2->boxId;
                 }
             }
-        }
+        }*/
     }
     
     //--------------------------------------------------------------

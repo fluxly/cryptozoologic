@@ -14,75 +14,24 @@
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <instrument>0</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>85</x>
-            <y>124</y>
             <w>100</w>
+            <x>70</x>
+            <y>120</y>
+            <a1x>50</a1x>
+            <a1y>0</a1y>
+            <a2x>25</a2x>
+            <a2y>25</a2y>
+            <a3x>45</a3x>
+            <a3y>-40</a3y>
+            <bx>75</bx>
+            <by>38</by>
+            <bw>60</bw>
+            <bh>30</bh>
             <rotation>13980.000000000</rotation>
+			<signal>speed</signal>
         </circle>
         <circle>
             <id>1</id>
-            <type>0</type>
-            <eyeState>0</eyeState>
-            <onOffState>0</onOffState>
-            <spinning>0</spinning>
-            <wasntSpinning>0</wasntSpinning>
-            <dampingX>0.000000000</dampingX>
-            <dampingY>0.000000000</dampingY>
-            <instrument>1</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>239</x>
-            <y>124</y>
-            <w>100</w>
-            <rotation>6376.000000000</rotation>
-        </circle>
-        <circle>
-            <id>2</id>
-            <type>0</type>
-            <eyeState>0</eyeState>
-            <onOffState>0</onOffState>
-            <spinning>0</spinning>
-            <wasntSpinning>0</wasntSpinning>
-            <dampingX>0.000000000</dampingX>
-            <dampingY>0.000000000</dampingY>
-            <instrument>2</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>249</x>
-            <y>303</y>
-            <w>100</w>
-            <rotation>5645.000000000</rotation>
-        </circle>
-        <circle>
-            <id>3</id>
-            <type>0</type>
-            <eyeState>0</eyeState>
-            <onOffState>0</onOffState>
-            <spinning>0</spinning>
-            <wasntSpinning>0</wasntSpinning>
-            <dampingX>0.000000000</dampingX>
-            <dampingY>0.000000000</dampingY>
-            <instrument>3</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>89</x>
-            <y>307</y>
-            <w>100</w>
-            <rotation>6839.000000000</rotation>
-        </circle>
-        <circle>
-            <id>4</id>
             <type>144</type>
             <eyeState>0</eyeState>
             <onOffState>0</onOffState>
@@ -90,15 +39,46 @@
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <instrument>8</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>167</x>
-            <y>425</y>
             <w>100</w>
-            <rotation>5079.000000000</rotation>
+            <x>498</x>
+            <y>120</y>
+            <a1x>-50</a1x>
+            <a1y>0</a1y>
+            <a2x>-25</a2x>
+            <a2y>25</a2y>
+            <a3x>-45</a3x>
+            <a3y>-40</a3y>
+            <bx>477</bx>
+            <by>38</by>
+            <bw>60</bw>
+            <bh>30</bh>
+            <rotation>6376.000000000</rotation>
+			<signal>formula</signal>
+        </circle>
+        <circle>
+            <id>2</id>
+            <type>1</type>
+            <eyeState>0</eyeState>
+            <onOffState>0</onOffState>
+            <spinning>0</spinning>
+            <wasntSpinning>0</wasntSpinning>
+            <dampingX>0.000000000</dampingX>
+            <dampingY>0.000000000</dampingY>
+            <w>44</w>
+            <x>284</x>
+            <y>265</y>
+            <a1x>0</a1x>
+            <a1y>22</a1y>
+            <a2x>0</a2x>
+            <a2y>11</a2y>
+            <a3x>-25</a3x>
+            <a3y>-25</a3y>
+            <bx>284</bx>
+            <by>200</by>
+            <bw>520</bw>
+            <bh>30</bh>
+            <rotation>5645.000000000</rotation>
+			<signal>reverb</signal>
         </circle>
     </circles>
     <joints></joints>

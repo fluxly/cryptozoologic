@@ -2,7 +2,7 @@
 	<uniqueId>16</uniqueId>
 	<menuItems>
 		<bank>
-			<bankImg>FluxlyTitle.png</bankImg>
+			<bankImg>CryptozooTitle.png</bankImg>
 			<menuItem>
 				<id>0</id>
 				<img>game0.png</img>
@@ -28,56 +28,6 @@
 				<img>game4.png</img>
 				<link>game4.xml</link>
 			</menuItem>
-			<menuItem>
-				<id>5</id>
-				<img>game5.png</img>
-				<link>game5.xml</link>
-			</menuItem>
-			<menuItem>
-				<id>6</id>
-				<img>game6.png</img>
-				<link>game6.xml</link>
-			</menuItem>
-			<menuItem>
-				<id>7</id>
-				<img>game7.png</img>
-				<link>game7.xml</link>
-			</menuItem>
-			<menuItem>
-				<id>8</id>
-				<img>game8.png</img>
-				<link>game8.xml</link>
-			</menuItem>	  
-			<menuItem>
-				<id>9</id>
-				<img>game9.png</img>
-				<link>game9.xml</link>
-			</menuItem>
-			<menuItem>
-				<id>10</id>
-				<img>game10.png</img>
-				<link>game10.xml</link>
-			</menuItem>
-			<menuItem>
-				<id>11</id>
-				<img>game11.png</img>
-				<link>game11.xml</link>
-			</menuItem>
-            <menuItem>
-                <id>12</id>
-                <img>game12.png</img>
-                <link>game12.xml</link>
-            </menuItem>
-            <menuItem>
-                <id>13</id>
-                <img>game13.png</img>
-                <link>game13.xml</link>
-            </menuItem>
-            <menuItem>
-                <id>14</id>
-                <img>game14.png</img>
-                <link>game14.xml</link>
-            </menuItem>
 		</bank> 
     </menuItems>
 </settings>
