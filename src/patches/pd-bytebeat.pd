@@ -10,7 +10,7 @@
 #X obj 346 55 hsl 128 15 -10 10 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 6350 1;
 #X obj 421 147 hsl 128 15 1 94 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 6691 1;
 #X floatatom 385 194 5 0 0 0 - - -, f 5;
 #X msg 358 219 formula \$1;
 #X obj 403 173 f;
@@ -53,8 +53,8 @@
 #X text 317 453 1;
 #X msg 317 453 1;
 #N canvas 0 22 450 300 (subpatch) 0;
-#X array scope0 16 float 2;
-#X coords 0 1 16 -1 200 140 1 0 0;
+#X array scope0 256 float 2;
+#X coords 0 1 256 -1 200 140 1 0 0;
 #X restore 49 390 graph;
 #X obj 279 505 tabwrite~ scope0;
 #X obj 434 96 r control2;

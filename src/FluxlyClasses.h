@@ -163,7 +163,9 @@ public:
     }
     
     void checkToSendTempo() {
-        tempo = (body->GetAngularVelocity()/24)*8;
+        //tempo = (body->GetAngularVelocity()/24)*8;
+        tempo = (body->GetAngularVelocity()/75)*8;
+        if (tempo > 1) tempo = 1;
         if (tempo != prevTempo) {
             sendTempo = true;
         } else {
@@ -175,12 +177,6 @@ public:
         } else {
             spinning = false;
         }
-    }
-    
-    void drawHelpBubble() {
-        ofSetColor(255);
-        ofDrawRectRounded(bx, by, bw, bh, 10);
-        //ofDrawTriangle(bx+a1x, by+a1y, x+a3x, y+a3y, bx+a2x, by+a2y);
     }
     
     void drawAnimation(int stroke) {
@@ -219,10 +215,10 @@ public:
             float x1 = soundWaveStart;
             ofSetColor(ofColor::fromHex(0x333333));
             for(int j = 0; j < scopeArray.size()-1; j++) {
-              //  ofDrawLine(x,scopeArray[j]*soundWaveH, x+soundWaveW,scopeArray[j+1]*soundWaveH);
+                //ofDrawLine(x,scopeArray[j]*soundWaveH, x+soundWaveW,scopeArray[j+1]*soundWaveH);
                 //ofDrawLine(x-soundWaveStart,scopeArray[j]*soundWaveH, x-soundWaveStart+soundWaveW,scopeArray[j+1]*soundWaveH);
-             //   ofDrawLine(x1,scopeArray[j]*soundWaveH, x1+soundWaveStep,scopeArray[j+1]*soundWaveH);
-              //  ofDrawLine(x1-soundWaveStart,scopeArray[j]*soundWaveH, x1-soundWaveStart+soundWaveStep,scopeArray[j+1]*soundWaveH);
+                ofDrawLine(x1,scopeArray[j]*soundWaveH, x1+soundWaveStep,scopeArray[j+1]*soundWaveH);
+                ofDrawLine(x1-soundWaveStart,scopeArray[j]*soundWaveH, x1-soundWaveStart+soundWaveStep,scopeArray[j+1]*soundWaveH);
                 x1 += soundWaveStep;
             }
             ofFill();
@@ -308,6 +304,105 @@ public:
         spriteImg.draw(0, 0, size, size);
         myEyesOpen.draw(0, 0, size/2, size/2);
         ofPopMatrix();
+    }
+};
+
+class FluxlyBubble : public ofxBox2dRect {
+public:
+    FluxlyBubble() {
+    }
+    
+    int id;
+    int x;
+    int y;
+    int w;
+    int h;
+    int a1x;
+    int a1y;
+    int a2x;
+    int a2y;
+    int a3x;
+    int a3y;
+    string bLabel;
+    string bValue;
+    int displayW;
+    bool eyeState = false;
+    bool onOffState = false;
+    int nJoints = 0;
+    int connections[4];
+    int count = 0;
+    //int stroke = 1;
+    int prevState =0;
+    float dampingX;
+    float dampingY;
+    bool touched = false;
+    int touchId = -1;
+    float rotation = 0.0;
+    ofTrueTypeFont silkscreen;
+    int lineHeight;
+    
+    b2BodyDef * def;
+    
+    float retinaScale;
+    
+    void init() {
+        silkscreen.load("slkscr.ttf", 16);
+        lineHeight = silkscreen.getLineHeight()*.8;
+    }
+    
+    void setAngularVelocity(float v) {
+        body->SetAngularVelocity(v);
+    }
+
+    Boolean inBounds(int x1, int y1) {
+        // check id as well
+        
+        int x = ofxBox2dBaseShape::getPosition().x;
+        int y = ofxBox2dBaseShape::getPosition().y;
+        if ((x1 < (x+displayW/2)) &&
+            (x1 > (x-displayW/2)) &&
+            (y1 < (y+displayW/2)) &&
+            (y1 > (y-displayW/2))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    void draw() {
+        if(body == NULL) {
+            return;
+        }
+        x = ofxBox2dBaseShape::getPosition().x;
+        y = ofxBox2dBaseShape::getPosition().y;
+        rotation = getRotation();
+        ofPushMatrix();
+        ofSetColor(255, 255, 255);
+        ofTranslate(x, y);
+        ofRotate(rotation, 0, 0, 1);
+        
+        ofSetColor(255);
+        ofDrawRectRounded(0, 0, w, h, 10);
+        ofSetColor(0);
+        silkscreen.drawString(bLabel, -silkscreen.stringWidth(bLabel)/2, -3);
+        silkscreen.drawString(bValue, -silkscreen.stringWidth(bValue)/2, lineHeight-3);
+        //ofDrawTriangle(bx+a1x, by+a1y, x+a3x, y+a3y, bx+a2x, by+a2y);
+        
+        /* if (nJoints == 3) {
+         ofSetHexColor(0xffffff);
+         grayOverlay.draw(0, 0, w, w);
+         }*/
+        ofPopMatrix();
+    }
+    
+    void drawBubbleStem(int x1, int y1) {
+          if(body == NULL) {
+              return;
+          }
+        ofSetColor(255);
+        ofSetLineWidth(5);
+        ofDrawTriangle(x-5, y, x1, y1, x+5, y);
+        //ofDrawLine(x, y, x1, y1);
     }
 };
 

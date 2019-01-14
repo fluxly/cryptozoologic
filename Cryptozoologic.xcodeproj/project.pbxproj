@@ -281,6 +281,7 @@
 		9D6C0EE720A0E5E10096EDAF /* fluxlyTitleZero.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6C0EE520A0E5E10096EDAF /* fluxlyTitleZero.png */; };
 		9D6C0EE920A0E5EB0096EDAF /* sample12.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D6C0EE820A0E5EA0096EDAF /* sample12.wav */; };
 		9D7ABEC12170FBA100699A10 /* blueGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7ABEC02170FBA100699A10 /* blueGlow.png */; };
+		9D82A39421E679B8004A1949 /* scale.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D82A39321E679B7004A1949 /* scale.c */; };
 		9D8B0B0D207D177800AC404F /* consolePlayStop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8B0B0A207D177700AC404F /* consolePlayStop.png */; };
 		9D8B0B0E207D177800AC404F /* consolePlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8B0B0B207D177700AC404F /* consolePlay.png */; };
 		9D8B0B0F207D177800AC404F /* consoleRecStop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8B0B0C207D177700AC404F /* consoleRecStop.png */; };
@@ -834,6 +835,7 @@
 		9D6C0EE520A0E5E10096EDAF /* fluxlyTitleZero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fluxlyTitleZero.png; sourceTree = "<group>"; };
 		9D6C0EE820A0E5EA0096EDAF /* sample12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample12.wav; sourceTree = "<group>"; };
 		9D7ABEC02170FBA100699A10 /* blueGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueGlow.png; sourceTree = "<group>"; };
+		9D82A39321E679B7004A1949 /* scale.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scale.c; sourceTree = "<group>"; };
 		9D8B0B0A207D177700AC404F /* consolePlayStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consolePlayStop.png; sourceTree = "<group>"; };
 		9D8B0B0B207D177700AC404F /* consolePlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consolePlay.png; sourceTree = "<group>"; };
 		9D8B0B0C207D177700AC404F /* consoleRecStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consoleRecStop.png; sourceTree = "<group>"; };
@@ -1862,6 +1864,7 @@
 		9DC4079C21D979CF0022CD3A /* patches */ = {
 			isa = PBXGroup;
 			children = (
+				9D82A39321E679B7004A1949 /* scale.c */,
 				9DC407E221DC403B0022CD3A /* biquad.mmb~.pd */,
 				9DC407DE21DC403A0022CD3A /* bl-init.mmb.pd */,
 				9DC407E121DC403A0022CD3A /* bl-tri.mmb~.pd */,
@@ -2619,6 +2622,7 @@
 				9D0AA091FE805EB564CD05D0 /* b2RopeJoint.cpp in Sources */,
 				87C5C3DED336B7BB4A5D06D6 /* b2WeldJoint.cpp in Sources */,
 				684CFB2E4AC045640B3A61F8 /* b2WheelJoint.cpp in Sources */,
+				9D82A39421E679B8004A1949 /* scale.c in Sources */,
 				370CDDF0DD53C5453DBD3F22 /* b2Rope.cpp in Sources */,
 				4CC0FD96DE77FF40BBCF8DD8 /* del_impl.cpp in Sources */,
 				6B08955674AF4B0CB1268787 /* ofxPd.cpp in Sources */,

@@ -27,6 +27,8 @@
             <by>38</by>
             <bw>60</bw>
             <bh>30</bh>
+            <bLabel>Speed</bLabel>
+            <bValue>0</bValue>
             <rotation>13980.000000000</rotation>
 			<signal>speed</signal>
         </circle>
@@ -52,6 +54,8 @@
             <by>38</by>
             <bw>60</bw>
             <bh>30</bh>
+            <bLabel>Reverb</bLabel>
+            <bValue>0</bValue>
             <rotation>6376.000000000</rotation>
 			<signal>formula</signal>
         </circle>
@@ -77,6 +81,8 @@
             <by>200</by>
             <bw>520</bw>
             <bh>30</bh>
+            <bLabel>Formula</bLabel>
+            <bValue>Foo</bValue>
             <rotation>5645.000000000</rotation>
 			<signal>reverb</signal>
         </circle>

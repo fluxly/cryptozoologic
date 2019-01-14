@@ -127,12 +127,12 @@
             <bx>423</bx>
             <by>90</by>
             <bw>55</bw>
-            <bh>30</bh>
+            <bh>30</bh>``
             <rotation>1323.000000000</rotation>
         </circle>
         <circle>
             <id>5</id>
-            <type>6</type>
+            <type>0</type>
             <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>

@@ -21,7 +21,7 @@ void ofApp::setupAudioStream(){
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetLogLevel(OF_LOG_VERBOSE);       // OF_LOG_VERBOSE for testing, OF_LOG_SILENT for production
-    ofSetLogLevel("Pd", OF_LOG_SILENT);  // see verbose info from Pd
+    ofSetLogLevel("Pd", OF_LOG_VERBOSE);  // see verbose info from Pd
 
    /* NSString *deviceOSVersion = [UIDevice currentDevice].systemVersion;
     struct utsname systemInfo;
@@ -206,6 +206,8 @@ void ofApp::setupPostSplashscreen() {
     // Setup externals
     freeverb_tilde_setup();
     bytebeat_tilde_setup();
+    scale_setup();
+
     
     midiChan = 1; // midi channels are 1-16
     
@@ -322,16 +324,17 @@ void ofApp::loadGame(int gameId) {
     currentGame = gameId;
     
     switch (gameId) {
-        case 0: pd.openPatch("pd-bytebeat.pd"); break;
-        case 1: pd.openPatch("pd-benjolin2.pd"); break;
-        case 2: pd.openPatch("pd-vivianLoopBox.pd"); break;
-        case 3: pd.openPatch("pd-irishYeti.pd"); break;
+        case 0: currentPatch = pd.openPatch("pd-bytebeat.pd"); break;
+        case 1: currentPatch = pd.openPatch("pd-benjolin2.pd"); break;
+        case 2: currentPatch = pd.openPatch("pd-vivianLoopBox.pd"); break;
+        case 3: currentPatch = pd.openPatch("pd-irishYeti.pd"); break;
     }
     
     //send screen width for panning calculation in Pd
     pd.sendFloat("screenW", screenW);
     
     ofxXmlSettings gameSettings;
+    ofLog(OF_LOG_VERBOSE, ofxiOSGetDocumentsDirectory()+mainMenu->menuItems[gameId]->link);
     if (gameSettings.loadFile(ofxiOSGetDocumentsDirectory()+mainMenu->menuItems[gameId]->link)) {
         string menuItemName = gameSettings.getValue("settings:menuItem", "defaultScene");
         backgroundId = gameSettings.getValue("settings:settings:backgroundId", 0);
@@ -354,22 +357,28 @@ void ofApp::loadGame(int gameId) {
             c->instrument =  gameSettings.getValue("instrument", 0);
             c->dampingX =  gameSettings.getValue("dampingX", 0);
             c->dampingY =  gameSettings.getValue("dampingY", 0);
-            c->bx =  gameSettings.getValue("bx", 0);
-            c->by =  gameSettings.getValue("by", 0);
-            c->bw =  gameSettings.getValue("bw", 0);
-            c->bh =  gameSettings.getValue("bh", 0);
-            c->a1x =  gameSettings.getValue("a1x", 0);
-            c->a1y =  gameSettings.getValue("a1y", 0);
-            c->a2x =  gameSettings.getValue("a2x", 0);
-            c->a2y =  gameSettings.getValue("a2y", 0);
-            c->a3x =  gameSettings.getValue("a3x", 0);
-            c->a3y =  gameSettings.getValue("a3y", 0);
             c->x = gameSettings.getValue("x", 0);
             c->y = gameSettings.getValue("y", 0);
             c->w = gameSettings.getValue("w", 0);
             c->displayW = c->w;
             c->retinaScale = retinaScaling;
-            
+            ofLog(OF_LOG_VERBOSE, "Adding Bubble" + to_string(c->id));
+            // Add a help bubble
+            bubbles.push_back(shared_ptr<FluxlyBubble>(new FluxlyBubble));
+            FluxlyBubble * b = bubbles.back().get();
+            b->id = gameSettings.getValue("id", 0);
+            b->x =  gameSettings.getValue("bx", 0);
+            b->y =  gameSettings.getValue("by", 0);
+            b->w =  gameSettings.getValue("bw", 0);
+            b->h =  gameSettings.getValue("bh", 0);
+            b->a1x =  gameSettings.getValue("a1x", 0);
+            b->a1y =  gameSettings.getValue("a1y", 0);
+            b->a2x =  gameSettings.getValue("a2x", 0);
+            b->a2y =  gameSettings.getValue("a2y", 0);
+            b->a3x =  gameSettings.getValue("a3x", 0);
+            b->a3y =  gameSettings.getValue("a3y", 0);
+            b->bLabel = gameSettings.getValue("bLabel", "Null");
+            b->bValue = gameSettings.getValue("bValue", "0");
             // Make some corrections for tablets
             if (device == TABLET) {
                 c->soundWaveStep = 4;
@@ -384,20 +393,21 @@ void ofApp::loadGame(int gameId) {
             c->x = c->x*retinaScaling;
             c->y = c->y*retinaScaling;
             c->w = c->w*retinaScaling;
-            c->bx = c->bx*retinaScaling;
-            c->by = c->by*retinaScaling;
-            c->bw = c->bw*retinaScaling;
-            c->bh = c->bh*retinaScaling;
-            c->a1x = c->a1x*retinaScaling;
-            c->a1y = c->a1y*retinaScaling;
-            c->a2x = c->a2x*retinaScaling;
-            c->a2y = c->a2y*retinaScaling;
-            c->a3x= c->a3x*retinaScaling;
-            c->a3y= c->a3y*retinaScaling;
             c->soundWaveStep *= retinaScaling;
             c->soundWaveH *= retinaScaling;
             c->animationStep *=retinaScaling;
             c->displayW *= retinaScaling;
+            
+            b->x = b->x*retinaScaling;
+            b->y = b->y*retinaScaling;
+            b->w = b->w*retinaScaling;
+            b->h = b->h*retinaScaling;
+            b->a1x = b->a1x*retinaScaling;
+            b->a1y = b->a1y*retinaScaling;
+            b->a2x = b->a2x*retinaScaling;
+            b->a2y = b->a2y*retinaScaling;
+            b->a3x= b->a3x*retinaScaling;
+            b->a3y= b->a3y*retinaScaling;
             
             c->setPhysics(1/deviceScale/retinaScaling, 1, 1);    // density, bounce, friction
             c->setup(box2d.getWorld(), c->x, c->y, (c->w/2)*deviceScale);
@@ -407,6 +417,37 @@ void ofApp::loadGame(int gameId) {
             c->body->SetUserData(bd);
             c->init();
             
+            b->setPhysics(1/deviceScale/retinaScaling, 1, 1);
+            b->setup(box2d.getWorld(), b->x, b->y, (b->w)*deviceScale, (b->h)*deviceScale);
+            //b->setRotation(gameSettings.getValue("rotation", 0));
+            BoxData * bd2 = new BoxData();
+            bd2->boxId = b->id;
+            b->body->SetUserData(bd2);
+            b->init();
+            
+            if (currentGame == 0) {
+                if (i !=2) {
+                shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
+                ofxBox2dJoint *j = new ofxBox2dJoint;
+                j->setup(box2d.getWorld(), circles[i].get()->body, bubbles[i].get()->body);
+                if (device == PHONE) j->setLength(circles[i]->w/2 + 100);
+                if (device == TABLET) j->setLength(circles[i]->w/2 + 100);
+                jc.get()->id1 = i;
+                jc.get()->id2 = i;
+                jc.get()->joint = j;
+                joints.push_back(jc);
+                }
+            } else {
+             /* shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
+              ofxBox2dJoint *j = new ofxBox2dJoint;
+              j->setup(box2d.getWorld(), circles[i].get()->body, bubbles[i].get()->body);
+              if (device == PHONE) j->setLength(circles[i]->w/2 + 50);
+              if (device == TABLET) j->setLength(circles[i]->w/2 + 50);
+              jc.get()->id1 = i;
+              jc.get()->id2 = i;
+              jc.get()->joint = j;
+              joints.push_back(jc);*/
+            }
             
             /*if ((c->type < SAMPLES_IN_BUNDLE)) {
                 // The built-in samples are in the bundle
@@ -422,6 +463,7 @@ void ofApp::loadGame(int gameId) {
            // pd.sendFloat("tempo8", 0.0);    // Set reverb to 0
             gameSettings.popTag();
         }
+        ofLog(OF_LOG_VERBOSE, "Done with Circles and Bubbles" );
         gameSettings.popTag();
         gameSettings.pushTag("joints");
         int nJoints = gameSettings.getNumTags("joint");
@@ -452,6 +494,11 @@ static bool shouldRemoveCircle(shared_ptr<FluxlyCircle>shape) {
     return true;
 }
 
+static bool shouldRemoveBubble(shared_ptr<FluxlyBubble>shape) {
+    return true;
+}
+
+
 //--------------------------------------------------------------
 void ofApp::update() {
     switch (scene) {
@@ -480,6 +527,10 @@ void ofApp::update() {
                 pd.sendFloat("pan"+to_string(panChannel), circles[panChannel]->x);
                 
                 for (int i=0; i<circles.size(); i++) {
+                    
+                    // damp all the help bubbles
+                    bubbles[i]->setRotation(0);
+                    
                     if ((circles[i]->spinning) && (circles[i]->wasntSpinning)) {
                         circles[i]->onOffState = true;
                         circles[i]->wasntSpinning = false;
@@ -504,13 +555,15 @@ void ofApp::update() {
                     circles[i].get()->checkToSendTempo();
                     if (circles[i]->tempo != 0) midiSavedAngularVelocity[i] = circles[i]->body->GetAngularVelocity();
                     if (circles[i].get()->sendTempo) {
-                       
+                        
                         if ((currentGame == 0) && (i==2)) {
                             ofLog(OF_LOG_VERBOSE, "Changed x %d: %f", i, ((float)circles[i]->x/screenW)*94);
                             pd.sendFloat("control"+to_string(circles[i].get()->id), ((float)circles[i]->x/screenW)*94);    // HACK: FIXME
+                            bubbles[i].get()->bValue = (int)((float)circles[i]->x/screenW)*94;
                         } else {
                              ofLog(OF_LOG_VERBOSE, "Changed tempo %d: %f", i, circles[i]->tempo);
                             pd.sendFloat("control"+to_string(circles[i].get()->id), circles[i]->tempo);
+                            bubbles[i].get()->bValue = to_string((int)(circles[i]->tempo*100));
                         }
                         circles[i].get()->sendTempo = false;
                     }
@@ -531,6 +584,10 @@ void ofApp::update() {
                     pd.readArray("scope0", backgroundScopeArray);
                     break;
                 case 1:
+                  /*  for (int i=0; i<8; i++) {
+                         pd.readArray("scope"+to_string(i), circles[i].get()->scopeArray);
+                    }*/
+                     pd.readArray("scope7", backgroundScopeArray1);
                     break;
                 case 2:
                     break;
@@ -575,17 +632,17 @@ void ofApp::draw() {
             
             ofSetRectMode(OF_RECTMODE_CENTER);
             
-            if (helpOn) {
-                for (int i=0; i<circles.size(); i++) {
-                    circles[i].get()->drawHelpBubble();
+            //if (helpOn) {
+                for (int i=0; i<bubbles.size(); i++) {
+                    bubbles[i].get()->drawBubbleStem(circles[i].get()->x, circles[i].get()->y);
+                    bubbles[i].get()->draw();
                 }
+         //   }
+            if (currentGame == 1) {
+             /*   for (int i=0; i<circles.size(); i++) {
+                    circles[i].get()->drawSoundWave(3);
+                }*/
             }
-            //if (device == PHONE) {
-            
-            for (int i=0; i<circles.size(); i++) {
-              //  circles[i].get()->drawSoundWave(1);
-            }
-            // }
             ofSetRectMode(OF_RECTMODE_CENTER);
             ofSetHexColor(0xFFFFFF);
             
@@ -594,10 +651,10 @@ void ofApp::draw() {
                 circles[i].get()->draw();
             }
             
-            for (int i=0; i<joints.size(); i++) {
+        /*    for (int i=0; i<joints.size(); i++) {
                 ofSetColor( ofColor::fromHex(0xff0000) );
                 joints[i]->joint->draw();
-            }
+            }*/
             ofSetHexColor(0xFFFFFF);
             exitButton.draw(controlX[EXIT_GAME], controlY[EXIT_GAME], controlW[EXIT_GAME], controlW[EXIT_GAME]);
             if (applyDamping) {
@@ -640,19 +697,6 @@ void ofApp::draw() {
              helpButtonGlow.draw(controlX[HELP_SAMPLE_SELECT], controlY[HELP_SAMPLE_SELECT], controlW[HELP_SAMPLE_SELECT], controlW[HELP_SAMPLE_SELECT]);
              }*/
             
-#ifdef FLUXLY_FREE
-            icon.draw(appIconX, appIconY, appIconW, appIconW);
-            
-            helpFont.drawString("Record Your Own samples",
-                                screenW/2 - helpFont.stringWidth("Record Your Own samples")/2,
-                                appIconY + appIconW/2 + helpTextHeight) ;
-            helpFont.drawString("with the full version",
-                                screenW/2 - helpFont.stringWidth("with the full version")/2,
-                                appIconY + appIconW/2 + helpTextHeight*2) ;
-            helpFont.drawString("in the App Store",
-                                screenW/2 - helpFont.stringWidth("in the App Store")/2,
-                                appIconY + appIconW/2 + helpTextHeight*3 ) ;
-#endif
             break;
         case SAVE_EXIT_PART_1:
             ofSetHexColor(0xFFFFFF);
@@ -665,10 +709,10 @@ void ofApp::draw() {
             for (int i=0; i<circles.size(); i++) {
                 circles[i].get()->draw();
             }
-            for (int i=0; i<joints.size(); i++) {
+          /*  for (int i=0; i<joints.size(); i++) {
                 ofSetColor( ofColor::fromHex(0xff0000) );
                 joints[i]->joint->draw();
-            }
+            }*/
             ofSetHexColor(0xFFFFFF);
             //screenshot.grabScreen(0, 0, screenW, screenH);
             //saving.draw(screenW/2, screenH/2);
@@ -688,27 +732,25 @@ void ofApp::draw() {
 }
 
 void ofApp::drawVisualization(int gameId) {
-    int radius = screenW / 48;
-    
-    int dw = 0;
-    int dh = 0;
-    
+    int w = screenH/16;
     switch (gameId) {
         case 0:
-            for (int i=0; i<8; i++) {
-                int t = (int)(backgroundScopeArray[i*2] * 255);
+            ofSetLineWidth(2);
+            for (int i=0; i<256; i++) {
+                int t = (int)(backgroundScopeArray[i] * 255);
                 for (int j=0; j<8; j++) {
                     if (((t >> j) & 0x01) == 1) {
-                   // if (backgroundScopeArray[i*j+j] > .5)
                         ofSetColor(255);
-                        //dw = (int)ofRandom(-10, 10);
-                        //dh = (int)ofRandom(-10, 10);
-                        //dw = j;
+                         if (circles[0]->tempo == 0) ofSetColor(0);
+                        ofNoFill();
+                        ofDrawRectangle(i*w, screenH/2-j*w, w*1.5, w*1.5);
+                        ofDrawRectangle(i*w, screenH/2+j*w, w*1.5, w*1.5);
+                        ofFill();
                     } else {
                         ofSetColor(0);
                         //dw = 10; dh=10;
                     }
-                    if (circles[0]->tempo == 0) ofSetColor(0);
+                   
                     /*
                     ofDrawEllipse(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawEllipse(17*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
@@ -716,21 +758,33 @@ void ofApp::drawVisualization(int gameId) {
                     ofDrawEllipse(radius+i*2*radius,   17*radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawEllipse(17*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawEllipse(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);*/
-                    ofDrawRectangle(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
+                  /*  ofDrawRectangle(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawRectangle(17*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawRectangle(33*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawRectangle(radius+i*2*radius,   17*radius+j*2*radius, radius+dw, radius+dh);
                     ofDrawRectangle(17*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawRectangle(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
+                    ofDrawRectangle(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);*/
+                    
                 }
             }
             break;
         case 1:
+            ofSetLineWidth(8);
+            float x1 = 0;
+            float h =screenH/2;
+            float step = screenW/backgroundScopeArray1.size();
+            ofSetColor(ofColor::fromHex(0xffffff));
+            
+            for (int j = 0; j < backgroundScopeArray1.size()-1; j++) {
+                ofDrawLine(x1,backgroundScopeArray1[j]*h+h, x1+step, backgroundScopeArray1[j+1]*h+h);
+                x1 += step;
+            }
+            ofFill();
             break;
-        case 2:
+     /*   case 2:
             break;
         case 3:
-            break;
+            break;*/
     }
 }
 
@@ -763,10 +817,19 @@ void ofApp::saveGame() {
         outputSettings.setValue("dampingX", circles[i]->dampingX);
         outputSettings.setValue("dampingY", circles[i]->dampingY);
         outputSettings.setValue("instrument", circles[i]->instrument);
-        outputSettings.setValue("connection1", circles[i]->connections[0]);
-        outputSettings.setValue("connection2", circles[i]->connections[1]);
-        outputSettings.setValue("connection3", circles[i]->connections[2]);
-        outputSettings.setValue("connection4", circles[i]->connections[3]);
+        outputSettings.setValue("bx", bubbles[i]->x/retinaScaling);
+        outputSettings.setValue("by", bubbles[i]->y/retinaScaling);
+        outputSettings.setValue("bw", bubbles[i]->w/retinaScaling);
+        outputSettings.setValue("bh", bubbles[i]->h/retinaScaling);
+        outputSettings.setValue("a1x", bubbles[i]->a1x/retinaScaling);
+        outputSettings.setValue("a1y", bubbles[i]->a1y/retinaScaling);
+        outputSettings.setValue("a2x", bubbles[i]->a2x/retinaScaling);
+        outputSettings.setValue("a2y", bubbles[i]->a2y/retinaScaling);
+        outputSettings.setValue("a3x", bubbles[i]->a3x/retinaScaling);
+        outputSettings.setValue("a3y", bubbles[i]->a3y/retinaScaling);
+        outputSettings.setValue("bLabel", bubbles[i]->bLabel);
+        outputSettings.setValue("bValue", bubbles[i]->bValue);
+        
         outputSettings.setValue("x", circles[i]->x/retinaScaling);
         outputSettings.setValue("y", circles[i]->y/retinaScaling);
         outputSettings.setValue("w", circles[i]->w/retinaScaling);
@@ -793,6 +856,8 @@ void ofApp::destroyGame() {
     
     pd.sendFloat("masterVolume", 0.0);
     
+    pd.closePatch(currentPatch);
+    
     for (int i=0; i < circles.size(); i++) {
         pd.sendFloat("toggle"+to_string(circles[i].get()->instrument), 0.0);
     }
@@ -807,8 +872,14 @@ void ofApp::destroyGame() {
         circles[i]->destroy();
     }
     
+    for (int i=0; i < bubbles.size(); i++) {
+        delete (BoxData *)bubbles[i]->body->GetUserData();
+        bubbles[i]->destroy();
+    }
+    
     ofRemove(joints, shouldRemoveJoint);
     ofRemove(circles, shouldRemoveCircle);
+    ofRemove(bubbles, shouldRemoveBubble);
 }
 
 

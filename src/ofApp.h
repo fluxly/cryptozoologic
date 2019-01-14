@@ -69,7 +69,7 @@
 #define maxTouches (11)
 #define nScenes (16)
 
-#define SCENES_IN_BUNDLE (15)
+#define SCENES_IN_BUNDLE (4)
 #define SAMPLES_IN_BUNDLE (15)
 
 // Controls
@@ -290,10 +290,12 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     SampleConsole * playRecordConsole;
     
     vector <shared_ptr<FluxlyCircle> > circles;
+    vector <shared_ptr<FluxlyBubble> > bubbles;
     vector <shared_ptr<FluxlyJointConnection> > joints;
     vector <shared_ptr<FluxlyConnection> > connections;
     vector<float> backgroundScopeArray{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-
+    vector<float> backgroundScopeArray1;
+                  
     bool midiSaveState[8] = { false, false, false, false, false, false, false, false };
     bool midiPlayState[8] = { false, false, false, false, false, false, false, false };
     int midiSavedAngularVelocity[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
@@ -302,7 +304,13 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     int midiPlayKeys[8] = { 60, 62, 64, 65, 67, 69, 71, 72 };
     ofImage toolbar;
     
+    Patch currentPatch;
+                  
     ofRectangle bounds;
+                  
+    string formula[3] = {
+    "foo", "bar", "baz"
+    };
 };
 
 
