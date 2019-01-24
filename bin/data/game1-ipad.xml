@@ -15,90 +15,163 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>177</x>
-            <y>548</y>
-            <w>100</w>
-            <rotation>-753.475280762</rotation>
+            <bx>138.000000000</bx>
+            <by>87.000000000</by>
+            <bw>60.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>OSC1</bLabel>
+            <bValue>47</bValue>
+            <x>141.000000000</x>
+            <y>219.000000000</y>
+            <w>100.000000000</w>
+            <rotation>32088.000000000</rotation>
         </circle>
         <circle>
             <id>1</id>
-            <type>1</type>
+            <type>59</type>
             <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <instrument>1</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>400</x>
-            <y>152</y>
-            <w>100</w>
-            <rotation>-497.891113281</rotation>
+            <instrument>0</instrument>
+            <bx>308.500000000</bx>
+            <by>70.500000000</by>
+            <bw>80.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>RUNGLE1</bLabel>
+            <bValue>29</bValue>
+            <x>321.000000000</x>
+            <y>209.000000000</y>
+            <w>100.000000000</w>
+            <rotation>17263.000000000</rotation>
         </circle>
         <circle>
             <id>2</id>
-            <type>1</type>
+            <type>2</type>
             <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <instrument>2</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>656</x>
-            <y>545</y>
-            <w>100</w>
-            <rotation>1557.178833008</rotation>
+            <instrument>0</instrument>
+            <bx>632.500000000</bx>
+            <by>66.500000000</by>
+            <bw>60.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>OSC2</bLabel>
+            <bValue>0</bValue>
+            <x>624.000000000</x>
+            <y>219.000000000</y>
+            <w>100.000000000</w>
+            <rotation>13234.112304688</rotation>
         </circle>
         <circle>
             <id>3</id>
-            <type>1</type>
+            <type>41</type>
             <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <instrument>3</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>500</x>
-            <y>545</y>
-            <w>100</w>
-            <rotation>1557.178833008</rotation>
+            <instrument>0</instrument>
+            <bx>868.000000000</bx>
+            <by>68.500000000</by>
+            <bw>80.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>RUNGLE2</bLabel>
+            <bValue>0</bValue>
+            <x>847.500000000</x>
+            <y>221.000000000</y>
+            <w>100.000000000</w>
+            <rotation>13462.663085938</rotation>
         </circle>
         <circle>
             <id>4</id>
-            <type>144</type>
+            <type>9</type>
             <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <instrument>8</instrument>
-            <connection1>-1</connection1>
-            <connection2>-1</connection2>
-            <connection3>-1</connection3>
-            <connection4>-1</connection4>
-            <x>415</x>
-            <y>798</y>
-            <w>100</w>
-            <rotation>5585.837890625</rotation>
+            <instrument>0</instrument>
+            <bx>130.500000000</bx>
+            <by>405.000000000</by>
+            <bw>110.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>FILTER FREQ</bLabel>
+            <bValue>0</bValue>
+            <x>121.500000000</x>
+            <y>575.500000000</y>
+            <w>100.000000000</w>
+            <rotation>51891.390625000</rotation>
+        </circle>
+        <circle>
+            <id>5</id>
+            <type>80</type>
+            <eyeState>0</eyeState>
+            <onOffState>0</onOffState>
+            <spinning>0</spinning>
+            <wasntSpinning>0</wasntSpinning>
+            <dampingX>0.000000000</dampingX>
+            <dampingY>0.000000000</dampingY>
+            <instrument>0</instrument>
+            <bx>399.500000000</bx>
+            <by>458.500000000</by>
+            <bw>120.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>FILTER SWEEP</bLabel>
+            <bValue>0</bValue>
+            <x>353.000000000</x>
+            <y>593.500000000</y>
+            <w>100.000000000</w>
+            <rotation>15581.663085938</rotation>
+        </circle>
+        <circle>
+            <id>6</id>
+            <type>116</type>
+            <eyeState>0</eyeState>
+            <onOffState>0</onOffState>
+            <spinning>0</spinning>
+            <wasntSpinning>0</wasntSpinning>
+            <dampingX>0.000000000</dampingX>
+            <dampingY>0.000000000</dampingY>
+            <instrument>0</instrument>
+            <bx>598.500000000</bx>
+            <by>439.000000000</by>
+            <bw>130.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>FILTER RUNGLE</bLabel>
+            <bValue>0</bValue>
+            <x>616.000000000</x>
+            <y>586.500000000</y>
+            <w>100.000000000</w>
+            <rotation>10896.719726562</rotation>
+        </circle>
+        <circle>
+            <id>7</id>
+            <type>65</type>
+            <eyeState>0</eyeState>
+            <onOffState>0</onOffState>
+            <spinning>0</spinning>
+            <wasntSpinning>0</wasntSpinning>
+            <dampingX>0.000000000</dampingX>
+            <dampingY>0.000000000</dampingY>
+            <instrument>0</instrument>
+            <bx>863.000000000</bx>
+            <by>408.500000000</by>
+            <bw>110.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>FILTER RES</bLabel>
+            <bValue>-4</bValue>
+            <x>872.500000000</x>
+            <y>562.000000000</y>
+            <w>100.000000000</w>
+            <rotation>70193.007812500</rotation>
         </circle>
     </circles>
     <joints></joints>

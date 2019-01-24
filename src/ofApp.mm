@@ -371,12 +371,6 @@ void ofApp::loadGame(int gameId) {
             b->y =  gameSettings.getValue("by", 0);
             b->w =  gameSettings.getValue("bw", 0);
             b->h =  gameSettings.getValue("bh", 0);
-            b->a1x =  gameSettings.getValue("a1x", 0);
-            b->a1y =  gameSettings.getValue("a1y", 0);
-            b->a2x =  gameSettings.getValue("a2x", 0);
-            b->a2y =  gameSettings.getValue("a2y", 0);
-            b->a3x =  gameSettings.getValue("a3x", 0);
-            b->a3y =  gameSettings.getValue("a3y", 0);
             b->bLabel = gameSettings.getValue("bLabel", "Null");
             b->bValue = gameSettings.getValue("bValue", "0");
             // Make some corrections for tablets
@@ -402,12 +396,6 @@ void ofApp::loadGame(int gameId) {
             b->y = b->y*retinaScaling;
             b->w = b->w*retinaScaling;
             b->h = b->h*retinaScaling;
-            b->a1x = b->a1x*retinaScaling;
-            b->a1y = b->a1y*retinaScaling;
-            b->a2x = b->a2x*retinaScaling;
-            b->a2y = b->a2y*retinaScaling;
-            b->a3x= b->a3x*retinaScaling;
-            b->a3y= b->a3y*retinaScaling;
             
             c->setPhysics(1/deviceScale/retinaScaling, 1, 1);    // density, bounce, friction
             c->setup(box2d.getWorld(), c->x, c->y, (c->w/2)*deviceScale);
@@ -430,8 +418,8 @@ void ofApp::loadGame(int gameId) {
                 shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
                 ofxBox2dJoint *j = new ofxBox2dJoint;
                 j->setup(box2d.getWorld(), circles[i].get()->body, bubbles[i].get()->body);
-                if (device == PHONE) j->setLength(circles[i]->w/2 + 100);
-                if (device == TABLET) j->setLength(circles[i]->w/2 + 100);
+                if (device == PHONE) j->setLength(circles[i]->w/2 + 100*deviceScale);
+                if (device == TABLET) j->setLength(circles[i]->w/2 + 100*deviceScale);
                 jc.get()->id1 = i;
                 jc.get()->id2 = i;
                 jc.get()->joint = j;
@@ -821,15 +809,8 @@ void ofApp::saveGame() {
         outputSettings.setValue("by", bubbles[i]->y/retinaScaling);
         outputSettings.setValue("bw", bubbles[i]->w/retinaScaling);
         outputSettings.setValue("bh", bubbles[i]->h/retinaScaling);
-        outputSettings.setValue("a1x", bubbles[i]->a1x/retinaScaling);
-        outputSettings.setValue("a1y", bubbles[i]->a1y/retinaScaling);
-        outputSettings.setValue("a2x", bubbles[i]->a2x/retinaScaling);
-        outputSettings.setValue("a2y", bubbles[i]->a2y/retinaScaling);
-        outputSettings.setValue("a3x", bubbles[i]->a3x/retinaScaling);
-        outputSettings.setValue("a3y", bubbles[i]->a3y/retinaScaling);
         outputSettings.setValue("bLabel", bubbles[i]->bLabel);
         outputSettings.setValue("bValue", bubbles[i]->bValue);
-        
         outputSettings.setValue("x", circles[i]->x/retinaScaling);
         outputSettings.setValue("y", circles[i]->y/retinaScaling);
         outputSettings.setValue("w", circles[i]->w/retinaScaling);
