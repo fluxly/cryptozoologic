@@ -7,6 +7,7 @@
 #include "ofApp.h"
 #import <AVFoundation/AVFoundation.h>
 //#import <sys/utsname.h>
+#include <string>
 
 ABiOSSoundStream* ofApp::getSoundStream(){
     return stream;
@@ -150,11 +151,14 @@ void ofApp::setupPostSplashscreen() {
     dir.open(ofxiOSGetDocumentsDirectory());
     int numFiles = dir.listDir();
     firstRun = true;
+    clueOn = true;
     
     for (int i=0; i<numFiles; ++i) {
         if (dir.getName(i) == "menuSettings.xml") {
             firstRun = false;
+            clueOn = false;
             helpOn = false;        // turn off help layer if not first run
+            helpWasOn = false;
         }
         //cout << "Path at index " << i << " = " << dir.getName(i) << endl;
     }
@@ -212,7 +216,14 @@ void ofApp::setupPostSplashscreen() {
     midiChan = 1; // midi channels are 1-16
     
     // subscribe to receive source names
-    pd.subscribe("toOF");
+    pd.subscribe("noplay0");
+    pd.subscribe("noplay1");
+    pd.subscribe("noplay2");
+    pd.subscribe("noplay3");
+    pd.subscribe("play0");
+    pd.subscribe("play1");
+    pd.subscribe("play2");
+    pd.subscribe("play3");
     pd.subscribe("env");
     
     // add message receiver, required if you want to receieve messages
@@ -308,9 +319,22 @@ void ofApp::setupPostSplashscreen() {
     
     dampOnOff.load("dampOnOff.png");
     dampOnOffGlow.load("dampOnOffGlow.png");
-    
     saving.load("saving.png");
+    
+    // Visualizations setup
+    
+    for (int i=0; i < 5; i++) {
+        if (device == PHONE) {
+            game2ledX[i] = game2ledX[i] * 0.55f;
+        }
+        game2ledX[i] = game2ledX[i] * retinaScaling;
+    }
+    if (device == PHONE) {
+        game2ledX[4] = 495 * retinaScaling;
+    }
+    
     ofLog(OF_LOG_VERBOSE, "end Setup");
+    
 }
 
 void ofApp::loadGame(int gameId) {
@@ -322,12 +346,13 @@ void ofApp::loadGame(int gameId) {
     
     // the world bounds
     currentGame = gameId;
+    timeInGame = 0;
     
     switch (gameId) {
         case 0: currentPatch = pd.openPatch("pd-bytebeat.pd"); break;
         case 1: currentPatch = pd.openPatch("pd-benjolin2.pd"); break;
-        case 2: currentPatch = pd.openPatch("pd-vivianLoopBox.pd"); break;
-        case 3: currentPatch = pd.openPatch("pd-irishYeti.pd"); break;
+        case 2: currentPatch = pd.openPatch("pd-irishYeti2.pd"); break;
+        case 3: currentPatch = pd.openPatch("pd-vivianLoopBox.pd"); break;
     }
     
     //send screen width for panning calculation in Pd
@@ -360,10 +385,16 @@ void ofApp::loadGame(int gameId) {
             c->x = gameSettings.getValue("x", 0);
             c->y = gameSettings.getValue("y", 0);
             c->w = gameSettings.getValue("w", 0);
+            c->density = gameSettings.getValue("density", 1);
+            c->bounce = gameSettings.getValue("bounce", 1);
+            c->friction = gameSettings.getValue("friction", 1);
+            c->senseType = gameSettings.getValue("senseType", 0);
             c->displayW = c->w;
             c->retinaScale = retinaScaling;
+            
+            /* Now in toggleHelpBubbles()
+             // Add a help bubble
             ofLog(OF_LOG_VERBOSE, "Adding Bubble" + to_string(c->id));
-            // Add a help bubble
             bubbles.push_back(shared_ptr<FluxlyBubble>(new FluxlyBubble));
             FluxlyBubble * b = bubbles.back().get();
             b->id = gameSettings.getValue("id", 0);
@@ -371,8 +402,9 @@ void ofApp::loadGame(int gameId) {
             b->y =  gameSettings.getValue("by", 0);
             b->w =  gameSettings.getValue("bw", 0);
             b->h =  gameSettings.getValue("bh", 0);
-            b->bLabel = gameSettings.getValue("bLabel", "Null");
+            b->bLabel = gameSettings.getValue("bLabel", to_string(b->id));
             b->bValue = gameSettings.getValue("bValue", "0");
+            */
             // Make some corrections for tablets
             if (device == TABLET) {
                 c->soundWaveStep = 4;
@@ -391,13 +423,14 @@ void ofApp::loadGame(int gameId) {
             c->soundWaveH *= retinaScaling;
             c->animationStep *=retinaScaling;
             c->displayW *= retinaScaling;
+            c->bx =  gameSettings.getValue("bx", 0);
+            c->by =  gameSettings.getValue("by", 0);
+            c->bw =  gameSettings.getValue("bw", 0);
+            c->bh =  gameSettings.getValue("bh", 0);
+            c->bLabel = gameSettings.getValue("bLabel", to_string(c->id));
+            c->bValue = gameSettings.getValue("bValue", "0");
             
-            b->x = b->x*retinaScaling;
-            b->y = b->y*retinaScaling;
-            b->w = b->w*retinaScaling;
-            b->h = b->h*retinaScaling;
-            
-            c->setPhysics(1/deviceScale/retinaScaling, 1, 1);    // density, bounce, friction
+            c->setPhysics(c->density/deviceScale/retinaScaling, c->bounce, c->friction);    // density, bounce, friction
             c->setup(box2d.getWorld(), c->x, c->y, (c->w/2)*deviceScale);
             c->setRotation(gameSettings.getValue("rotation", 0));
             BoxData * bd = new BoxData();
@@ -405,53 +438,38 @@ void ofApp::loadGame(int gameId) {
             c->body->SetUserData(bd);
             c->init();
             
-            b->setPhysics(1/deviceScale/retinaScaling, 1, 1);
-            b->setup(box2d.getWorld(), b->x, b->y, (b->w)*deviceScale, (b->h)*deviceScale);
+           /* Now in togglehelpBubble()
+            b->setPhysics(c->density/deviceScale/retinaScaling, c->bounce, c->friction);
+            b->setup(box2d.getWorld(), b->x, b->y, (b->w), (b->h));
             //b->setRotation(gameSettings.getValue("rotation", 0));
             BoxData * bd2 = new BoxData();
             bd2->boxId = b->id;
             b->body->SetUserData(bd2);
             b->init();
+            */
             
-            if (currentGame == 0) {
-                if (i !=2) {
-                shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
-                ofxBox2dJoint *j = new ofxBox2dJoint;
-                j->setup(box2d.getWorld(), circles[i].get()->body, bubbles[i].get()->body);
-                if (device == PHONE) j->setLength(circles[i]->w/2 + 100*deviceScale);
-                if (device == TABLET) j->setLength(circles[i]->w/2 + 100*deviceScale);
-                jc.get()->id1 = i;
-                jc.get()->id2 = i;
-                jc.get()->joint = j;
-                joints.push_back(jc);
-                }
-            } else {
-             /* shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
-              ofxBox2dJoint *j = new ofxBox2dJoint;
-              j->setup(box2d.getWorld(), circles[i].get()->body, bubbles[i].get()->body);
-              if (device == PHONE) j->setLength(circles[i]->w/2 + 50);
-              if (device == TABLET) j->setLength(circles[i]->w/2 + 50);
-              jc.get()->id1 = i;
-              jc.get()->id2 = i;
-              jc.get()->joint = j;
-              joints.push_back(jc);*/
-            }
-            
-            /*if ((c->type < SAMPLES_IN_BUNDLE)) {
-                // The built-in samples are in the bundle
-                pd.sendSymbol("filename"+to_string(circles[i].get()->instrument), sampleMenu->menuItems[circles[i].get()->type]->link);
-            } else {
-                if (c->type < 144) {
-                    // Anything after that is in the documents directory
-                    pd.sendSymbol("filename"+to_string(circles[i].get()->instrument),
-                                  ofxiOSGetDocumentsDirectory()+sampleMenu->menuItems[circles[i].get()->type]->link);
-                }
-            }*/
-            
-           // pd.sendFloat("tempo8", 0.0);    // Set reverb to 0
             gameSettings.popTag();
         }
-        ofLog(OF_LOG_VERBOSE, "Done with Circles and Bubbles" );
+        ofLog(OF_LOG_VERBOSE, "Done with Circles" );
+        
+        // Process edges
+        gameSettings.popTag();
+        gameSettings.pushTag("edges");
+        int nEdges = gameSettings.getNumTags("edge");
+        
+        for(int i = 0; i < nEdges; i++){
+            edges.push_back(shared_ptr<ofxBox2dEdge>(new ofxBox2dEdge));
+            ofxBox2dEdge * e = edges.back().get();
+            gameSettings.pushTag("edge", i);
+            e->addVertex(gameSettings.getValue("x1", 0)*retinaScaling, gameSettings.getValue("y1", 0)*retinaScaling);
+            e->addVertex(gameSettings.getValue("x2", 0)*retinaScaling, gameSettings.getValue("y2", 0)*retinaScaling);
+            e->setPhysics(0.0, 0.0, 0.0);
+            e->create(box2d.getWorld());
+            gameSettings.popTag();
+        }
+        gameSettings.popTag();
+        ofLog(OF_LOG_VERBOSE, "Done with Edges" );
+        
         gameSettings.popTag();
         gameSettings.pushTag("joints");
         int nJoints = gameSettings.getNumTags("joint");
@@ -468,24 +486,25 @@ void ofApp::loadGame(int gameId) {
     }
     applyDamping = true;
     
+    if (helpOn) {
+        toggleHelpBubbles();
+    }
     pd.sendFloat("masterVolume", 1.0);
     gameState = RUN;
 }
 
-static bool shouldRemoveConnection(shared_ptr<FluxlyConnection>shape) {
-    return true;
-}
 static bool shouldRemoveJoint(shared_ptr<FluxlyJointConnection>shape) {
     return true;
 }
 static bool shouldRemoveCircle(shared_ptr<FluxlyCircle>shape) {
     return true;
 }
-
 static bool shouldRemoveBubble(shared_ptr<FluxlyBubble>shape) {
     return true;
 }
-
+static bool shouldRemoveEdge(shared_ptr<ofxBox2dEdge>shape) {
+    return true;
+}
 
 //--------------------------------------------------------------
 void ofApp::update() {
@@ -495,6 +514,9 @@ void ofApp::update() {
             instrumentOn = false;
             break;
         case GAME_SCENE:
+            if ((helpOn != helpWasOn)) {
+                toggleHelpBubbles();
+            }
             instrumentOn = true;
             if (gameState == RUN) {
                 // since this is a test and we don't know if init() was called with
@@ -509,6 +531,7 @@ void ofApp::update() {
                 box2d.update();
                 
                 globalTick++;
+                if ((globalTick % 60) == 0) timeInGame++;
                 
                 // only update one pan channel each tick
                 int panChannel = globalTick % nCircles;
@@ -517,7 +540,7 @@ void ofApp::update() {
                 for (int i=0; i<circles.size(); i++) {
                     
                     // damp all the help bubbles
-                    bubbles[i]->setRotation(0);
+                    if (helpOn) bubbles[i]->setRotation(0);
                     
                     if ((circles[i]->spinning) && (circles[i]->wasntSpinning)) {
                         circles[i]->onOffState = true;
@@ -539,34 +562,38 @@ void ofApp::update() {
                 for (int i=0; i < circles.size(); i++) {
                     circles[i].get()->setRotationFriction(1);
                     if (applyDamping) circles[i].get()->setDamping(0, 0);
-                    circles[i].get()->checkToSendNote();
-                    circles[i].get()->checkToSendTempo();
+                    //circles[i].get()->checkToSendNote();
+                    circles[i].get()->checkToSendControl();
                     if (circles[i]->tempo != 0) midiSavedAngularVelocity[i] = circles[i]->body->GetAngularVelocity();
-                    if (circles[i].get()->sendTempo) {
-                        
-                        if ((currentGame == 0) && (i==2)) {
-                            ofLog(OF_LOG_VERBOSE, "Changed x %d: %f", i, ((float)circles[i]->x/screenW)*94);
-                            pd.sendFloat("control"+to_string(circles[i].get()->id), ((float)circles[i]->x/screenW)*94);    // HACK: FIXME
-                            bubbles[i].get()->bValue = (int)((float)circles[i]->x/screenW)*94;
-                        } else {
-                             ofLog(OF_LOG_VERBOSE, "Changed tempo %d: %f", i, circles[i]->tempo);
-                            pd.sendFloat("control"+to_string(circles[i].get()->id), circles[i]->tempo);
-                            bubbles[i].get()->bValue = to_string((int)(circles[i]->tempo*100));
+                    if (circles[i].get()->sendControl) {
+                        switch (circles[i].get()->senseType) {
+                            case (0): {
+                                ofLog(OF_LOG_VERBOSE, "Sent angular of %d: %f", circles[i].get()->id, circles[i]->tempo);
+                                pd.sendFloat("control"+to_string(circles[i].get()->id), circles[i]->tempo);
+                                if (helpOn) bubbles[i].get()->bValue = to_string((int)(circles[i]->tempo*100));
+                                break;
+                            }
+                            case (1): {
+                                float val = ((float)circles[i]->x/screenW);
+                                ofLog(OF_LOG_VERBOSE, "Sent x of %d: %f", circles[i].get()->id, val);
+                                pd.sendFloat("control"+to_string(circles[i].get()->id), val);
+                                if (helpOn) bubbles[i].get()->bValue = formulaStr[(int)(val*94)];   // FIXME: Hardcoded for game 0
+                                break;
+                            }
+                            case (2): {
+                                float val = (float)circles[i]->y/screenH;
+                                ofLog(OF_LOG_VERBOSE, "Sent y of %d: %f", circles[i].get()->id, val);
+                                pd.sendFloat("control"+to_string(circles[i].get()->id), val);
+                                if (helpOn) bubbles[i].get()->bValue = to_string((int)(val*17)); // FIXME: HARDCODED FOR GAME 2
+                                if ((i > 4) && ((i % 2) == 1)) game2Steps[(i-5)/2] = (int)(val*17);// FIXME: HARDCODED FOR GAME 2
+                                break;
+                            }
                         }
-                        circles[i].get()->sendTempo = false;
+                        circles[i].get()->sendControl = false;
                     }
-                    if (circles[i].get()->sendOn) {
-                        pd.sendFloat("toggle"+to_string(circles[i].get()->instrument), 1.0);
-                        circles[i].get()->sendOn = false;
-                    }
-                    if (circles[i].get()->sendOff) {
-                        pd.sendFloat("toggle"+to_string(circles[i].get()->instrument), 0.0);
-                        circles[i].get()->sendOff = false;
-                    }
-                   // if (circles[i].get()->type < 144) pd.readArray("scope"+to_string(circles[i].get()->instrument), circles[i].get()->scopeArray);
                 }
-                // Get scopes
             }
+            
             switch (currentGame) {
                 case 0:
                     pd.readArray("scope0", backgroundScopeArray);
@@ -578,14 +605,12 @@ void ofApp::update() {
                      pd.readArray("scope7", backgroundScopeArray1);
                     break;
                 case 2:
+                    pd.readArray("scope4", backgroundScopeArray1);
                     break;
                 case 3:
                     break;
             }
             break;
-    }
-    if ((helpOn) || (helpOn2)) {
-        helpLayerScript();     // update the help layer
     }
 }
 
@@ -620,17 +645,13 @@ void ofApp::draw() {
             
             ofSetRectMode(OF_RECTMODE_CENTER);
             
-            //if (helpOn) {
+            if (helpOn) {
                 for (int i=0; i<bubbles.size(); i++) {
                     bubbles[i].get()->drawBubbleStem(circles[i].get()->x, circles[i].get()->y);
                     bubbles[i].get()->draw();
                 }
-         //   }
-            if (currentGame == 1) {
-             /*   for (int i=0; i<circles.size(); i++) {
-                    circles[i].get()->drawSoundWave(3);
-                }*/
             }
+
             ofSetRectMode(OF_RECTMODE_CENTER);
             ofSetHexColor(0xFFFFFF);
             
@@ -687,6 +708,8 @@ void ofApp::draw() {
             
             break;
         case SAVE_EXIT_PART_1:
+            ofLog(OF_LOG_VERBOSE, "Time in Game: %d sec", timeInGame);
+            pd.sendBang("onExit");
             ofSetHexColor(0xFFFFFF);
             ofSetRectMode(OF_RECTMODE_CORNER);
             background[backgroundId].draw(0, 0, worldW, worldH);
@@ -709,55 +732,41 @@ void ofApp::draw() {
         case SAVE_EXIT_PART_2:
            // screenshot.save( mainMenu->menuItems[currentGame]->filename);
             //ofLog(OF_LOG_VERBOSE, "Screenshot");
-            saveGame();
+            //saveGame();
             destroyGame();
             scene = MENU_SCENE;
            // mainMenu->menuItems[currentGame]->reloadThumbnail();
             break;
     }
-    if (helpOn && (scene == GAME_SCENE)) helpLayerDisplay(currentHelpState);
-    if (helpOn2 && (scene == SELECT_SAMPLE_SCENE)) helpLayerDisplay(currentHelpState2);
+    if (firstRun && (scene == GAME_SCENE)) helpLayerDisplay(currentClueState);
 }
 
 void ofApp::drawVisualization(int gameId) {
-    int w = screenH/16;
     switch (gameId) {
-        case 0:
-            ofSetLineWidth(2);
+        case 0: {
+            int w = screenH/16;
+            ofSetLineWidth(2*retinaScaling*deviceScale);
             for (int i=0; i<256; i++) {
                 int t = (int)(backgroundScopeArray[i] * 255);
+                int w1 =w*1.5;
                 for (int j=0; j<8; j++) {
                     if (((t >> j) & 0x01) == 1) {
                         ofSetColor(255);
                          if (circles[0]->tempo == 0) ofSetColor(0);
                         ofNoFill();
-                        ofDrawRectangle(i*w, screenH/2-j*w, w*1.5, w*1.5);
-                        ofDrawRectangle(i*w, screenH/2+j*w, w*1.5, w*1.5);
+                        ofDrawRectangle(i*w, screenH/2-j*(w)-w/2, w1, w1);
+                        ofDrawRectangle(i*w, screenH/2+j*(w)-w/2, w1, w1);
                         ofFill();
                     } else {
                         ofSetColor(0);
                         //dw = 10; dh=10;
                     }
-                   
-                    /*
-                    ofDrawEllipse(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawEllipse(17*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawEllipse(33*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawEllipse(radius+i*2*radius,   17*radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawEllipse(17*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawEllipse(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);*/
-                  /*  ofDrawRectangle(radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawRectangle(17*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawRectangle(33*radius+i*2*radius, radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawRectangle(radius+i*2*radius,   17*radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawRectangle(17*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);
-                    ofDrawRectangle(33*radius+i*2*radius, 17*radius+j*2*radius, radius+dw, radius+dh);*/
-                    
                 }
             }
             break;
-        case 1:
-            ofSetLineWidth(8);
+        }
+        case 1: {
+            ofSetLineWidth(4*retinaScaling);
             float x1 = 0;
             float h =screenH/2;
             float step = screenW/backgroundScopeArray1.size();
@@ -769,11 +778,63 @@ void ofApp::drawVisualization(int gameId) {
             }
             ofFill();
             break;
-     /*   case 2:
+        }
+        case 2: {
+            float y1 = 0;
+            float h =screenH/2;
+            float w1 = 100*retinaScaling;
+            float step = (screenH*retinaScaling)/backgroundScopeArray1.size();
+            ofSetLineWidth(2*deviceScale*retinaScaling);
+            ofSetColor(ofColor::fromHex(0xffffff));
+            ofNoFill();
+            for (int j = 0; j < backgroundScopeArray1.size()-1; j++) {
+                ofDrawLine(backgroundScopeArray1[j]*w1+game2ledX[4], y1, backgroundScopeArray1[j+1]*w1+game2ledX[4], y1+step);
+                y1 += step;
+            }
+            for (int i=0; i<4; i++) {
+                int r =screenH/(game2Steps[i]);
+                for (int j=0; j<game2Steps[i]; j++) {
+                    ofSetColor(ofColor::fromHex(0xffffff));
+                    if (j == currentPulse[i]) {
+                        if (currentPulseOn[i] == 1) {
+                            ofFill();
+                             ofDrawEllipse(game2ledX[i], r * (j+1)-r/2, r, r);
+                            ofNoFill();
+                        } else {
+                            //ofDrawRectangle(game2ledX[i]-r/2, r * (j), r, r);
+                            ofDrawEllipse(game2ledX[i], r * (j+1)-r/2, r, r);
+                           // ofFill();
+                           // ofSetColor(ofColor::fromHex(0x333333));
+                           // ofDrawRectangle(game2ledX[i]-r/2, r * (j), r, r);
+                           // ofNoFill();
+                        }
+                    } else {
+                        ofDrawRectangle(game2ledX[i]-r/2, r * (j), r, r);
+                        //ofDrawEllipse(game2ledX[i], r * (j+1)-r/2, r, r);
+                    }
+                }
+            }
+            ofFill();
             break;
-        case 3:
-            break;*/
+        }
     }
+}
+
+void ofApp::receiveBang(const std::string& dest) {
+    //cout << "OF: bang " << dest << endl;
+
+    if (dest.substr(0, 2) == noChar) {
+        int n = stoi(dest.substr(6,1));
+        currentPulse[n] = (currentPulse[n]+1) % game2Steps[n];
+        currentPulseOn[n] = 0;
+       // ofLog(OF_LOG_VERBOSE, "Bang NoPlay %d %d", currentPulse[n], currentPulseOn[n]);
+    } else {
+        int n = stoi(dest.substr(4,1));
+        currentPulse[n] = (currentPulse[n]+1) % game2Steps[n];
+        currentPulseOn[n] = 1;
+      //  ofLog(OF_LOG_VERBOSE, "Bang Play %d %d", currentPulse[n], currentPulseOn[n]);
+    }
+   
 }
 
 //--------------------------------------------------------------
@@ -805,12 +866,12 @@ void ofApp::saveGame() {
         outputSettings.setValue("dampingX", circles[i]->dampingX);
         outputSettings.setValue("dampingY", circles[i]->dampingY);
         outputSettings.setValue("instrument", circles[i]->instrument);
-        outputSettings.setValue("bx", bubbles[i]->x/retinaScaling);
-        outputSettings.setValue("by", bubbles[i]->y/retinaScaling);
-        outputSettings.setValue("bw", bubbles[i]->w/retinaScaling);
-        outputSettings.setValue("bh", bubbles[i]->h/retinaScaling);
-        outputSettings.setValue("bLabel", bubbles[i]->bLabel);
-        outputSettings.setValue("bValue", bubbles[i]->bValue);
+        outputSettings.setValue("bx", circles[i]->bx/retinaScaling);
+        outputSettings.setValue("by", circles[i]->by/retinaScaling);
+        outputSettings.setValue("bw", circles[i]->bw/retinaScaling);
+        outputSettings.setValue("bh", circles[i]->bh/retinaScaling);
+        outputSettings.setValue("bLabel", circles[i]->bLabel);
+        outputSettings.setValue("bValue", circles[i]->bValue);
         outputSettings.setValue("x", circles[i]->x/retinaScaling);
         outputSettings.setValue("y", circles[i]->y/retinaScaling);
         outputSettings.setValue("w", circles[i]->w/retinaScaling);
@@ -848,17 +909,23 @@ void ofApp::destroyGame() {
         joints[i]->joint->destroy();
     }
     
+    for (int i=0; i < edges.size(); i++) {
+        // remove edge from world
+        edges[i]->destroy();
+    }
+    
     for (int i=0; i < circles.size(); i++) {
         delete (BoxData *)circles[i]->body->GetUserData();
         circles[i]->destroy();
     }
     
     for (int i=0; i < bubbles.size(); i++) {
-        delete (BoxData *)bubbles[i]->body->GetUserData();
+        //delete (BoxData *)bubbles[i]->body->GetUserData();
         bubbles[i]->destroy();
     }
     
     ofRemove(joints, shouldRemoveJoint);
+    ofRemove(edges, shouldRemoveEdge);
     ofRemove(circles, shouldRemoveCircle);
     ofRemove(bubbles, shouldRemoveBubble);
 }
@@ -1087,11 +1154,11 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
                 }
                 // Check to see if helpOn pushed
                 if (controlInBounds(HELP_GAME, touch.x, touch.y)) {
+                    helpWasOn = helpOn;
                     helpOn = !helpOn;
                     startTouchId = -1;
                     startTouchX = 0;
                     startTouchY = 0;
-                    //ofLog(OF_LOG_VERBOSE, "DAMP ON OFF ");
                 }
             }
             
@@ -1357,34 +1424,96 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     void ofApp::helpLayerScript() {
         switch (scene) {
             case (MENU_SCENE) :
-            case (SELECT_SAMPLE_SCENE) :
-                currentHelpState2 = -1;
-                /*helpTimer2 = (helpTimer2 + 1) % (THREE_SECONDS * 4);
-                 currentHelpState2 = helpTimer2 / THREE_SECONDS;
-                 if (currentHelpState2 == 3) {
-                 helpTimer2 = 0;
-                 currentHelpState2 = -1;
-                 helpOn2 = false;
-                 }*/
-                //ofLog(OF_LOG_VERBOSE, "timer %i", currentHelpState);
+                currentClueState = -1;
+                clueTimer = (clueTimer + 1) % (THREE_SECONDS * 4);
+                currentClueState = clueTimer / THREE_SECONDS;
+                if (currentClueState == 1) {
+                    clueTimer = 0;
+                    currentClueState = -1;
+                    clueOn = false;
+                    cluesSeen++;
+                }
+                ofLog(OF_LOG_VERBOSE, "timer %i", currentClueState);
+                break;
+            case (GAME_SCENE) :
+                currentClueState = -1;
+                clueTimer = (clueTimer + 1) % (THREE_SECONDS * 4);
+                 currentClueState = clueTimer / THREE_SECONDS;
+                 if (currentClueState == 3) {
+                     clueTimer = 0;
+                     currentClueState = -1;
+                     clueOn = false;
+                     cluesSeen++;
+                 }
+                ofLog(OF_LOG_VERBOSE, "timer %i", currentClueState);
                 break;
             case (SAVE_EXIT_PART_1):
                 
                 break;
-            case (GAME_SCENE) :
-                helpTimer = (helpTimer + 1) % (THREE_SECONDS * 19);
-                currentHelpState = helpTimer / THREE_SECONDS;
-                if (currentHelpState == 18) {
-                    helpTimer = 0;
-                    currentHelpState = -1;
-                    helpOn = false;
+        }
+    }
+    
+    void ofApp::toggleHelpBubbles() {
+        // Called once when/after help button changes state
+        helpWasOn = helpOn;
+        if (helpOn) {
+            for (int i=0; i<circles.size(); i++) {
+                ofLog(OF_LOG_VERBOSE, "Adding Bubble" + to_string(circles[i]->id));
+                bubbles.push_back(shared_ptr<FluxlyBubble>(new FluxlyBubble));
+                FluxlyBubble * b = bubbles.back().get();
+
+                bubbles[i]->x =  circles[i]->bx * retinaScaling;
+                bubbles[i]->y =  circles[i]->by * retinaScaling;
+                bubbles[i]->w =  circles[i]->bw * retinaScaling;
+                bubbles[i]->h =  circles[i]->bh * retinaScaling;
+                bubbles[i]->bLabel = circles[i]->bLabel;
+                bubbles[i]->bValue = circles[i]->bValue;
+                bubbles[i]->setPhysics(circles[i]->density/deviceScale/retinaScaling, circles[i]->bounce, circles[i]->friction);
+                bubbles[i]->setup(box2d.getWorld(), bubbles[i]->x, bubbles[i]->y, (bubbles[i]->w), (bubbles[i]->h));
+                //b->setRotation(gameSettings.getValue("rotation", 0));
+                bubbles[i]->init();
+                
+
+                if ((currentGame == 0) && (i == 2)) {
+                    // FIXME: move to game object init at some point
+                    bubbles[i]->fontSize = 0;
+                    bubbles[i]->bValue = formulaStr[(int)((float)(circles[i]->x/screenW)*94)];
                 }
-                //ofLog(OF_LOG_VERBOSE, "timer %i", currentHelpState);
-                break;
+                if (currentGame == 0) {
+                    if (i != 2) {
+                        shared_ptr<FluxlyJointConnection> jc = shared_ptr<FluxlyJointConnection>(new FluxlyJointConnection);
+                        ofxBox2dJoint *j = new ofxBox2dJoint;
+                        j->setup(box2d.getWorld(), circles[i].get()->body, bubbles[i].get()->body);
+                        if (device == PHONE) j->setLength(circles[i]->w/2 + 100*deviceScale);
+                        if (device == TABLET) j->setLength(circles[i]->w/2 + 100*deviceScale);
+                        jc.get()->id1 = i;
+                        jc.get()->id2 = i;
+                        jc.get()->joint = j;
+                        joints.push_back(jc);
+                    }
+                }
+            }
+        } else {
+            for (int i=0; i < joints.size(); i++) {
+                // remove joint from world
+                joints[i]->joint->destroy();
+            }
+           for (int i=0; i < bubbles.size(); i++) {
+               ofLog(OF_LOG_VERBOSE, "Destroying Bubble" + to_string(circles[i]->id));
+               
+                //delete (BoxData *)bubbles[i]->body->GetUserData();
+                bubbles[i]->destroy();
+            }
+            ofRemove(joints, shouldRemoveJoint);
+            ofRemove(bubbles, shouldRemoveBubble);
         }
     }
     
     void ofApp::helpLayerDisplay(int n) {
+        if (scene == MENU_SCENE) {
+            ofSetColor(255, 255, 255);
+            drawHelpString("(Scroll down for more)", screenW/2, screenH/2-40, 0, 0);
+        }
         if (scene == GAME_SCENE) {
             ofSetColor(0, 0, 0);
             int yOffset = circles[0]->w/2+helpTextHeight*(1+device*.8)*deviceScale;  // add space if tablet
@@ -1395,106 +1524,35 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
                 case -1:
                     break;
                 case 0:
-                    drawHelpString("These are fluxum", screenW/2, screenH/2-40, 0, 0);
-                    //helpFont.drawString("These are fluxum", screenW/2-helpFont.stringWidth("These are fluxum")/2, screenH/2);
+                    // e.g. drawHelpString("These are fluxum", screenW/2, screenH/2-40, 0, 0);
+                   //
                     break;
                 case 1:
-                    drawHelpString("These are fluxum", screenW/2, screenH/2-40, 0, 0);
-                    //helpFont.drawString("These are fluxum", screenW/2-helpFont.stringWidth("These are fluxum")/2, screenH/2);
-                    for (int i=0; i<circles.size()-1; i++) {
-                        drawHelpString("fluxum", circles[i]->x, circles[i]->y, yOffset, 0);
-                        /*helpFont.drawString("fluxum", circles[i]->x-helpFont.stringWidth("fluxum")/2, circles[i]->y+circles[i]->w/2+25*deviceScale);*/
-                    }
                     break;
                 case 2:
-                    drawHelpString("Fluxum are sound loopers", screenW/2, screenH/2-40, 0, 0);
-                    //helpFont.drawString("Fluxum are sound loopers", screenW/2-helpFont.stringWidth("Fluxum are sound loopers")/2, screenH/2);
                     break;
                 case 3:
                 case 4:
                 case 5:
-                    drawHelpString("Fluxum are sound loopers", screenW/2, screenH/2-40, 0, 0);
-                    for (int i=0; i<circles.size()-1; i++) {
-                        drawHelpString("spin me", circles[i]->x, circles[i]->y, yOffset, 0);
-                    }
                     break;
                 case 6:
                 case 7:
                 case 8:
-                    for (int i=0; i<circles.size()-1; i++) {
-                        drawHelpString("spin me", circles[i]->x, circles[i]->y, yOffset, 0);
-                        drawHelpString("backward", circles[i]->x, circles[i]->y, yOffset, 1);
-                        /*helpFont.drawString("spin me", circles[i]->x-helpFont.stringWidth("spin me")/2, circles[i]->y+circles[i]->w/2+20*deviceScale);
-                         helpFont.drawString("backward", circles[i]->x-helpFont.stringWidth("backward")/2, circles[i]->y+circles[i]->w/2+20*deviceScale + helpTextHeight+4);
-                         */
-                    }
                     break;
                 case 9:
-                    drawHelpString("(The white one is", circles[circles.size()-1]->x, circles[circles.size()-1]->y, yOffset, 0);
-                    drawHelpString("a reverb effect)", circles[circles.size()-1]->x, circles[circles.size()-1]->y, yOffset, 1);
                     break;
                 case 10:
                 case 11:
-                    arrowLeft.draw(45*retinaScaling, screenH-20*retinaScaling, 20*retinaScaling, 22*retinaScaling );
-                    x1 = 4*retinaScaling+(helpFont.stringWidth("them to move around"))/2;
-                    y1 = screenH-25*retinaScaling-helpTextHeight*2;
-                    drawHelpString("This button allows", x1, y1, 0, 0);
-                    drawHelpString("them to move around", x1, y1, 0, 1);
-                    break;
+                     break;
                 case 12:
                 case 13:
-                    arrow.draw(screenW-45*retinaScaling, screenH-20*retinaScaling, 20*retinaScaling, 22*retinaScaling );
-                    x1 = screenW-(helpFont.stringWidth("(don't leave yet)"))/2-8*retinaScaling;
-                    y1 = screenH-25*retinaScaling-helpTextHeight*3;
-                    drawHelpString("This button", x1, y1, 0, 0);
-                    drawHelpString("exits to menu", x1, y1, 0, 1);
-                    drawHelpString("(don't leave yet)", x1, y1, 0, 2);
-                    /*helpFont.drawString("This button", screenW-helpFont.stringWidth("(don't leave yet)")-4, screenH-70);
-                     helpFont.drawString("exits to menu", screenW-helpFont.stringWidth("(don't leave yet)")-4, screenH-55);
-                     helpFont.drawString("(don't leave yet)", screenW-helpFont.stringWidth("(don't leave yet)")-4, screenH-40);*/
                     break;
                 case 14:
                 case 15:
-                    for (int i=0; i<2; i++) {
-                        drawHelpString("Touch two and", circles[i]->x, circles[i]->y, yOffset, 0);
-                        drawHelpString("bring together", circles[i]->x, circles[i]->y, yOffset, 1);
-                        drawHelpString("to join", circles[i]->x, circles[i]->y, yOffset, 2);
-                    }
                     break;
                 case 16:
                 case 17:
-                    drawHelpString("Double tap", circles[1]->x, circles[1]->y, yOffset, 0);
-                    drawHelpString("while sleeping", circles[1]->x, circles[1]->y, yOffset, 1);
-                    drawHelpString("to change sound", circles[1]->x, circles[1]->y, yOffset, 2);
-                    break;
-            }
-            ofSetColor(255, 255, 255);
-        }
-        
-        if (scene == SELECT_SAMPLE_SCENE) {
-            ofSetColor(0, 0, 0);
-            int yOffset = circles[0]->w/2+helpTextHeight*(1+device*.8)*deviceScale;  // add space if tablet
-            
-            int x1;
-            int y1;
-            switch (n) {
-                case -1:
-                    break;
-                case 0:
-                    drawHelpString("Help1", screenW/2, screenH/2-40, 0, 0);
-                    //helpFont.drawString("These are fluxum", screenW/2-helpFont.stringWidth("These are fluxum")/2, screenH/2);
-                    break;
-                case 1:
-                    drawHelpString("Help2", screenW/2, screenH/2-40, 0, 0);
-                    //helpFont.drawString("These are fluxum", screenW/2-helpFont.stringWidth("These are fluxum")/2, screenH/2);
-                    break;
-                case 2:
-                    drawHelpString("Help3", screenW/2, screenH/2-40, 0, 0);
-                    //helpFont.drawString("Fluxum are sound loopers", screenW/2-helpFont.stringWidth("Fluxum are sound loopers")/2, screenH/2);
-                    break;
-                case 3:
-                    drawHelpString("Help4", screenW/2, screenH/2-40, 0, 0);
-                    break;
+                     break;
             }
             ofSetColor(255, 255, 255);
         }

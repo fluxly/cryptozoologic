@@ -26,6 +26,8 @@
 /*                                                                              */
 /* ---------------------------------------------------------------------------- */
 
+#define PD 1
+
 #ifdef _MSC_VER
 #pragma warning( disable : 4091 )
 #pragma warning( disable : 4244 )
@@ -33,13 +35,8 @@
 #define inline __inline
 #endif
 
-#ifdef PD
 #include "m_pd.h"
-#else	// Max/MSP
-#include "ext.h"
-#include "z_dsp.h"
-#define t_floatarg double
-#endif
+
 
 #include <math.h>
 #include <string.h>

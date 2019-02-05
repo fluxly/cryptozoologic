@@ -126,7 +126,6 @@
 		9D004331205DA7C0001DFF83 /* sample4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D00432D205DA7BF001DFF83 /* sample4.wav */; };
 		9D004332205DA7C0001DFF83 /* sample7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D00432E205DA7C0001DFF83 /* sample7.wav */; };
 		9D004334205DA847001DFF83 /* sample6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D004333205DA847001DFF83 /* sample6.wav */; };
-		9D00433F205F52E4001DFF83 /* freeverb~.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D00433B205F52E3001DFF83 /* freeverb~.c */; };
 		9D004391205F63B9001DFF83 /* mesh35.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D004343205F63AB001DFF83 /* mesh35.png */; };
 		9D004392205F63B9001DFF83 /* mesh118.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D004344205F63AB001DFF83 /* mesh118.png */; };
 		9D004393205F63B9001DFF83 /* mesh128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D004345205F63AC001DFF83 /* mesh128.png */; };
@@ -244,35 +243,13 @@
 		9D69A100208BE87D00F789C6 /* background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A0FE208BE87D00F789C6 /* background7.png */; };
 		9D69A102208BEEE800F789C6 /* saving.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A101208BEEE800F789C6 /* saving.png */; };
 		9D69A104208D045600F789C6 /* fluxlyTitle-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A103208D045500F789C6 /* fluxlyTitle-ipad.png */; };
-		9D69A114208D282200F789C6 /* game8-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A105208D281F00F789C6 /* game8-ipad.png */; };
-		9D69A115208D282200F789C6 /* game9-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A106208D281F00F789C6 /* game9-ipad.png */; };
 		9D69A116208D282200F789C6 /* game1-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A107208D281F00F789C6 /* game1-ipad.png */; };
 		9D69A117208D282200F789C6 /* game0-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A108208D281F00F789C6 /* game0-ipad.png */; };
 		9D69A118208D282200F789C6 /* game3-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A109208D281F00F789C6 /* game3-ipad.png */; };
-		9D69A119208D282200F789C6 /* game5-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A10A208D282000F789C6 /* game5-ipad.png */; };
-		9D69A11A208D282200F789C6 /* game6-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A10B208D282000F789C6 /* game6-ipad.png */; };
-		9D69A11B208D282200F789C6 /* game14-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A10C208D282000F789C6 /* game14-ipad.png */; };
-		9D69A11C208D282200F789C6 /* game4-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A10D208D282000F789C6 /* game4-ipad.png */; };
-		9D69A11D208D282200F789C6 /* game13-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A10E208D282100F789C6 /* game13-ipad.png */; };
-		9D69A11E208D282200F789C6 /* game10-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A10F208D282100F789C6 /* game10-ipad.png */; };
 		9D69A11F208D282200F789C6 /* game2-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A110208D282100F789C6 /* game2-ipad.png */; };
-		9D69A120208D282200F789C6 /* game12-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A111208D282100F789C6 /* game12-ipad.png */; };
-		9D69A121208D282200F789C6 /* game7-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A112208D282100F789C6 /* game7-ipad.png */; };
-		9D69A122208D282200F789C6 /* game11-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A113208D282200F789C6 /* game11-ipad.png */; };
-		9D69A132208D2A1400F789C6 /* game8-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A123208D2A1100F789C6 /* game8-ipad.xml */; };
-		9D69A133208D2A1400F789C6 /* game13-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A124208D2A1100F789C6 /* game13-ipad.xml */; };
-		9D69A134208D2A1400F789C6 /* game14-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A125208D2A1100F789C6 /* game14-ipad.xml */; };
-		9D69A135208D2A1400F789C6 /* game5-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A126208D2A1100F789C6 /* game5-ipad.xml */; };
 		9D69A136208D2A1400F789C6 /* game3-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A127208D2A1100F789C6 /* game3-ipad.xml */; };
-		9D69A137208D2A1400F789C6 /* game11-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A128208D2A1200F789C6 /* game11-ipad.xml */; };
-		9D69A138208D2A1400F789C6 /* game4-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A129208D2A1200F789C6 /* game4-ipad.xml */; };
-		9D69A139208D2A1400F789C6 /* game6-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A12A208D2A1200F789C6 /* game6-ipad.xml */; };
 		9D69A13A208D2A1400F789C6 /* game0-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A12B208D2A1200F789C6 /* game0-ipad.xml */; };
-		9D69A13B208D2A1400F789C6 /* game10-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A12C208D2A1200F789C6 /* game10-ipad.xml */; };
 		9D69A13C208D2A1400F789C6 /* game1-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A12D208D2A1300F789C6 /* game1-ipad.xml */; };
-		9D69A13D208D2A1400F789C6 /* game7-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A12E208D2A1300F789C6 /* game7-ipad.xml */; };
-		9D69A13E208D2A1400F789C6 /* game12-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A12F208D2A1300F789C6 /* game12-ipad.xml */; };
-		9D69A13F208D2A1400F789C6 /* game9-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A130208D2A1300F789C6 /* game9-ipad.xml */; };
 		9D69A140208D2A1400F789C6 /* game2-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A131208D2A1300F789C6 /* game2-ipad.xml */; };
 		9D69A144208E2D5A00F789C6 /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A143208E2D5900F789C6 /* slkscr.ttf */; };
 		9D69A149208E54D200F789C6 /* helpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D69A146208E54D200F789C6 /* helpButton.png */; };
@@ -291,6 +268,8 @@
 		9D8B0B182086787B00AC404F /* dampOnOffGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8B0B172086787B00AC404F /* dampOnOffGlow.png */; };
 		9D8B0B1D208B8FDF00AC404F /* bank0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8B0B1B208B8FDE00AC404F /* bank0.png */; };
 		9D8B0B1E208B8FDF00AC404F /* bank1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8B0B1C208B8FDE00AC404F /* bank1.png */; };
+		9D9F24AA21FBD2C000DD47D9 /* freeverb~.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F24A921FBD2C000DD47D9 /* freeverb~.c */; };
+		9D9F24AF2200031F00DD47D9 /* pd-irishYeti2.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9D9F24AE2200031E00DD47D9 /* pd-irishYeti2.pd */; };
 		9DAADE80213AF9EF008C22D8 /* MyAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9DAADE7F213AF9EF008C22D8 /* MyAppDelegate.mm */; };
 		9DAADE85213AFA06008C22D8 /* ABiOSSoundStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9DAADE81213AFA05008C22D8 /* ABiOSSoundStream.mm */; };
 		9DAADE86213AFA06008C22D8 /* controlThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9DAADE83213AFA05008C22D8 /* controlThread.mm */; };
@@ -649,7 +628,6 @@
 		9D00432E205DA7C0001DFF83 /* sample7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample7.wav; sourceTree = "<group>"; };
 		9D004333205DA847001DFF83 /* sample6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample6.wav; sourceTree = "<group>"; };
 		9D00433A205F528B001DFF83 /* PdExternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdExternals.h; sourceTree = "<group>"; };
-		9D00433B205F52E3001DFF83 /* freeverb~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "freeverb~.c"; sourceTree = "<group>"; };
 		9D004343205F63AB001DFF83 /* mesh35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesh35.png; sourceTree = "<group>"; };
 		9D004344205F63AB001DFF83 /* mesh118.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesh118.png; sourceTree = "<group>"; };
 		9D004345205F63AC001DFF83 /* mesh128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesh128.png; sourceTree = "<group>"; };
@@ -798,35 +776,13 @@
 		9D69A0FE208BE87D00F789C6 /* background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background7.png; sourceTree = "<group>"; };
 		9D69A101208BEEE800F789C6 /* saving.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saving.png; sourceTree = "<group>"; };
 		9D69A103208D045500F789C6 /* fluxlyTitle-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fluxlyTitle-ipad.png"; sourceTree = "<group>"; };
-		9D69A105208D281F00F789C6 /* game8-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game8-ipad.png"; sourceTree = "<group>"; };
-		9D69A106208D281F00F789C6 /* game9-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game9-ipad.png"; sourceTree = "<group>"; };
 		9D69A107208D281F00F789C6 /* game1-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game1-ipad.png"; sourceTree = "<group>"; };
 		9D69A108208D281F00F789C6 /* game0-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game0-ipad.png"; sourceTree = "<group>"; };
 		9D69A109208D281F00F789C6 /* game3-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game3-ipad.png"; sourceTree = "<group>"; };
-		9D69A10A208D282000F789C6 /* game5-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game5-ipad.png"; sourceTree = "<group>"; };
-		9D69A10B208D282000F789C6 /* game6-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game6-ipad.png"; sourceTree = "<group>"; };
-		9D69A10C208D282000F789C6 /* game14-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game14-ipad.png"; sourceTree = "<group>"; };
-		9D69A10D208D282000F789C6 /* game4-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game4-ipad.png"; sourceTree = "<group>"; };
-		9D69A10E208D282100F789C6 /* game13-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game13-ipad.png"; sourceTree = "<group>"; };
-		9D69A10F208D282100F789C6 /* game10-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game10-ipad.png"; sourceTree = "<group>"; };
 		9D69A110208D282100F789C6 /* game2-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game2-ipad.png"; sourceTree = "<group>"; };
-		9D69A111208D282100F789C6 /* game12-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game12-ipad.png"; sourceTree = "<group>"; };
-		9D69A112208D282100F789C6 /* game7-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game7-ipad.png"; sourceTree = "<group>"; };
-		9D69A113208D282200F789C6 /* game11-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game11-ipad.png"; sourceTree = "<group>"; };
-		9D69A123208D2A1100F789C6 /* game8-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game8-ipad.xml"; sourceTree = "<group>"; };
-		9D69A124208D2A1100F789C6 /* game13-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game13-ipad.xml"; sourceTree = "<group>"; };
-		9D69A125208D2A1100F789C6 /* game14-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game14-ipad.xml"; sourceTree = "<group>"; };
-		9D69A126208D2A1100F789C6 /* game5-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game5-ipad.xml"; sourceTree = "<group>"; };
 		9D69A127208D2A1100F789C6 /* game3-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game3-ipad.xml"; sourceTree = "<group>"; };
-		9D69A128208D2A1200F789C6 /* game11-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game11-ipad.xml"; sourceTree = "<group>"; };
-		9D69A129208D2A1200F789C6 /* game4-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game4-ipad.xml"; sourceTree = "<group>"; };
-		9D69A12A208D2A1200F789C6 /* game6-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game6-ipad.xml"; sourceTree = "<group>"; };
 		9D69A12B208D2A1200F789C6 /* game0-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game0-ipad.xml"; sourceTree = "<group>"; };
-		9D69A12C208D2A1200F789C6 /* game10-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game10-ipad.xml"; sourceTree = "<group>"; };
 		9D69A12D208D2A1300F789C6 /* game1-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game1-ipad.xml"; sourceTree = "<group>"; };
-		9D69A12E208D2A1300F789C6 /* game7-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game7-ipad.xml"; sourceTree = "<group>"; };
-		9D69A12F208D2A1300F789C6 /* game12-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game12-ipad.xml"; sourceTree = "<group>"; };
-		9D69A130208D2A1300F789C6 /* game9-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game9-ipad.xml"; sourceTree = "<group>"; };
 		9D69A131208D2A1300F789C6 /* game2-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game2-ipad.xml"; sourceTree = "<group>"; };
 		9D69A143208E2D5900F789C6 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscr.ttf; sourceTree = "<group>"; };
 		9D69A146208E54D200F789C6 /* helpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpButton.png; sourceTree = "<group>"; };
@@ -845,6 +801,8 @@
 		9D8B0B172086787B00AC404F /* dampOnOffGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dampOnOffGlow.png; sourceTree = "<group>"; };
 		9D8B0B1B208B8FDE00AC404F /* bank0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bank0.png; sourceTree = "<group>"; };
 		9D8B0B1C208B8FDE00AC404F /* bank1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bank1.png; sourceTree = "<group>"; };
+		9D9F24A921FBD2C000DD47D9 /* freeverb~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "freeverb~.c"; sourceTree = "<group>"; };
+		9D9F24AE2200031E00DD47D9 /* pd-irishYeti2.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pd-irishYeti2.pd"; sourceTree = "<group>"; };
 		9DAADE7E213AF9EE008C22D8 /* MyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
 		9DAADE7F213AF9EF008C22D8 /* MyAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyAppDelegate.mm; sourceTree = "<group>"; };
 		9DAADE81213AFA05008C22D8 /* ABiOSSoundStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ABiOSSoundStream.mm; sourceTree = "<group>"; };
@@ -1558,32 +1516,10 @@
 				9D69A12D208D2A1300F789C6 /* game1-ipad.xml */,
 				9D69A131208D2A1300F789C6 /* game2-ipad.xml */,
 				9D69A127208D2A1100F789C6 /* game3-ipad.xml */,
-				9D69A129208D2A1200F789C6 /* game4-ipad.xml */,
-				9D69A126208D2A1100F789C6 /* game5-ipad.xml */,
-				9D69A12A208D2A1200F789C6 /* game6-ipad.xml */,
-				9D69A12E208D2A1300F789C6 /* game7-ipad.xml */,
-				9D69A123208D2A1100F789C6 /* game8-ipad.xml */,
-				9D69A130208D2A1300F789C6 /* game9-ipad.xml */,
-				9D69A12C208D2A1200F789C6 /* game10-ipad.xml */,
-				9D69A128208D2A1200F789C6 /* game11-ipad.xml */,
-				9D69A12F208D2A1300F789C6 /* game12-ipad.xml */,
-				9D69A124208D2A1100F789C6 /* game13-ipad.xml */,
-				9D69A125208D2A1100F789C6 /* game14-ipad.xml */,
 				9D69A108208D281F00F789C6 /* game0-ipad.png */,
 				9D69A107208D281F00F789C6 /* game1-ipad.png */,
 				9D69A110208D282100F789C6 /* game2-ipad.png */,
 				9D69A109208D281F00F789C6 /* game3-ipad.png */,
-				9D69A10D208D282000F789C6 /* game4-ipad.png */,
-				9D69A10A208D282000F789C6 /* game5-ipad.png */,
-				9D69A10B208D282000F789C6 /* game6-ipad.png */,
-				9D69A112208D282100F789C6 /* game7-ipad.png */,
-				9D69A105208D281F00F789C6 /* game8-ipad.png */,
-				9D69A106208D281F00F789C6 /* game9-ipad.png */,
-				9D69A10F208D282100F789C6 /* game10-ipad.png */,
-				9D69A113208D282200F789C6 /* game11-ipad.png */,
-				9D69A111208D282100F789C6 /* game12-ipad.png */,
-				9D69A10E208D282100F789C6 /* game13-ipad.png */,
-				9D69A10C208D282000F789C6 /* game14-ipad.png */,
 				9D69A103208D045500F789C6 /* fluxlyTitle-ipad.png */,
 				9D69A101208BEEE800F789C6 /* saving.png */,
 				9D69A0FD208BE87D00F789C6 /* background6.png */,
@@ -1864,6 +1800,8 @@
 		9DC4079C21D979CF0022CD3A /* patches */ = {
 			isa = PBXGroup;
 			children = (
+				9D9F24AE2200031E00DD47D9 /* pd-irishYeti2.pd */,
+				9D9F24A921FBD2C000DD47D9 /* freeverb~.c */,
 				9D82A39321E679B7004A1949 /* scale.c */,
 				9DC407E221DC403B0022CD3A /* biquad.mmb~.pd */,
 				9DC407DE21DC403A0022CD3A /* bl-init.mmb.pd */,
@@ -2152,7 +2090,6 @@
 				9DAADE83213AFA05008C22D8 /* controlThread.mm */,
 				9DAADE7E213AF9EE008C22D8 /* MyAppDelegate.h */,
 				9DAADE7F213AF9EF008C22D8 /* MyAppDelegate.mm */,
-				9D00433B205F52E3001DFF83 /* freeverb~.c */,
 				9D00433A205F528B001DFF83 /* PdExternals.h */,
 				9D2560362026B976003989FB /* FluxlyClasses.h */,
 				E4D8936B11527B74007E1F53 /* main.mm */,
@@ -2274,13 +2211,11 @@
 				9DF4136120925FB000D0358F /* mesh99.png in Resources */,
 				9DF4134720925FAF00D0358F /* mesh87.png in Resources */,
 				9D8B0B0E207D177800AC404F /* consolePlay.png in Resources */,
-				9D69A13B208D2A1400F789C6 /* game10-ipad.xml in Resources */,
 				9D69A13C208D2A1400F789C6 /* game1-ipad.xml in Resources */,
 				9D0043B9205F63B9001DFF83 /* mesh114.png in Resources */,
 				9D0043D4205F63B9001DFF83 /* mesh125.png in Resources */,
 				9D0043F92061A2FE001DFF83 /* background0.png in Resources */,
 				9DF4134E20925FB000D0358F /* mesh51.png in Resources */,
-				9D69A121208D282200F789C6 /* game7-ipad.png in Resources */,
 				9DC20406207BAE4300F036E5 /* navMenuExit.png in Resources */,
 				9D5F1DEA216FE9A700B2F973 /* README.md in Resources */,
 				9D0043BC205F63B9001DFF83 /* mesh82.png in Resources */,
@@ -2289,7 +2224,6 @@
 				9D0043F82061A2FE001DFF83 /* background3.png in Resources */,
 				9D0043D6205F63B9001DFF83 /* mesh93.png in Resources */,
 				9DC407F821DC403E0022CD3A /* complex_div.mmb~.pd in Resources */,
-				9D69A11D208D282200F789C6 /* game13-ipad.png in Resources */,
 				9DC407FC21DC403E0022CD3A /* sample0.wav in Resources */,
 				9D8B0B0D207D177800AC404F /* consolePlayStop.png in Resources */,
 				9DF4133420925FAF00D0358F /* mesh75.png in Resources */,
@@ -2298,7 +2232,6 @@
 				9D0043D1205F63B9001DFF83 /* mesh46.png in Resources */,
 				9DC4080321DC403E0022CD3A /* sample1.wav in Resources */,
 				9D00432F205DA7C0001DFF83 /* sample5.wav in Resources */,
-				9D69A120208D282200F789C6 /* game12-ipad.png in Resources */,
 				9DFDC13020792AB200BBDB9B /* game2.xml in Resources */,
 				9DF4132D20925FAF00D0358F /* mesh84.png in Resources */,
 				9DF4133B20925FAF00D0358F /* mesh29.png in Resources */,
@@ -2306,13 +2239,11 @@
 				9DF4133920925FAF00D0358F /* mesh62.png in Resources */,
 				9DC407F121DC403E0022CD3A /* complex_add.mmb~.pd in Resources */,
 				678E130817951530005B6D19 /* Icon@2x.png in Resources */,
-				9D69A138208D2A1400F789C6 /* game4-ipad.xml in Resources */,
 				9D0043D9205F63B9001DFF83 /* mesh104.png in Resources */,
 				9DFDC13A20792AB200BBDB9B /* menuSettings.xml in Resources */,
 				9D0043C4205F63B9001DFF83 /* mesh91.png in Resources */,
 				9D0043AE205F63B9001DFF83 /* mesh66.png in Resources */,
 				9D004322205C3A97001DFF83 /* sample10.wav in Resources */,
-				9D69A134208D2A1400F789C6 /* game14-ipad.xml in Resources */,
 				9DB4B6FE20FC4A7500FB2DA8 /* FluxlyFeaturedGraphic.png in Resources */,
 				9DFDC12820792AB200BBDB9B /* game3.png in Resources */,
 				9D69A117208D282200F789C6 /* game0-ipad.png in Resources */,
@@ -2340,18 +2271,15 @@
 				9D00439A205F63B9001DFF83 /* mesh45.png in Resources */,
 				9D0043A9205F63B9001DFF83 /* mesh71.png in Resources */,
 				9D0043C0205F63B9001DFF83 /* mesh101.png in Resources */,
-				9D69A13D208D2A1400F789C6 /* game7-ipad.xml in Resources */,
 				9D0043CD205F63B9001DFF83 /* mesh7.png in Resources */,
 				9DF4134D20925FB000D0358F /* mesh36.png in Resources */,
 				9DC4080721DC403E0022CD3A /* complex_mul.mmb~.pd in Resources */,
-				9D69A114208D282200F789C6 /* game8-ipad.png in Resources */,
 				9DF4134B20925FB000D0358F /* mesh144.png in Resources */,
 				9DF4133A20925FAF00D0358F /* mesh108.png in Resources */,
 				9DC4080921DC403E0022CD3A /* pd-vivianLoopBox.pd in Resources */,
 				9DFDC13320792AB200BBDB9B /* game1.png in Resources */,
 				678E130A17951536005B6D19 /* Icon.png in Resources */,
 				9D5F1DE7216FE9A700B2F973 /* README.md in Resources */,
-				9D69A132208D2A1400F789C6 /* game8-ipad.xml in Resources */,
 				9D0043CE205F63B9001DFF83 /* mesh47.png in Resources */,
 				9DF4135120925FB000D0358F /* mesh26.png in Resources */,
 				9DFDC12E20792AB200BBDB9B /* game2.png in Resources */,
@@ -2360,11 +2288,9 @@
 				9D0043A8205F63B9001DFF83 /* mesh23.png in Resources */,
 				9DF4135A20925FB000D0358F /* mesh112.png in Resources */,
 				9DF4132E20925FAF00D0358F /* mesh97.png in Resources */,
-				9D69A11A208D282200F789C6 /* game6-ipad.png in Resources */,
 				9D00416F20476157001DFF83 /* mesh2.png in Resources */,
 				9DF4134820925FB000D0358F /* mesh135.png in Resources */,
 				9D25603A202C0824003989FB /* eyesOpen.png in Resources */,
-				9D69A13E208D2A1400F789C6 /* game12-ipad.xml in Resources */,
 				9D0043BB205F63B9001DFF83 /* mesh44.png in Resources */,
 				9D0043A4205F63B9001DFF83 /* mesh119.png in Resources */,
 				9DF4135020925FB000D0358F /* mesh24.png in Resources */,
@@ -2392,14 +2318,12 @@
 				9D0043CF205F63B9001DFF83 /* mesh131.png in Resources */,
 				678E130C1795153C005B6D19 /* Default.png in Resources */,
 				9D0043D8205F63B9001DFF83 /* mesh106.png in Resources */,
-				9D69A137208D2A1400F789C6 /* game11-ipad.xml in Resources */,
 				9D0043B1205F63B9001DFF83 /* mesh117.png in Resources */,
 				9DF4133D20925FAF00D0358F /* mesh49.png in Resources */,
 				9D69A0F9208BB6A800F789C6 /* recordDisabled.png in Resources */,
 				9D69A144208E2D5A00F789C6 /* slkscr.ttf in Resources */,
 				9D0043C1205F63B9001DFF83 /* mesh58.png in Resources */,
 				9DF4134120925FAF00D0358F /* mesh74.png in Resources */,
-				9D69A119208D282200F789C6 /* game5-ipad.png in Resources */,
 				9DC407F221DC403E0022CD3A /* complex_con.mmb~.pd in Resources */,
 				9DF412F420925F8E00D0358F /* mesh17.png in Resources */,
 				9DC407FA21DC403E0022CD3A /* bl-init.mmb.pd in Resources */,
@@ -2415,17 +2339,14 @@
 				9D69A100208BE87D00F789C6 /* background7.png in Resources */,
 				9D0043AA205F63B9001DFF83 /* mesh90.png in Resources */,
 				9DC4080421DC403E0022CD3A /* sample2.wav in Resources */,
-				9D69A115208D282200F789C6 /* game9-ipad.png in Resources */,
 				9D0043C6205F63B9001DFF83 /* mesh31.png in Resources */,
 				9D0044072061A58E001DFF83 /* background5.png in Resources */,
-				9D69A135208D2A1400F789C6 /* game5-ipad.xml in Resources */,
 				9DF4135220925FB000D0358F /* mesh100.png in Resources */,
 				9D004391205F63B9001DFF83 /* mesh35.png in Resources */,
 				9D0043DB205F63B9001DFF83 /* mesh57.png in Resources */,
 				9DC407FB21DC403E0022CD3A /* pd-irishYeti.pd in Resources */,
 				9D0043B3205F63B9001DFF83 /* mesh42.png in Resources */,
 				9DF4134620925FAF00D0358F /* mesh136.png in Resources */,
-				9D69A122208D282200F789C6 /* game11-ipad.png in Resources */,
 				9DFDC13520792AB200BBDB9B /* game0.png in Resources */,
 				9D0043C2205F63B9001DFF83 /* mesh79.png in Resources */,
 				9DF4133720925FAF00D0358F /* mesh96.png in Resources */,
@@ -2434,7 +2355,6 @@
 				9D004396205F63B9001DFF83 /* mesh67.png in Resources */,
 				9D0043BA205F63B9001DFF83 /* mesh22.png in Resources */,
 				9D004327205C799D001DFF83 /* YakShaveriOS3.pd in Resources */,
-				9D69A11E208D282200F789C6 /* game10-ipad.png in Resources */,
 				9D0043DE205F63B9001DFF83 /* mesh34.png in Resources */,
 				9D8B0B1D208B8FDF00AC404F /* bank0.png in Resources */,
 				9D69A140208D2A1400F789C6 /* game2-ipad.xml in Resources */,
@@ -2463,6 +2383,7 @@
 				9D004394205F63B9001DFF83 /* mesh9.png in Resources */,
 				9DF4135920925FB000D0358F /* mesh88.png in Resources */,
 				9DF4133120925FAF00D0358F /* mesh52.png in Resources */,
+				9D9F24AF2200031F00DD47D9 /* pd-irishYeti2.pd in Resources */,
 				9D004399205F63B9001DFF83 /* mesh54.png in Resources */,
 				9D004334205DA847001DFF83 /* sample6.wav in Resources */,
 				9D0043B5205F63B9001DFF83 /* mesh115.png in Resources */,
@@ -2484,12 +2405,10 @@
 				9D6C0EE720A0E5E10096EDAF /* fluxlyTitleZero.png in Resources */,
 				9DC4080021DC403E0022CD3A /* complex_sub.mmb~.pd in Resources */,
 				9D0043D3205F63B9001DFF83 /* mesh113.png in Resources */,
-				9D69A133208D2A1400F789C6 /* game13-ipad.xml in Resources */,
 				9D8B0B11207D179F00AC404F /* consoleRec.png in Resources */,
 				9D256038202C0802003989FB /* eyesClosed.png in Resources */,
 				9DC407F921DC403E0022CD3A /* multimode.mmb~.pd in Resources */,
 				9D0043B8205F63B9001DFF83 /* mesh77.png in Resources */,
-				9D69A11B208D282200F789C6 /* game14-ipad.png in Resources */,
 				9DF412F020925F8E00D0358F /* mesh13.png in Resources */,
 				9DF4135C20925FB000D0358F /* mesh39.png in Resources */,
 				9D0043DA205F63B9001DFF83 /* mesh0.png in Resources */,
@@ -2509,7 +2428,6 @@
 				9D00417B2048A3F5001DFF83 /* sample0.wav in Resources */,
 				9D0043C3205F63B9001DFF83 /* mesh83.png in Resources */,
 				9DF4135820925FB000D0358F /* mesh48.png in Resources */,
-				9D69A139208D2A1400F789C6 /* game6-ipad.xml in Resources */,
 				9D0043D0205F63B9001DFF83 /* mesh18.png in Resources */,
 				9D69A11F208D282200F789C6 /* game2-ipad.png in Resources */,
 				9D8B0B182086787B00AC404F /* dampOnOffGlow.png in Resources */,
@@ -2517,12 +2435,10 @@
 				9D6C0EE620A0E5E10096EDAF /* fluxlyTitleZero-ipad.png in Resources */,
 				9D00417A2048A3F5001DFF83 /* sample8.wav in Resources */,
 				9D0043AD205F63B9001DFF83 /* mesh137.png in Resources */,
-				9D69A11C208D282200F789C6 /* game4-ipad.png in Resources */,
 				9D00439E205F63B9001DFF83 /* mesh43.png in Resources */,
 				9D0043AC205F63B9001DFF83 /* mesh81.png in Resources */,
 				9D0043B6205F63B9001DFF83 /* mesh21.png in Resources */,
 				9DC407F321DC403E0022CD3A /* sample5.wav in Resources */,
-				9D69A13F208D2A1400F789C6 /* game9-ipad.xml in Resources */,
 				9DF4133320925FAF00D0358F /* mesh72.png in Resources */,
 				9DFDC12A20792AB200BBDB9B /* sampleSettings.xml in Resources */,
 				9D004323205C3A97001DFF83 /* sample9.wav in Resources */,
@@ -2695,7 +2611,6 @@
 				50F096CFDBAD1EC45E92416E /* m_atom.c in Sources */,
 				89A7DDAAC596E94D0BC906E0 /* m_binbuf.c in Sources */,
 				87DBAD2CF0EF3C931CA0EB27 /* m_class.c in Sources */,
-				9D00433F205F52E4001DFF83 /* freeverb~.c in Sources */,
 				C3167F8E5105283443E3D5BF /* m_conf.c in Sources */,
 				9EBAF5B1949B2AFC1A34E934 /* m_glob.c in Sources */,
 				9D5F1E06216FE9A700B2F973 /* ofxPGMidiContext.mm in Sources */,
@@ -2708,6 +2623,7 @@
 				43E7F9BCBED7CD0D3427F707 /* s_audio_dummy.c in Sources */,
 				6D29DB73AFAD6EB136B9867B /* s_file.c in Sources */,
 				DC10973CC286CE1D51EDABA5 /* s_inter.c in Sources */,
+				9D9F24AA21FBD2C000DD47D9 /* freeverb~.c in Sources */,
 				660D59CA6EF233EBCBCD8EFA /* s_loader.c in Sources */,
 				5472CCBDC7B6C1AF21661319 /* s_main.c in Sources */,
 				A2DF1BE48C5A502CB1763443 /* s_path.c in Sources */,

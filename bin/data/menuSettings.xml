@@ -23,11 +23,6 @@
 				<img>game3.png</img>
 				<link>game3.xml</link>
 			</menuItem>
-			<menuItem>
-				<id>4</id>
-				<img>game4.png</img>
-				<link>game4.xml</link>
-			</menuItem>
 		</bank> 
     </menuItems>
 </settings>

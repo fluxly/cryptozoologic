@@ -57,16 +57,17 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <w>44</w>
-            <x>568</x>
-            <y>400</y>
+            <x>250</x>
+            <y>180</y>
             <bx>284</bx>
-            <by>265</by>
+            <by>270</by>
             <bw>520</bw>
             <bh>30</bh>
             <bLabel>Formula</bLabel>
             <bValue>Foo</bValue>
             <rotation>5645.000000000</rotation>
 			<signal>reverb</signal>
+            <senseType>1</senseType>
         </circle>
     </circles>
     <joints></joints>

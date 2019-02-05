@@ -1,12 +1,12 @@
-#N canvas 6 156 939 466 10;
-#N canvas 671 49 529 644 euclid1 1;
+#N canvas 113 28 938 670 10;
+#N canvas 737 41 529 644 euclid1 0;
 #X obj 304 93 i;
 #X obj 85 96 i;
 #X obj 293 350 i;
 #X obj 89 72 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 9700 1;
+-1 -1 6900 1;
 #X obj 309 72 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2300 1;
+-1 -1 0 1;
 #X text 184 56 Steps;
 #X text 400 52 Pulses;
 #X obj 80 158 moses;
@@ -105,9 +105,9 @@
 #X obj 113 101 i;
 #X obj 312 339 i;
 #X obj 117 77 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8500 1;
+-1 -1 2868 1;
 #X obj 338 78 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1600 1;
+-1 -1 819 1;
 #X text 212 61 Steps;
 #X text 428 57 Pulses;
 #X obj 108 163 moses;
@@ -201,14 +201,14 @@
 #X connect 48 0 11 0;
 #X connect 49 0 20 0;
 #X restore 419 245 pd euclid2;
-#N canvas 0 23 571 639 euclid3 0;
+#N canvas 0 23 571 639 euclid3 1;
 #X obj 317 90 i;
 #X obj 98 93 i;
 #X obj 311 356 i;
 #X obj 102 69 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 10000 1;
+-1 -1 2868 1;
 #X obj 322 69 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1200 1;
+-1 -1 1229 1;
 #X text 197 53 Steps;
 #X text 413 49 Pulses;
 #X obj 93 155 moses;
@@ -307,9 +307,9 @@
 #X obj 116 95 i;
 #X obj 334 354 i;
 #X obj 121 73 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7600 1;
+-1 -1 2868 1;
 #X obj 340 71 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 700 1;
+-1 -1 0 1;
 #X text 215 55 Steps;
 #X text 431 51 Pulses;
 #X obj 111 157 moses;
@@ -406,19 +406,14 @@
 #X obj 235 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 419 166 metro 250;
-#X obj 417 96 hsl 128 15 1000 2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 9653 1;
+#X obj 416 93 hsl 128 15 1000 2 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 11453 1;
 #X floatatom 427 115 5 0 0 0 - - -, f 5;
 #X text 516 80 Tempo;
 #X obj 234 31 loadbang;
-#X obj 408 74 r setMasterTempo;
+#X obj 423 45 r setMasterTempo;
 #X obj 418 187 s masterTempo;
-#X msg 236 157 \; setMasterTempo 100 \; setCount1 0 \; setBucket1 0
-\; setSteps1 8 \; setPulses1 4 \; setCount2 0 \; setBucket2 0 \; setSteps2
-8 \; setPulses2 4 \; setCount3 0 \; setBucket3 0 \; setSteps3 8 \;
-setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
-4 \; \;;
-#N canvas 736 230 630 490 vivian-loopbox 1;
+#N canvas 736 228 630 490 vivian-loopbox 0;
 #X obj 51 32 r control0;
 #X obj 50 132 throw~ scope0;
 #X obj 137 60 r filename0;
@@ -432,8 +427,8 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X text 154 13 filename;
 #X obj 158 149 soundfiler;
 #N canvas 0 22 450 300 (subpatch) 0;
-#X array buffer0 11520 float 2;
-#X coords 0 1 11520 -1 200 140 1 0 0;
+#X array buffer0 18432 float 2;
+#X coords 0 1 18432 -1 200 140 1 0 0;
 #X restore 45 205 graph;
 #X msg 157 113 read -resize \$1 buffer0;
 #X obj 157 82 makefilename %s;
@@ -470,8 +465,8 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X text 154 13 filename;
 #X obj 158 148 soundfiler;
 #N canvas 0 22 450 300 (subpatch) 0;
-#X array buffer1 11520 float 2;
-#X coords 0 1 11520 -1 200 140 1 0 0;
+#X array buffer1 14976 float 2;
+#X coords 0 1 14976 -1 200 140 1 0 0;
 #X restore 56 205 graph;
 #X obj 157 82 makefilename %s;
 #X obj 156 58 symbol \$1;
@@ -651,7 +646,7 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X connect 31 0 32 1;
 #X connect 32 0 33 0;
 #X restore 419 316 pd vivian-loopbox;
-#N canvas 82 25 1004 695 output-stage 0;
+#N canvas 82 24 1004 695 output-stage 0;
 #X obj 267 203 r masterVolume;
 #N canvas 381 87 381 409 channel0 0;
 #X obj 96 15 catch~ audioOut0;
@@ -987,7 +982,6 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X obj 305 646 dac~;
 #X obj 406 256 loadbang;
 #X obj 475 283 abs;
-#X obj 477 238 r tempo8;
 #X obj 760 215 print, f 8;
 #X obj 474 308 / 7;
 #X obj 431 284 t f b;
@@ -1018,8 +1012,9 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X obj 708 514 s previewTempo;
 #X msg 709 442 1;
 #X msg 714 369 1;
-#X connect 0 0 37 0;
-#X connect 0 0 39 0;
+#X obj 477 238 r control13;
+#X connect 0 0 36 0;
+#X connect 0 0 38 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
 #X connect 2 0 11 0;
@@ -1040,8 +1035,8 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X connect 10 1 3 0;
 #X connect 11 0 13 0;
 #X connect 12 0 13 1;
-#X connect 13 0 33 0;
-#X connect 13 1 34 0;
+#X connect 13 0 32 0;
+#X connect 13 1 33 0;
 #X connect 14 0 13 0;
 #X connect 15 0 13 0;
 #X connect 16 0 14 0;
@@ -1049,33 +1044,33 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X connect 16 0 21 0;
 #X connect 17 0 15 0;
 #X connect 17 0 18 0;
-#X connect 23 0 41 0;
-#X connect 24 0 27 0;
-#X connect 25 0 24 0;
-#X connect 27 0 28 0;
-#X connect 28 0 30 0;
-#X connect 28 1 30 0;
-#X connect 30 0 36 0;
-#X connect 31 0 32 0;
-#X connect 33 0 22 0;
-#X connect 34 0 22 1;
-#X connect 35 0 16 0;
-#X connect 36 0 35 0;
-#X connect 37 0 38 0;
-#X connect 38 0 11 1;
-#X connect 39 0 40 0;
-#X connect 40 0 12 1;
-#X connect 41 0 16 0;
-#X connect 43 0 34 0;
-#X connect 43 0 33 0;
-#X connect 44 0 45 0;
-#X connect 45 0 43 1;
-#X connect 45 0 47 0;
-#X connect 46 0 43 0;
-#X connect 49 0 48 0;
-#X connect 53 0 51 0;
-#X connect 53 0 52 0;
-#X connect 54 0 50 0;
+#X connect 23 0 40 0;
+#X connect 24 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 29 0;
+#X connect 27 1 29 0;
+#X connect 29 0 35 0;
+#X connect 30 0 31 0;
+#X connect 32 0 22 0;
+#X connect 33 0 22 1;
+#X connect 34 0 16 0;
+#X connect 35 0 34 0;
+#X connect 36 0 37 0;
+#X connect 37 0 11 1;
+#X connect 38 0 39 0;
+#X connect 39 0 12 1;
+#X connect 40 0 16 0;
+#X connect 42 0 33 0;
+#X connect 42 0 32 0;
+#X connect 43 0 44 0;
+#X connect 44 0 42 1;
+#X connect 44 0 46 0;
+#X connect 45 0 42 0;
+#X connect 48 0 47 0;
+#X connect 52 0 50 0;
+#X connect 52 0 51 0;
+#X connect 53 0 49 0;
+#X connect 54 0 24 0;
 #X restore 418 342 pd output-stage;
 #N canvas 111 28 1177 691 scopes 0;
 #X obj 48 73 clip~ -1 1;
@@ -1205,56 +1200,119 @@ setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
 #X connect 54 0 48 0;
 #X connect 54 0 62 0;
 #X restore 418 367 pd scopes;
-#X obj 579 95 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 9700 1;
-#X obj 723 94 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2300 1;
-#X text 674 79 Steps;
-#X text 814 74 Pulses;
-#X obj 576 125 s setSteps1;
-#X obj 720 122 s setPulses1;
-#X obj 579 173 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8500 1;
-#X obj 723 172 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1600 1;
-#X text 674 157 Steps;
-#X text 814 152 Pulses;
-#X obj 580 253 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 10000 1;
-#X obj 724 252 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1200 1;
-#X text 675 237 Steps;
-#X text 815 232 Pulses;
-#X obj 581 338 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7600 1;
-#X obj 725 337 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 700 1;
-#X text 676 322 Steps;
-#X text 816 317 Pulses;
-#X obj 576 203 s setSteps2;
-#X obj 577 283 s setSteps3;
-#X obj 578 368 s setSteps4;
-#X obj 722 365 s setPulses4;
-#X obj 721 280 s setPulses3;
-#X obj 720 200 s setPulses2;
-#X msg 64 113 \; masterVolume 1 \; \; filename0 drum3.wav \; filename1
-drum3.wav \; filename2 drum3.wav \; filename3 drum3.wav \; \; pan0
+#X obj 580 72 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6900 1;
+#X obj 722 70 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 675 56 Steps;
+#X text 813 50 Pulses;
+#X obj 577 102 s setSteps1;
+#X obj 719 98 s setPulses1;
+#X obj 579 183 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 723 182 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 673 161 Steps;
+#X text 814 161 Pulses;
+#X obj 579 298 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 723 297 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 674 282 Steps;
+#X text 814 277 Pulses;
+#X obj 580 416 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 724 415 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 675 400 Steps;
+#X text 815 395 Pulses;
+#X obj 576 213 s setSteps2;
+#X obj 576 328 s setSteps3;
+#X obj 577 446 s setSteps4;
+#X obj 721 443 s setPulses4;
+#X obj 720 325 s setPulses3;
+#X obj 720 210 s setPulses2;
+#X obj 645 34 i;
+#X obj 577 49 * 32;
+#X obj 721 17 r control4;
+#X obj 790 33 i;
+#X obj 721 48 * 32;
+#X obj 573 11 r control5;
+#X obj 644 261 i;
+#X obj 576 273 * 32;
+#X obj 789 258 i;
+#X obj 720 273 * 32;
+#X obj 645 145 i;
+#X obj 577 160 * 32;
+#X obj 790 142 i;
+#X obj 721 157 * 32;
+#X obj 721 126 r control6;
+#X obj 577 129 r control7;
+#X obj 720 242 r control8;
+#X obj 576 245 r control9;
+#X obj 646 377 i;
+#X obj 578 389 * 32;
+#X obj 791 374 i;
+#X obj 722 389 * 32;
+#X obj 722 358 r control10;
+#X obj 578 361 r control11;
+#X obj 372 18 r control12;
+#X obj 653 102 print;
+#X obj 813 98 print;
+#X obj 375 47 * -100;
+#X obj 388 70 + 100;
+#X msg 64 113 \; masterVolume 1 \; \; filename0 drum1.wav \; filename1
+drum2.wav \; filename2 drum3.wav \; filename3 drum4.wav \; \; pan0
 0 \; pan1 53 \; pan2 108 \; pan3 161 \; pan4 214 \; pan5 267 \; pan6
 320 \; \;;
+#X msg 236 157 \; setMasterTempo 100 \; setCount1 0 \; setBucket1 0
+\; setSteps1 8 \; setPulses1 2 \; setCount2 0 \; setBucket2 0 \; setSteps2
+8 \; setPulses2 3 \; setCount3 0 \; setBucket3 0 \; setSteps3 8 \;
+setPulses3 4 \; setCount4 0 \; setBucket4 0 \; setSteps4 8 \; setPulses4
+1 \; \;;
 #X connect 4 0 5 0;
-#X connect 4 0 12 0;
-#X connect 4 0 40 0;
+#X connect 4 0 69 0;
+#X connect 4 0 68 0;
 #X connect 5 0 11 0;
 #X connect 6 0 7 0;
 #X connect 6 0 5 0;
 #X connect 7 0 5 1;
 #X connect 9 0 4 0;
 #X connect 10 0 6 0;
+#X connect 15 0 19 0;
+#X connect 15 0 64 0;
 #X connect 16 0 20 0;
-#X connect 17 0 21 0;
-#X connect 22 0 34 0;
-#X connect 23 0 39 0;
-#X connect 26 0 35 0;
-#X connect 27 0 38 0;
+#X connect 16 0 65 0;
+#X connect 21 0 33 0;
+#X connect 22 0 38 0;
+#X connect 25 0 34 0;
+#X connect 26 0 37 0;
+#X connect 29 0 35 0;
 #X connect 30 0 36 0;
-#X connect 31 0 37 0;
+#X connect 39 0 40 0;
+#X connect 40 0 15 0;
+#X connect 41 0 42 0;
+#X connect 42 0 43 0;
+#X connect 43 0 16 0;
+#X connect 44 0 39 0;
+#X connect 45 0 46 0;
+#X connect 46 0 25 0;
+#X connect 47 0 48 0;
+#X connect 48 0 26 0;
+#X connect 49 0 50 0;
+#X connect 50 0 21 0;
+#X connect 51 0 52 0;
+#X connect 52 0 22 0;
+#X connect 53 0 51 0;
+#X connect 54 0 49 0;
+#X connect 55 0 47 0;
+#X connect 56 0 45 0;
+#X connect 57 0 58 0;
+#X connect 58 0 29 0;
+#X connect 59 0 60 0;
+#X connect 60 0 30 0;
+#X connect 61 0 59 0;
+#X connect 62 0 57 0;
+#X connect 63 0 66 0;
+#X connect 66 0 67 0;
+#X connect 67 0 6 0;

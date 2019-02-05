@@ -64,6 +64,7 @@ static t_int *bytebeat_perform(t_int *w) {
 			case 126:  *out++ = (int)(t/1e7*t*t+t)%127|t>>4|t>>5|t%127+(t>>16)|t; break; 
 			case 127:  *out++ = ((t/2*(15&(0x234568a0>>(t>>8&28))))|t/2>>(t>>11)^t>>12)+(t/16&t&24); break; 
 			case 128:  *out++ = (t&t%255)-(t*3&t>>13&t>>6); break; 
+			case 129:  *out++ = (t&t%255)-(t*3&t>>13&t>>6); break; 
 			//case 129:  *out++ = t>>4|t&((t>>5)/(t>>7-(t>>15)&-t>>7-(t>>15))); break; 
 			case 130:  *out++ = ((t*("36364689"[t>>13&7]&15))/12&128)+(((((t>>12)^(t>>12)-2)%11*t)/4|t>>13)&127); break; 
 			case 131:  *out++ = (t*9&t>>4|t*5&t>>7|t*3&t/1024)-1; break;  
@@ -112,6 +113,7 @@ static t_int *bytebeat_perform(t_int *w) {
 			case 174:  *out++ = ((t*(t>>8|t>>9)&46&t>>8))^(t&t>>13|t>>6); break; 
 			case 175:  *out++ = t*(((t>>9)^((t>>9)-1)^1)%13); break; 
 			case 176:  *out++ = (t>>5)|(t<<4)|((t&1023)^1981)|((t-67)>>4); break; 
+			case 177:  *out++ = (t>>5)|(t<<4)|((t&1023)^1981)|((t-67)>>4); break;
 			//case 177:  *out++ = t>>4|t&(t>>5)/(t>>7-(t>>15)&-t>>7-(t>>15)); break; 
 			case 178:  *out++ = t*(t/256)-t*(t/255)+t*(t>>5|t>>6|t<<2&t>>1); break; 
 			case 179:  *out++ = ((t>>5&t)-(t>>5)+(t>>5&t))+(t*((t>>14)&14)); break; 

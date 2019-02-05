@@ -35,18 +35,18 @@
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
-            <w>100</w>
-            <x>996</x>
-            <y>240</y>
-            <bx>954</bx>
-            <by>76</by>
-            <bw>60</bw>
-            <bh>30</bh>
-            <bLabel>Reverb</bLabel>
-            <bValue>0</bValue>
-            <rotation>6376.000000000</rotation>
-			<signal>formula</signal>
-        </circle>
+            <instrument>0</instrument>
+            <bx>900.500000000</bx>
+            <by>70.500000000</by>
+            <bw>80.000000000</bw>
+            <bh>30.000000000</bh>
+            <bLabel>REVERB</bLabel>
+            <bValue>29</bValue>
+            <x>900.000000000</x>
+            <y>209.000000000</y>
+            <w>100.000000000</w>
+            <rotation>17263.000000000</rotation>
+       </circle>
         <circle>
             <id>2</id>
             <type>1</type>
@@ -61,12 +61,12 @@
             <y>400</y>
             <bx>512</bx>
             <by>530</by>
-            <bw>520</bw>
+            <bw>700</bw>
             <bh>30</bh>
             <bLabel>Formula</bLabel>
-            <bValue>Foo</bValue>
+            <bValue></bValue>
+            <senseType>1</senseType>
             <rotation>5645.000000000</rotation>
-			<signal>reverb</signal>
         </circle>
     </circles>
     <joints></joints>

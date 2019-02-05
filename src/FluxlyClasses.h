@@ -47,12 +47,12 @@ public:
     int by;
     int bw;
     int bh;
-    int a1x;
-    int a1y;
-    int a2x;
-    int a2y;
-    int a3x;
-    int a3y;
+    string bLabel;
+    string bValue;
+    int density;
+    int bounce;
+    int friction;
+    int senseType;   // 0 = angular velocity, 1 = x position, 2 = y position
     int displayW;
     bool eyeState = false;
     bool onOffState = false;
@@ -68,7 +68,7 @@ public:
     float dampingY;
     bool sendOn = false;
     bool sendOff = false;
-    bool sendTempo = false;
+    bool sendControl = false;
     bool spinning = false;
     bool wasntSpinning = true;
     bool touched = false;
@@ -81,8 +81,10 @@ public:
     int maxAnimationCount = 150;
     int animationStep = 6;
     
-    float prevTempo = 0;
     float tempo = 0;
+    float prevTempo = 0;
+    float prevX = 0;
+    float prevY = 0;
     int instrument;
     
     string filename;
@@ -162,20 +164,34 @@ public:
         body->SetAngularVelocity(v);
     }
     
-    void checkToSendTempo() {
-        //tempo = (body->GetAngularVelocity()/24)*8;
+    void checkToSendControl() {
+        sendControl = false;
         tempo = (body->GetAngularVelocity()/75)*8;
-        if (tempo > 1) tempo = 1;
-        if (tempo != prevTempo) {
-            sendTempo = true;
-        } else {
-            sendTempo = false;
+        
+        switch (senseType) {
+            case (0): {
+                if (tempo > 1) tempo = 1;
+                if (tempo != prevTempo) {
+                    sendControl = true;
+                }
+                break;
+            }
+            case (1): {
+                if (x != prevX) sendControl = true;
+                break;
+            }
+            case (2): {
+                if (y != prevY) sendControl = true;
+                break;
+            }
         }
         prevTempo = tempo;
+        prevX = x;
+        prevY = y;
         if (abs(tempo) > 0.015) {
-            spinning = true;
+             spinning = true;
         } else {
-            spinning = false;
+             spinning = false;
         }
     }
     
@@ -339,7 +355,9 @@ public:
     int touchId = -1;
     float rotation = 0.0;
     ofTrueTypeFont silkscreen;
+    ofTrueTypeFont silkscreen2;
     int lineHeight;
+    int fontSize = 1;
     
     b2BodyDef * def;
     
@@ -347,6 +365,7 @@ public:
     
     void init() {
         silkscreen.load("slkscr.ttf", 16);
+         silkscreen2.load("slkscr.ttf", 12);
         lineHeight = silkscreen.getLineHeight()*.8;
     }
     
@@ -385,7 +404,12 @@ public:
         ofDrawRectRounded(0, 0, w, h, 10);
         ofSetColor(0);
         silkscreen.drawString(bLabel, -silkscreen.stringWidth(bLabel)/2, -3);
-        silkscreen.drawString(bValue, -silkscreen.stringWidth(bValue)/2, lineHeight-3);
+       /* if (fontSize == 0) {
+            silkscreen2.drawString(bValue, -silkscreen2.stringWidth(bValue)/2, lineHeight-3);
+        } else {*/
+            silkscreen.drawString(bValue, -silkscreen.stringWidth(bValue)/2, lineHeight-3);
+       // }
+        
         //ofDrawTriangle(bx+a1x, by+a1y, x+a3x, y+a3y, bx+a2x, by+a2y);
         
         /* if (nJoints == 3) {
@@ -402,6 +426,7 @@ public:
         ofSetColor(255);
         ofSetLineWidth(5);
         ofDrawTriangle(x-5, y, x1, y1, x+5, y);
+        ofDrawTriangle(x-5, y+5, x1, y1, x+5, y-5);
         //ofDrawLine(x, y, x1, y1);
     }
 };
