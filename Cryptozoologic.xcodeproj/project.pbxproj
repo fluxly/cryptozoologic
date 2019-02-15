@@ -308,6 +308,30 @@
 		9DC4080821DC403E0022CD3A /* vphasor.mmb~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DC407EC21DC403D0022CD3A /* vphasor.mmb~.pd */; };
 		9DC4080921DC403E0022CD3A /* pd-vivianLoopBox.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DC407ED21DC403D0022CD3A /* pd-vivianLoopBox.pd */; };
 		9DC4080A21DC403E0022CD3A /* sample3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9DC407EF21DC403D0022CD3A /* sample3.wav */; };
+		9DD3EA73220C78C0008D1F25 /* insectsall.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA64220C78BD008D1F25 /* insectsall.pd */; };
+		9DD3EA74220C78C0008D1F25 /* pd-creature-factory.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA65220C78BD008D1F25 /* pd-creature-factory.pd */; };
+		9DD3EA75220C78C0008D1F25 /* cicarda_sustained.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA66220C78BD008D1F25 /* cicarda_sustained.pd */; };
+		9DD3EA76220C78C0008D1F25 /* trachea.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA67220C78BE008D1F25 /* trachea.pd */; };
+		9DD3EA77220C78C0008D1F25 /* buzzing-housefly.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA68220C78BE008D1F25 /* buzzing-housefly.pd */; };
+		9DD3EA78220C78C0008D1F25 /* articulate.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA69220C78BE008D1F25 /* articulate.pd */; };
+		9DD3EA79220C78C0008D1F25 /* locust.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA6A220C78BE008D1F25 /* locust.pd */; };
+		9DD3EA7A220C78C0008D1F25 /* cicada1.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA6B220C78BE008D1F25 /* cicada1.pd */; };
+		9DD3EA7B220C78C0008D1F25 /* wing_demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA6C220C78BE008D1F25 /* wing_demo.pd */; };
+		9DD3EA7C220C78C0008D1F25 /* vowels.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA6D220C78BF008D1F25 /* vowels.pd */; };
+		9DD3EA7D220C78C0008D1F25 /* pd-birdcall.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA6E220C78BF008D1F25 /* pd-birdcall.pd */; };
+		9DD3EA7E220C78C0008D1F25 /* wing_demo_data.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA6F220C78BF008D1F25 /* wing_demo_data.pd */; };
+		9DD3EA7F220C78C0008D1F25 /* vposc.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA70220C78BF008D1F25 /* vposc.pd */; };
+		9DD3EA80220C78C0008D1F25 /* avian-syrinx-model.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA71220C78C0008D1F25 /* avian-syrinx-model.pd */; };
+		9DD3EA81220C78C0008D1F25 /* cricket_chirp.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA72220C78C0008D1F25 /* cricket_chirp.pd */; };
+		9DD3EA86220C78E2008D1F25 /* game4-ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA83220C78E1008D1F25 /* game4-ipad.xml */; };
+		9DD3EA89220C7B9B008D1F25 /* game4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA88220C7B9A008D1F25 /* game4.png */; };
+		9DD3EA8C220C7CF0008D1F25 /* links.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA8A220C7CEF008D1F25 /* links.png */; };
+		9DD3EA8F220C7EDB008D1F25 /* game4-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA8E220C7EDB008D1F25 /* game4-ipad.png */; };
+		9DD3EA91220C7EF0008D1F25 /* links-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA90220C7EF0008D1F25 /* links-ipad.png */; };
+		9DD3EA94220C882F008D1F25 /* game5-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA92220C882E008D1F25 /* game5-ipad.png */; };
+		9DD3EA95220C882F008D1F25 /* game5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA93220C882F008D1F25 /* game5.png */; };
+		9DD3EA9A22175632008D1F25 /* starMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA9822175630008D1F25 /* starMask.png */; };
+		9DD3EA9B22175632008D1F25 /* starMaskAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD3EA9922175631008D1F25 /* starMaskAlpha.png */; };
 		9DF412EF20925F8E00D0358F /* mesh14.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF412E920925F8D00D0358F /* mesh14.png */; };
 		9DF412F020925F8E00D0358F /* mesh13.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF412EA20925F8D00D0358F /* mesh13.png */; };
 		9DF412F120925F8E00D0358F /* mesh12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF412EB20925F8D00D0358F /* mesh12.png */; };
@@ -866,6 +890,30 @@
 		9DC407ED21DC403D0022CD3A /* pd-vivianLoopBox.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pd-vivianLoopBox.pd"; sourceTree = "<group>"; };
 		9DC407EE21DC403D0022CD3A /* bytebeat~.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bytebeat~.h"; sourceTree = "<group>"; };
 		9DC407EF21DC403D0022CD3A /* sample3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample3.wav; sourceTree = "<group>"; };
+		9DD3EA64220C78BD008D1F25 /* insectsall.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = insectsall.pd; sourceTree = "<group>"; };
+		9DD3EA65220C78BD008D1F25 /* pd-creature-factory.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pd-creature-factory.pd"; sourceTree = "<group>"; };
+		9DD3EA66220C78BD008D1F25 /* cicarda_sustained.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cicarda_sustained.pd; sourceTree = "<group>"; };
+		9DD3EA67220C78BE008D1F25 /* trachea.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trachea.pd; sourceTree = "<group>"; };
+		9DD3EA68220C78BE008D1F25 /* buzzing-housefly.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "buzzing-housefly.pd"; sourceTree = "<group>"; };
+		9DD3EA69220C78BE008D1F25 /* articulate.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = articulate.pd; sourceTree = "<group>"; };
+		9DD3EA6A220C78BE008D1F25 /* locust.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locust.pd; sourceTree = "<group>"; };
+		9DD3EA6B220C78BE008D1F25 /* cicada1.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cicada1.pd; sourceTree = "<group>"; };
+		9DD3EA6C220C78BE008D1F25 /* wing_demo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wing_demo.pd; sourceTree = "<group>"; };
+		9DD3EA6D220C78BF008D1F25 /* vowels.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vowels.pd; sourceTree = "<group>"; };
+		9DD3EA6E220C78BF008D1F25 /* pd-birdcall.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pd-birdcall.pd"; sourceTree = "<group>"; };
+		9DD3EA6F220C78BF008D1F25 /* wing_demo_data.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wing_demo_data.pd; sourceTree = "<group>"; };
+		9DD3EA70220C78BF008D1F25 /* vposc.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vposc.pd; sourceTree = "<group>"; };
+		9DD3EA71220C78C0008D1F25 /* avian-syrinx-model.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "avian-syrinx-model.pd"; sourceTree = "<group>"; };
+		9DD3EA72220C78C0008D1F25 /* cricket_chirp.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cricket_chirp.pd; sourceTree = "<group>"; };
+		9DD3EA83220C78E1008D1F25 /* game4-ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "game4-ipad.xml"; sourceTree = "<group>"; };
+		9DD3EA88220C7B9A008D1F25 /* game4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game4.png; sourceTree = "<group>"; };
+		9DD3EA8A220C7CEF008D1F25 /* links.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = links.png; sourceTree = "<group>"; };
+		9DD3EA8E220C7EDB008D1F25 /* game4-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game4-ipad.png"; sourceTree = "<group>"; };
+		9DD3EA90220C7EF0008D1F25 /* links-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "links-ipad.png"; sourceTree = "<group>"; };
+		9DD3EA92220C882E008D1F25 /* game5-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game5-ipad.png"; sourceTree = "<group>"; };
+		9DD3EA93220C882F008D1F25 /* game5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game5.png; sourceTree = "<group>"; };
+		9DD3EA9822175630008D1F25 /* starMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starMask.png; sourceTree = "<group>"; };
+		9DD3EA9922175631008D1F25 /* starMaskAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starMaskAlpha.png; sourceTree = "<group>"; };
 		9DF412E920925F8D00D0358F /* mesh14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesh14.png; sourceTree = "<group>"; };
 		9DF412EA20925F8D00D0358F /* mesh13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesh13.png; sourceTree = "<group>"; };
 		9DF412EB20925F8D00D0358F /* mesh12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mesh12.png; sourceTree = "<group>"; };
@@ -1443,6 +1491,15 @@
 		9D255FC82026B907003989FB /* data */ = {
 			isa = PBXGroup;
 			children = (
+				9DD3EA9822175630008D1F25 /* starMask.png */,
+				9DD3EA9922175631008D1F25 /* starMaskAlpha.png */,
+				9DD3EA92220C882E008D1F25 /* game5-ipad.png */,
+				9DD3EA93220C882F008D1F25 /* game5.png */,
+				9DD3EA90220C7EF0008D1F25 /* links-ipad.png */,
+				9DD3EA8E220C7EDB008D1F25 /* game4-ipad.png */,
+				9DD3EA8A220C7CEF008D1F25 /* links.png */,
+				9DD3EA88220C7B9A008D1F25 /* game4.png */,
+				9DD3EA83220C78E1008D1F25 /* game4-ipad.xml */,
 				9D7ABEC02170FBA100699A10 /* blueGlow.png */,
 				9D6C0EE820A0E5EA0096EDAF /* sample12.wav */,
 				9D6C0EE420A0E5E00096EDAF /* fluxlyTitleZero-ipad.png */,
@@ -1800,6 +1857,21 @@
 		9DC4079C21D979CF0022CD3A /* patches */ = {
 			isa = PBXGroup;
 			children = (
+				9DD3EA69220C78BE008D1F25 /* articulate.pd */,
+				9DD3EA71220C78C0008D1F25 /* avian-syrinx-model.pd */,
+				9DD3EA6E220C78BF008D1F25 /* pd-birdcall.pd */,
+				9DD3EA68220C78BE008D1F25 /* buzzing-housefly.pd */,
+				9DD3EA6B220C78BE008D1F25 /* cicada1.pd */,
+				9DD3EA66220C78BD008D1F25 /* cicarda_sustained.pd */,
+				9DD3EA65220C78BD008D1F25 /* pd-creature-factory.pd */,
+				9DD3EA72220C78C0008D1F25 /* cricket_chirp.pd */,
+				9DD3EA64220C78BD008D1F25 /* insectsall.pd */,
+				9DD3EA6A220C78BE008D1F25 /* locust.pd */,
+				9DD3EA67220C78BE008D1F25 /* trachea.pd */,
+				9DD3EA6D220C78BF008D1F25 /* vowels.pd */,
+				9DD3EA70220C78BF008D1F25 /* vposc.pd */,
+				9DD3EA6F220C78BF008D1F25 /* wing_demo_data.pd */,
+				9DD3EA6C220C78BE008D1F25 /* wing_demo.pd */,
 				9D9F24AE2200031E00DD47D9 /* pd-irishYeti2.pd */,
 				9D9F24A921FBD2C000DD47D9 /* freeverb~.c */,
 				9D82A39321E679B7004A1949 /* scale.c */,
@@ -2226,6 +2298,8 @@
 				9DC407F821DC403E0022CD3A /* complex_div.mmb~.pd in Resources */,
 				9DC407FC21DC403E0022CD3A /* sample0.wav in Resources */,
 				9D8B0B0D207D177800AC404F /* consolePlayStop.png in Resources */,
+				9DD3EA80220C78C0008D1F25 /* avian-syrinx-model.pd in Resources */,
+				9DD3EA8F220C7EDB008D1F25 /* game4-ipad.png in Resources */,
 				9DF4133420925FAF00D0358F /* mesh75.png in Resources */,
 				9D8B0B1E208B8FDF00AC404F /* bank1.png in Resources */,
 				9D0043A3205F63B9001DFF83 /* mesh56.png in Resources */,
@@ -2235,11 +2309,13 @@
 				9DFDC13020792AB200BBDB9B /* game2.xml in Resources */,
 				9DF4132D20925FAF00D0358F /* mesh84.png in Resources */,
 				9DF4133B20925FAF00D0358F /* mesh29.png in Resources */,
+				9DD3EA77220C78C0008D1F25 /* buzzing-housefly.pd in Resources */,
 				9D00416D20476157001DFF83 /* mesh4.png in Resources */,
 				9DF4133920925FAF00D0358F /* mesh62.png in Resources */,
 				9DC407F121DC403E0022CD3A /* complex_add.mmb~.pd in Resources */,
 				678E130817951530005B6D19 /* Icon@2x.png in Resources */,
 				9D0043D9205F63B9001DFF83 /* mesh104.png in Resources */,
+				9DD3EA91220C7EF0008D1F25 /* links-ipad.png in Resources */,
 				9DFDC13A20792AB200BBDB9B /* menuSettings.xml in Resources */,
 				9D0043C4205F63B9001DFF83 /* mesh91.png in Resources */,
 				9D0043AE205F63B9001DFF83 /* mesh66.png in Resources */,
@@ -2282,6 +2358,7 @@
 				9D5F1DE7216FE9A700B2F973 /* README.md in Resources */,
 				9D0043CE205F63B9001DFF83 /* mesh47.png in Resources */,
 				9DF4135120925FB000D0358F /* mesh26.png in Resources */,
+				9DD3EA7D220C78C0008D1F25 /* pd-birdcall.pd in Resources */,
 				9DFDC12E20792AB200BBDB9B /* game2.png in Resources */,
 				9DC407F521DC403E0022CD3A /* pd-bytebeat.pd in Resources */,
 				9DF4135520925FB000D0358F /* mesh123.png in Resources */,
@@ -2296,7 +2373,9 @@
 				9DF4135020925FB000D0358F /* mesh24.png in Resources */,
 				9DC4080521DC403E0022CD3A /* sample4.wav in Resources */,
 				9DF4134420925FAF00D0358F /* mesh28.png in Resources */,
+				9DD3EA7E220C78C0008D1F25 /* wing_demo_data.pd in Resources */,
 				9DF4133520925FAF00D0358F /* mesh133.png in Resources */,
+				9DD3EA8C220C7CF0008D1F25 /* links.png in Resources */,
 				9DFDC12B20792AB200BBDB9B /* game3.xml in Resources */,
 				9D004398205F63B9001DFF83 /* mesh94.png in Resources */,
 				9D004393205F63B9001DFF83 /* mesh128.png in Resources */,
@@ -2309,11 +2388,15 @@
 				9DF412EF20925F8E00D0358F /* mesh14.png in Resources */,
 				9DC4080121DC403E0022CD3A /* lin-xfade.mmb~.pd in Resources */,
 				9DF4135B20925FB000D0358F /* mesh37.png in Resources */,
+				9DD3EA81220C78C0008D1F25 /* cricket_chirp.pd in Resources */,
 				9DC407FF21DC403E0022CD3A /* drum3.wav in Resources */,
 				9DF4134C20925FB000D0358F /* mesh38.png in Resources */,
 				9DF4135E20925FB000D0358F /* mesh64.png in Resources */,
+				9DD3EA89220C7B9B008D1F25 /* game4.png in Resources */,
 				9D0043A1205F63B9001DFF83 /* mesh127.png in Resources */,
+				9DD3EA79220C78C0008D1F25 /* locust.pd in Resources */,
 				9DF4134F20925FB000D0358F /* mesh65.png in Resources */,
+				9DD3EA7B220C78C0008D1F25 /* wing_demo.pd in Resources */,
 				9DF4133820925FAF00D0358F /* mesh41.png in Resources */,
 				9D0043CF205F63B9001DFF83 /* mesh131.png in Resources */,
 				678E130C1795153C005B6D19 /* Default.png in Resources */,
@@ -2329,6 +2412,7 @@
 				9DC407FA21DC403E0022CD3A /* bl-init.mmb.pd in Resources */,
 				9DC4080A21DC403E0022CD3A /* sample3.wav in Resources */,
 				9D00439D205F63B9001DFF83 /* mesh30.png in Resources */,
+				9DD3EA75220C78C0008D1F25 /* cicarda_sustained.pd in Resources */,
 				9D8B0B162085016100AC404F /* AppIcon.xcassets in Resources */,
 				9DC20327207ABD5400F036E5 /* fluxlyTitle.png in Resources */,
 				9D69A104208D045600F789C6 /* fluxlyTitle-ipad.png in Resources */,
@@ -2338,17 +2422,21 @@
 				9D69A136208D2A1400F789C6 /* game3-ipad.xml in Resources */,
 				9D69A100208BE87D00F789C6 /* background7.png in Resources */,
 				9D0043AA205F63B9001DFF83 /* mesh90.png in Resources */,
+				9DD3EA7F220C78C0008D1F25 /* vposc.pd in Resources */,
 				9DC4080421DC403E0022CD3A /* sample2.wav in Resources */,
 				9D0043C6205F63B9001DFF83 /* mesh31.png in Resources */,
 				9D0044072061A58E001DFF83 /* background5.png in Resources */,
 				9DF4135220925FB000D0358F /* mesh100.png in Resources */,
 				9D004391205F63B9001DFF83 /* mesh35.png in Resources */,
+				9DD3EA95220C882F008D1F25 /* game5.png in Resources */,
 				9D0043DB205F63B9001DFF83 /* mesh57.png in Resources */,
 				9DC407FB21DC403E0022CD3A /* pd-irishYeti.pd in Resources */,
+				9DD3EA74220C78C0008D1F25 /* pd-creature-factory.pd in Resources */,
 				9D0043B3205F63B9001DFF83 /* mesh42.png in Resources */,
 				9DF4134620925FAF00D0358F /* mesh136.png in Resources */,
 				9DFDC13520792AB200BBDB9B /* game0.png in Resources */,
 				9D0043C2205F63B9001DFF83 /* mesh79.png in Resources */,
+				9DD3EA86220C78E2008D1F25 /* game4-ipad.xml in Resources */,
 				9DF4133720925FAF00D0358F /* mesh96.png in Resources */,
 				9D0043AB205F63B9001DFF83 /* mesh92.png in Resources */,
 				9D69A13A208D2A1400F789C6 /* game0-ipad.xml in Resources */,
@@ -2370,7 +2458,9 @@
 				9D004395205F63B9001DFF83 /* mesh32.png in Resources */,
 				9D0043C7205F63B9001DFF83 /* mesh89.png in Resources */,
 				9DFDC12920792AB200BBDB9B /* game0.xml in Resources */,
+				9DD3EA9A22175632008D1F25 /* starMask.png in Resources */,
 				9D004330205DA7C0001DFF83 /* sample3.wav in Resources */,
+				9DD3EA9B22175632008D1F25 /* starMaskAlpha.png in Resources */,
 				9DF4135D20925FB000D0358F /* mesh60.png in Resources */,
 				9D0043A2205F63B9001DFF83 /* mesh142.png in Resources */,
 				9D69A118208D282200F789C6 /* game3-ipad.png in Resources */,
@@ -2379,6 +2469,7 @@
 				9DF4134520925FAF00D0358F /* mesh73.png in Resources */,
 				9DF4136220925FB000D0358F /* mesh132.png in Resources */,
 				9D0043B0205F63B9001DFF83 /* mesh55.png in Resources */,
+				9DD3EA94220C882F008D1F25 /* game5-ipad.png in Resources */,
 				9D0043CC205F63B9001DFF83 /* mesh140.png in Resources */,
 				9D004394205F63B9001DFF83 /* mesh9.png in Resources */,
 				9DF4135920925FB000D0358F /* mesh88.png in Resources */,
@@ -2411,6 +2502,7 @@
 				9D0043B8205F63B9001DFF83 /* mesh77.png in Resources */,
 				9DF412F020925F8E00D0358F /* mesh13.png in Resources */,
 				9DF4135C20925FB000D0358F /* mesh39.png in Resources */,
+				9DD3EA78220C78C0008D1F25 /* articulate.pd in Resources */,
 				9D0043DA205F63B9001DFF83 /* mesh0.png in Resources */,
 				9D8B0B0F207D177800AC404F /* consoleRecStop.png in Resources */,
 				9DF4134A20925FB000D0358F /* mesh76.png in Resources */,
@@ -2422,6 +2514,7 @@
 				9D0043DC205F63B9001DFF83 /* mesh80.png in Resources */,
 				9D0043AF205F63B9001DFF83 /* mesh70.png in Resources */,
 				9DF4134020925FAF00D0358F /* mesh124.png in Resources */,
+				9DD3EA7C220C78C0008D1F25 /* vowels.pd in Resources */,
 				9DC4080621DC403E0022CD3A /* drum0.wav in Resources */,
 				9D0043D2205F63B9001DFF83 /* mesh20.png in Resources */,
 				9D00439B205F63B9001DFF83 /* mesh116.png in Resources */,
@@ -2436,6 +2529,7 @@
 				9D00417A2048A3F5001DFF83 /* sample8.wav in Resources */,
 				9D0043AD205F63B9001DFF83 /* mesh137.png in Resources */,
 				9D00439E205F63B9001DFF83 /* mesh43.png in Resources */,
+				9DD3EA73220C78C0008D1F25 /* insectsall.pd in Resources */,
 				9D0043AC205F63B9001DFF83 /* mesh81.png in Resources */,
 				9D0043B6205F63B9001DFF83 /* mesh21.png in Resources */,
 				9DC407F321DC403E0022CD3A /* sample5.wav in Resources */,
@@ -2444,8 +2538,10 @@
 				9D004323205C3A97001DFF83 /* sample9.wav in Resources */,
 				9DF4135320925FB000D0358F /* mesh63.png in Resources */,
 				9D0043C9205F63B9001DFF83 /* mesh139.png in Resources */,
+				9DD3EA76220C78C0008D1F25 /* trachea.pd in Resources */,
 				9D0043D5205F63B9001DFF83 /* mesh19.png in Resources */,
 				9D004332205DA7C0001DFF83 /* sample7.wav in Resources */,
+				9DD3EA7A220C78C0008D1F25 /* cicada1.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

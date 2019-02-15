@@ -63,11 +63,29 @@
             <by>530</by>
             <bw>700</bw>
             <bh>30</bh>
-            <bLabel>Formula</bLabel>
+            <bLabel>BYTEBEAT FORMULA</bLabel>
             <bValue></bValue>
             <senseType>1</senseType>
             <rotation>5645.000000000</rotation>
         </circle>
     </circles>
+	<edges></edges>
     <joints></joints>
+	<hints>
+		<hint>
+		  <timer>600</timer>
+		  <showCircle>0</showCircle>
+		  <showCircle>1</showCircle>
+		  <hintText>Start with the Speed Control</hintText>
+		  <hintX>100</hintX>
+	      <hintY>100</hintY>
+	    </hint>
+		<hint>
+		  <timer>300</timer>
+		  <showCircle>2</showCircle>
+		  <hintText>Change the formula with the pink one</hintText>
+		  <hintX>100</hintX>
+	      <hintY>300</hintY>
+	    </hint>
+	</hints>
 </settings>

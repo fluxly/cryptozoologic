@@ -215,4 +215,21 @@
         </circle>
     </circles>
     <joints></joints>
+	<hints>
+		<hint>
+		  <timer>600</timer>
+		  <showCircle>0</showCircle>
+		  <showCircle>1</showCircle>
+		  <hintText>Start with the Speed Control</hintText>
+		  <hintX>100</hintX>
+	      <hintY>100</hintY>
+	    </hint>
+		<hint>
+		  <timer>600</timer>
+		  <showCircle>2</showCircle>
+		  <hintText>Change the formula with the pink one</hintText>
+		  <hintX>100</hintX>
+	      <hintY>300</hintY>
+	    </hint>
+	</hints>
 </settings>

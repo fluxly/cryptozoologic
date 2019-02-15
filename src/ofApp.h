@@ -67,9 +67,9 @@
 #define SAMPLE_MENU (1)
 
 #define maxTouches (11)
-#define nScenes (16)
+#define nScenes (6)
 
-#define SCENES_IN_BUNDLE (4)
+#define SCENES_IN_BUNDLE (3)
 #define SAMPLES_IN_BUNDLE (15)
 
 // Controls
@@ -106,6 +106,16 @@ public:
     int id2;
     ofxBox2dJoint *joint;
 };
+
+class FluxlyHint {
+public:
+    int hintX;
+    int hintY;
+    int timer;
+    string hintText;
+    vector <shared_ptr<FluxlyHint> >  showCircles;
+};
+
 
 class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
               public ofxMidiListener, public ofxMidiConnectionListener{
@@ -156,7 +166,7 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
         void destroyGame();
         void toggleHelpBubbles();
         void helpLayerScript();
-        void helpLayerDisplay(int n);
+        void helpLayerDisplay();
         void drawHelpString(string s, int x1, int y1, int yOffset, int row);
     
         bool controlInBounds(int i, int x1, int y1);
@@ -187,10 +197,10 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     int startTouchId = 0;
     int startTouchX = 0;
     int startTouchY = 0;
-    int clueTimer = 0;
-    int currentClueState = 0;
-    int cluesSeen = 0;
-    bool clueOn = false;
+    int hintTimer = 0;
+    int currentHintState = 0;
+    int hintsSeen = 0;
+    bool hintOn = false;
     bool totallySetUp = false;
     
     int timeInGame = 0;
@@ -288,7 +298,7 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     ofImage arrow;
     ofImage arrowLeft;
     ofImage icon;
-    
+                  
     ofxBox2d box2d;
     
     SlidingMenu * mainMenu;
@@ -300,10 +310,13 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     vector <shared_ptr<FluxlyJointConnection> > joints;
     vector <shared_ptr<FluxlyConnection> > connections;
     vector <shared_ptr<ofxBox2dEdge> >  edges;
+    vector <shared_ptr<FluxlyHint> >  hints;
+                  
     vector<float> backgroundScopeArray{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     vector<float> backgroundScopeArray1;
     vector<float> backgroundScopeArray2;
     vector<float> backgroundScopeArray3;
+    vector<float> game3Scopes[11];
                   
     bool midiSaveState[8] = { false, false, false, false, false, false, false, false };
     bool midiPlayState[8] = { false, false, false, false, false, false, false, false };

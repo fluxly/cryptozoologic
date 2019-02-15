@@ -151,12 +151,12 @@ void ofApp::setupPostSplashscreen() {
     dir.open(ofxiOSGetDocumentsDirectory());
     int numFiles = dir.listDir();
     firstRun = true;
-    clueOn = true;
+    hintOn = true;
     
     for (int i=0; i<numFiles; ++i) {
         if (dir.getName(i) == "menuSettings.xml") {
-            firstRun = false;
-            clueOn = false;
+         //   firstRun = false;    // change these back after testing hints
+        //    hintOn = false;      // change these back after testing hints
             helpOn = false;        // turn off help layer if not first run
             helpWasOn = false;
         }
@@ -176,6 +176,11 @@ void ofApp::setupPostSplashscreen() {
                 file.copyFromTo("game"+to_string(i)+".png", ofxiOSGetDocumentsDirectory()+"game"+to_string(i)+".png", true, true);
             }
         }
+    if (device == TABLET) {
+        file.copyFromTo("links-ipad.png", ofxiOSGetDocumentsDirectory()+"links.png", true, true);
+    } else {
+        file.copyFromTo("links.png", ofxiOSGetDocumentsDirectory()+"links.png", true, true);
+    }
     //}
     ofLog(OF_LOG_VERBOSE, "set samplerate");
     // try to set the preferred iOS sample rate, but get the actual sample rate
@@ -276,6 +281,8 @@ void ofApp::setupPostSplashscreen() {
     box2d.registerGrabbing();
     
     mainMenu = new SlidingMenu();
+    mainMenu->retinaScale = retinaScaling;
+    mainMenu->deviceScale = deviceScale;
     
     //mainMenu->menuTitleW = screenW;
     
@@ -322,6 +329,7 @@ void ofApp::setupPostSplashscreen() {
     saving.load("saving.png");
     
     // Visualizations setup
+    // (Note: these eventually need to go into their own class)
     
     for (int i=0; i < 5; i++) {
         if (device == PHONE) {
@@ -352,7 +360,8 @@ void ofApp::loadGame(int gameId) {
         case 0: currentPatch = pd.openPatch("pd-bytebeat.pd"); break;
         case 1: currentPatch = pd.openPatch("pd-benjolin2.pd"); break;
         case 2: currentPatch = pd.openPatch("pd-irishYeti2.pd"); break;
-        case 3: currentPatch = pd.openPatch("pd-vivianLoopBox.pd"); break;
+        case 3: currentPatch = pd.openPatch("pd-birdcall.pd"); break;
+        case 4: currentPatch = pd.openPatch("pd-creature-factory.pd"); break;
     }
     
     //send screen width for panning calculation in Pd
@@ -467,20 +476,47 @@ void ofApp::loadGame(int gameId) {
             e->create(box2d.getWorld());
             gameSettings.popTag();
         }
-        gameSettings.popTag();
         ofLog(OF_LOG_VERBOSE, "Done with Edges" );
         
+        ofLog(OF_LOG_VERBOSE, "Starting hints" );
+        gameSettings.popTag();
+        gameSettings.pushTag("hints");
+        int nHints = gameSettings.getNumTags("hint");
+        ofLog(OF_LOG_VERBOSE, "nHints: %d", nHints);
+        for(int i = 0; i < nHints; i++){
+            hints.push_back(shared_ptr<FluxlyHint>(new FluxlyHint));
+            FluxlyHint * h = hints.back().get();
+            gameSettings.pushTag("hint", i);
+            h->timer = gameSettings.getValue("timer", 0);
+            ofLog(OF_LOG_VERBOSE, "timer: %d", h->timer );
+            h->hintX = gameSettings.getValue("hintX", 0) * retinaScaling;
+            h->hintY = gameSettings.getValue("hintY", 0) * retinaScaling;
+            h->hintText = gameSettings.getValue("hintText", "Foo");
+            ofLog(OF_LOG_VERBOSE, h->hintText );
+            gameSettings.popTag();
+        }
+        if (nHints == 0) {
+            currentHintState = -1;
+        } else {
+            currentHintState = 0;
+        }
+        
+        ofLog(OF_LOG_VERBOSE, "Done with hints" );
+        
+        // Parse Joints
         gameSettings.popTag();
         gameSettings.pushTag("joints");
         int nJoints = gameSettings.getNumTags("joint");
         //ofLog(OF_LOG_VERBOSE, "nJoints: %d", nJoints);
         for(int i = 0; i < nJoints; i++){
             gameSettings.pushTag("joint", i);
-           // int id1 = gameSettings.getValue("id1", 0);
-           // int id2 = gameSettings.getValue("id2", 0);
+            // int id1 = gameSettings.getValue("id1", 0);
+            // int id2 = gameSettings.getValue("id2", 0);
             //ofLog(OF_LOG_VERBOSE, "Joint: id1, id2: %d, %d", id1, id2);
             gameSettings.popTag();
         }
+        gameSettings.popTag();
+        
     } else {
         ofLog(OF_LOG_VERBOSE, "Couldn't load file!");
     }
@@ -490,6 +526,17 @@ void ofApp::loadGame(int gameId) {
         toggleHelpBubbles();
     }
     pd.sendFloat("masterVolume", 1.0);
+    
+    // Note: this eventually needs to go into its own class
+    if (currentGame == 3) {
+        // Initialize game 3 arrays
+        for (int i=0; i < 11; i++) {
+            for (int j=0; j<1000; j++) {
+                pd.readArray("scope"+to_string(i), game3Scopes[i]);
+            }
+        }
+    }
+    
     gameState = RUN;
 }
 
@@ -588,6 +635,18 @@ void ofApp::update() {
                                 if ((i > 4) && ((i % 2) == 1)) game2Steps[(i-5)/2] = (int)(val*17);// FIXME: HARDCODED FOR GAME 2
                                 break;
                             }
+                            case (3): {
+                                int col = i % 4;
+                                int row = (int)i/4;
+                                float xVal = (float)(circles[i]->x-(256*retinaScaling*col))*retinaScaling;
+                                float yVal = (float)(circles[i]->y-(256*retinaScaling*row)-25*row)/(256*retinaScaling);
+                                //ofLog(OF_LOG_VERBOSE, "Updated x y of %d: %f %f", circles[i].get()->id, xVal, yVal);
+                                //pd.sendFloat("control"+to_string(circles[i].get()->id), val);
+                                for (int j=0; j<5; j++) {
+                                    game3Scopes[i][(int)xVal+j] = yVal;
+                                }
+                                break;
+                            }
                         }
                         circles[i].get()->sendControl = false;
                     }
@@ -608,10 +667,16 @@ void ofApp::update() {
                     pd.readArray("scope4", backgroundScopeArray1);
                     break;
                 case 3:
+                    int index = (int)(globalTick % 11);
+                    //ofLog(OF_LOG_VERBOSE, "Updated scope%d: %f", index);
+                    pd.writeArray("scope"+to_string(index), game3Scopes[index]);
                     break;
             }
             break;
     }
+    
+    if (currentHintState > -1) helpLayerScript();
+    
 }
 
 //--------------------------------------------------------------
@@ -623,7 +688,7 @@ void ofApp::draw() {
             ofDrawRectangle(0, 0, screenW, screenH);
             ofSetHexColor(0xFFFFFF);
             ofSetRectMode(OF_RECTMODE_CENTER);
-            helpFont.drawString("cryptozoologic.org", screenW/2 - helpFont.stringWidth("cryptozoologic.org")/2, screenH/2);
+            //helpFont.drawString("cryptozoologic.org", screenW/2 - helpFont.stringWidth("cryptozoologic.org")/2, screenH/2);
             totallySetUp = false;
             scene = MENU_SCENE;
             break;
@@ -738,7 +803,7 @@ void ofApp::draw() {
            // mainMenu->menuItems[currentGame]->reloadThumbnail();
             break;
     }
-    if (firstRun && (scene == GAME_SCENE)) helpLayerDisplay(currentClueState);
+    if (firstRun && (currentHintState > -1)) helpLayerDisplay();
 }
 
 void ofApp::drawVisualization(int gameId) {
@@ -815,6 +880,27 @@ void ofApp::drawVisualization(int gameId) {
                 }
             }
             ofFill();
+            break;
+        }
+        case (3): {
+            int x1 = 25*retinaScaling;
+            int y1 = 25*retinaScaling;
+            int w1 = 200*retinaScaling;
+            int col = 0;
+            ofSetColor(ofColor::fromHex(0xffffff));
+            ofSetLineWidth(4*retinaScaling);
+            for (int i=0; i<11; i++) {
+                for (int j=0; j<995; j+=5) {
+                    ofDrawLine(x1, y1 + game3Scopes[i][j]*w1, (x1+retinaScaling), y1+ game3Scopes[i][j+5]*w1);
+                    x1+=retinaScaling;
+                }
+                x1+=50*retinaScaling;
+                col = (col + 1) %4;
+                if (col == 0) {
+                    x1 = 25*retinaScaling;
+                    y1 += 280 * retinaScaling;
+                }
+            }
             break;
         }
     }
@@ -973,21 +1059,21 @@ void ofApp::touchDown(ofTouchEventArgs & touch){
         startTouchX = (int)touch.x;
         startTouchY = (int)touch.y;
         
+        bool noneTouched = true;
         for (int i=0; i<circles.size(); i++) {
             if (circles[i]->inBounds(touch.x, touch.y) && !circles[i]->touched) {
+                noneTouched = false;
                 circles[i]->touched = true;
                 circles[i]->touchId = touch.id;
                 //ofLog(OF_LOG_VERBOSE, "Touched %d", i);
             }
         }
+        if (noneTouched) {
+            ofLog(OF_LOG_VERBOSE, "Touch bang!");
+            pd.sendBang("touchBang");
+        }
     }
-    /*
-     if (scene == SELECT_SAMPLE_SCENE) {
-     startTouchId = touch.id;
-     startTouchX = (int)touch.x;
-     startTouchY = (int)touch.y;
-     }
-     */
+
 }
 
 
@@ -1424,28 +1510,25 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     void ofApp::helpLayerScript() {
         switch (scene) {
             case (MENU_SCENE) :
-                currentClueState = -1;
-                clueTimer = (clueTimer + 1) % (THREE_SECONDS * 4);
-                currentClueState = clueTimer / THREE_SECONDS;
-                if (currentClueState == 1) {
-                    clueTimer = 0;
-                    currentClueState = -1;
-                    clueOn = false;
-                    cluesSeen++;
+                hintTimer = (hintTimer + 1) % THREE_SECONDS;
+                if (hintTimer == 0) currentHintState++;
+                if (currentHintState == 1) {
+                    hintTimer = 0;
+                    currentHintState = -1;
+                    hintOn = false;
+                    hintsSeen++;
                 }
-                ofLog(OF_LOG_VERBOSE, "timer %i", currentClueState);
                 break;
             case (GAME_SCENE) :
-                currentClueState = -1;
-                clueTimer = (clueTimer + 1) % (THREE_SECONDS * 4);
-                 currentClueState = clueTimer / THREE_SECONDS;
-                 if (currentClueState == 3) {
-                     clueTimer = 0;
-                     currentClueState = -1;
-                     clueOn = false;
-                     cluesSeen++;
-                 }
-                ofLog(OF_LOG_VERBOSE, "timer %i", currentClueState);
+                hintTimer = (hintTimer + 1) % (hints[currentHintState]->timer);
+                if (hintTimer == 0) currentHintState++;
+                if (currentHintState == hints.size()) {
+                    hintTimer = 0;
+                    currentHintState = -1;
+                    hintOn = false;
+                    hintsSeen++;
+                }
+                ofLog(OF_LOG_VERBOSE, "timer %i", currentHintState);
                 break;
             case (SAVE_EXIT_PART_1):
                 
@@ -1461,17 +1544,16 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
                 ofLog(OF_LOG_VERBOSE, "Adding Bubble" + to_string(circles[i]->id));
                 bubbles.push_back(shared_ptr<FluxlyBubble>(new FluxlyBubble));
                 FluxlyBubble * b = bubbles.back().get();
-
-                bubbles[i]->x =  circles[i]->bx * retinaScaling;
-                bubbles[i]->y =  circles[i]->by * retinaScaling;
-                bubbles[i]->w =  circles[i]->bw * retinaScaling;
-                bubbles[i]->h =  circles[i]->bh * retinaScaling;
-                bubbles[i]->bLabel = circles[i]->bLabel;
-                bubbles[i]->bValue = circles[i]->bValue;
-                bubbles[i]->setPhysics(circles[i]->density/deviceScale/retinaScaling, circles[i]->bounce, circles[i]->friction);
-                bubbles[i]->setup(box2d.getWorld(), bubbles[i]->x, bubbles[i]->y, (bubbles[i]->w), (bubbles[i]->h));
+                b->x =  circles[i]->bx * retinaScaling;
+                b->y =  circles[i]->by * retinaScaling;
+                b->w =  circles[i]->bw * retinaScaling;
+                b->h =  circles[i]->bh * retinaScaling;
+                b->bLabel = circles[i]->bLabel;
+                b->bValue = circles[i]->bValue;
+                b->setPhysics(circles[i]->density/deviceScale/retinaScaling, circles[i]->bounce, circles[i]->friction);
+                b->setup(box2d.getWorld(), b->x, b->y, (b->w), (b->h));
                 //b->setRotation(gameSettings.getValue("rotation", 0));
-                bubbles[i]->init();
+                b->init();
                 
 
                 if ((currentGame == 0) && (i == 2)) {
@@ -1509,53 +1591,20 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
         }
     }
     
-    void ofApp::helpLayerDisplay(int n) {
+    void ofApp::helpLayerDisplay() {
         if (scene == MENU_SCENE) {
             ofSetColor(255, 255, 255);
             drawHelpString("(Scroll down for more)", screenW/2, screenH/2-40, 0, 0);
         }
         if (scene == GAME_SCENE) {
-            ofSetColor(0, 0, 0);
-            int yOffset = circles[0]->w/2+helpTextHeight*(1+device*.8)*deviceScale;  // add space if tablet
+            ofSetColor(255, 255, 255);
+            //int yOffset = circles[0]->w/2+helpTextHeight*(1+device*.8)*deviceScale;  // add space if tablet
+            ofLog(OF_LOG_VERBOSE, "currentHintState %i", currentHintState);
+            drawHelpString(hints[currentHintState]->hintText, hints[currentHintState]->hintX, hints[currentHintState]->hintY, 0, 0);
             
-            int x1;
-            int y1;
-            switch (n) {
-                case -1:
-                    break;
-                case 0:
-                    // e.g. drawHelpString("These are fluxum", screenW/2, screenH/2-40, 0, 0);
-                   //
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                case 4:
-                case 5:
-                    break;
-                case 6:
-                case 7:
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                case 11:
-                     break;
-                case 12:
-                case 13:
-                    break;
-                case 14:
-                case 15:
-                    break;
-                case 16:
-                case 17:
-                     break;
             }
             ofSetColor(255, 255, 255);
-        }
+        
     }
     
     void ofApp::drawHelpString(string s, int x1, int y1, int yOffset, int row) {

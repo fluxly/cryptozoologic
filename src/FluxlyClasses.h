@@ -184,6 +184,10 @@ public:
                 if (y != prevY) sendControl = true;
                 break;
             }
+            case (3): {
+                if ((y != prevY) || (x!=prevX)) sendControl = true;
+                break;
+            }
         }
         prevTempo = tempo;
         prevX = x;
@@ -500,12 +504,25 @@ public:
     ofImage myEyesClosed;
     bool eyeOpenState = false;
     float retinaScale;
+    ofImage starMask;
+    ofImage starMaskAlpha;
+    float starWidth = 171;   // 684 on iPad
+    float starHeight = 57.5;  // 230 on iPad
+    float timeInScene = .5;
+    bool drawStars = true;
     
     void init() {
+        
         spriteImg.load(filename);
         spriteImg.getTexture().setTextureMinMagFilter(GL_NEAREST,GL_NEAREST);
         myEyesOpen.load("eyesOpen.png");
         myEyesClosed.load("eyesClosed.png");
+        starMaskAlpha.load("starMaskAlpha.png");
+        starMaskAlpha.crop(0, 0, 684*timeInScene, 230);
+        
+        starMask.load("starMask.png");
+        
+        
         //ofLog(OF_LOG_VERBOSE, "Load menuItem%d", id);
         //maxCount = ofRandom(10, 200);
         //color = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
@@ -535,13 +552,13 @@ public:
         ofSetColor(255, 255, 255);
         ofTranslate(x+x1, y+y1);
         
+        int x2 = w/2-starWidth/2;
+        int y2 = h/5;
+       // ofLog(OF_LOG_VERBOSE, "sw sh: %f, %f, %f", starWidth, starHeight, starWidth*timeInScene);
         spriteImg.draw(0, 0, w, h);
-        if (type == SAMPLE_MENU) {
-            if (eyeOpenState) {
-              myEyesOpen.draw(0, 0, w, h);
-          } else {
-              myEyesClosed.draw(0, 0, w, h);
-          }
+        if (drawStars) {
+            starMaskAlpha.draw(x2, y2, starWidth*timeInScene, starHeight);
+            starMask.draw(x2, y2, starWidth, starHeight);
         }
         ofPopMatrix();
     }
@@ -725,7 +742,7 @@ public:
     int menuTitleW = 0;
     int menuTitleH = 0;
     int uniqueId;
-    int maxPanes = 5;
+    int maxPanes = 4;
     int currentPane = 1;
     float menuMoveStep = 0;
     int scrollingState = 0;
@@ -734,7 +751,9 @@ public:
     int selected = 0;
     int circleToChange = -1;
     
-    float retinaScale;
+    float retinaScale = 1;
+    float deviceScale = 1;
+    
     int bankMargin = 0;
     
     ofImage title;
@@ -779,7 +798,21 @@ public:
                     if (type == MAIN_MENU)  m->filename = ofxiOSGetDocumentsDirectory()+menuSettings.getValue("img", "foo.png");
                     ofLog(OF_LOG_VERBOSE, m->filename);
                     m->link = menuSettings.getValue("link", "foo.xml");
+                    if (m->link == "links.xml") {
+                        m->drawStars = false;
+                    } else {
+                        m->drawStars = true;
+                    }
+                    m->starWidth *= retinaScale * deviceScale;
+                    m->starHeight *= retinaScale * deviceScale;
+                    
                     //ofLog(OF_LOG_VERBOSE, m->link);
+                    m->timeInScene = menuSettings.getValue("timeInScene", 0);
+                    if (m->timeInScene > 900) m->timeInScene = 900;
+                    m->timeInScene = (m->timeInScene - 0) * (.9 - .1) / (900 - 0) + .1;
+                    if (m->timeInScene > 1) m->timeInScene = 1;
+                    if (m->timeInScene < .1) m->timeInScene = .1;
+                    ofLog(OF_LOG_VERBOSE, "time in Scene %f", m->timeInScene);
                     m->init();
                     menuSettings.popTag();
                 }
