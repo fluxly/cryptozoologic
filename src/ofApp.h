@@ -198,7 +198,7 @@ class ofApp : public ofxiOSApp, public PdReceiver, public PdMidiReceiver,
     int startTouchX = 0;
     int startTouchY = 0;
     int hintTimer = 0;
-    int currentHintState = 0;
+    int currentHintState = -1;
     int hintsSeen = 0;
     bool hintOn = false;
     bool totallySetUp = false;

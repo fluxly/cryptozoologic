@@ -23,6 +23,12 @@
 			</menuItem>
 			<menuItem>
 				<id>3</id>
+				<img>game3.png</img>
+				<link>game3.xml</link>
+				<timeInScene>1000</timeInScene>
+			</menuItem>
+			<menuItem>
+				<id>3</id>
 				<img>links.png</img>
 				<link>links.xml</link>
 			</menuItem>

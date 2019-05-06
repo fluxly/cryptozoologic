@@ -83,7 +83,7 @@ static NSString *const AUDIOBUS_API_KEY= @"H4sIAAAAAAAAA2WOy47CMAxF/8VrIJRXpW7nM
         && !_audiobusController.connected && !_audiobusController.memberOfActiveAudiobusSession) {
        // AudioOutputUnitStop(dynamic_cast<ofApp*>(ofGetAppPtr())->getSoundStream()->getSoundOutStream().audioUnit);
        AudioOutputUnitStop(_audiobusSender.audioUnit);
-        [[AVAudioSession sharedInstance] setActive:NO error:NULL];
+       [[AVAudioSession sharedInstance] setActive:NO error:NULL];
     }
 }
 

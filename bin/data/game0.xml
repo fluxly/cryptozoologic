@@ -57,7 +57,7 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <w>44</w>
-            <x>250</x>
+            <x>255</x>
             <y>180</y>
             <bx>284</bx>
             <by>270</by>
@@ -76,16 +76,16 @@
 		  <timer>600</timer>
 		  <showCircle>0</showCircle>
 		  <showCircle>1</showCircle>
-		  <hintText>Start with the Speed Control</hintText>
+		  <hintText>Spin the red</hintText>
 		  <hintX>100</hintX>
-	      <hintY>100</hintY>
+	      <hintY>140</hintY>
 	    </hint>
 		<hint>
-		  <timer>600</timer>
+		  <timer>300</timer>
 		  <showCircle>2</showCircle>
-		  <hintText>Change the formula with the pink one</hintText>
-		  <hintX>100</hintX>
-	      <hintY>300</hintY>
+		  <hintText>Move the pink left + right</hintText>
+		  <hintX>284</hintX>
+	      <hintY>200</hintY>
 	    </hint>
 	</hints>
 </settings>

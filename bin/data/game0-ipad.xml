@@ -57,7 +57,7 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <w>44</w>
-            <x>512</x>
+            <x>520</x>
             <y>400</y>
             <bx>512</bx>
             <by>530</by>
@@ -76,16 +76,37 @@
 		  <timer>600</timer>
 		  <showCircle>0</showCircle>
 		  <showCircle>1</showCircle>
-		  <hintText>Start with the Speed Control</hintText>
-		  <hintX>100</hintX>
-	      <hintY>100</hintY>
+		  <hintText>Spin the red</hintText>
+		  <hintX>150</hintX>
+	      <hintY>350</hintY>
 	    </hint>
 		<hint>
 		  <timer>300</timer>
 		  <showCircle>2</showCircle>
-		  <hintText>Change the formula with the pink one</hintText>
-		  <hintX>100</hintX>
-	      <hintY>300</hintY>
+		  <hintText>Move the pink left + right</hintText>
+		  <hintX>512</hintX>
+	      <hintY>320</hintY>
+	    </hint>
+		<hint>
+		  <timer>300</timer>
+		  <showCircle>2</showCircle>
+		  <hintText>The arrow turns on physics</hintText>
+		  <hintX>284</hintX>
+	      <hintY>800</hintY>
+	    </hint>
+		<hint>
+		  <timer>300</timer>
+		  <showCircle>2</showCircle>
+		  <hintText>The ? turns off help bubbles</hintText>
+		  <hintX>550</hintX>
+	      <hintY>800</hintY>
+	    </hint>
+		<hint>
+		  <timer>300</timer>
+		  <showCircle>2</showCircle>
+		  <hintText>X to exit</hintText>
+		  <hintX>900</hintX>
+	      <hintY>800</hintY>
 	    </hint>
 	</hints>
 </settings>

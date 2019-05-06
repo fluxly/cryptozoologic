@@ -369,7 +369,7 @@ public:
     
     void init() {
         silkscreen.load("slkscr.ttf", 16);
-         silkscreen2.load("slkscr.ttf", 12);
+        silkscreen2.load("slkscr.ttf", 10);
         lineHeight = silkscreen.getLineHeight()*.8;
     }
     
@@ -408,11 +408,11 @@ public:
         ofDrawRectRounded(0, 0, w, h, 10);
         ofSetColor(0);
         silkscreen.drawString(bLabel, -silkscreen.stringWidth(bLabel)/2, -3);
-       /* if (fontSize == 0) {
+        if (fontSize == 0) {
             silkscreen2.drawString(bValue, -silkscreen2.stringWidth(bValue)/2, lineHeight-3);
-        } else {*/
+        } else {
             silkscreen.drawString(bValue, -silkscreen.stringWidth(bValue)/2, lineHeight-3);
-       // }
+        }
         
         //ofDrawTriangle(bx+a1x, by+a1y, x+a3x, y+a3y, bx+a2x, by+a2y);
         

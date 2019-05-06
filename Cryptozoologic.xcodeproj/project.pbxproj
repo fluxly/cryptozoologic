@@ -218,6 +218,7 @@
 		9D0AA091FE805EB564CD05D0 /* b2RopeJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1A6A7D5CD5468B3F846A62 /* b2RopeJoint.cpp */; };
 		9D256038202C0802003989FB /* eyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D256037202C0802003989FB /* eyesClosed.png */; };
 		9D25603A202C0824003989FB /* eyesOpen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D256039202C0823003989FB /* eyesOpen.png */; };
+		9D263B92223739C900C8A684 /* pd-game1new.pd in Resources */ = {isa = PBXBuildFile; fileRef = 9D263B91223739C900C8A684 /* pd-game1new.pd */; };
 		9D5F1DE6216FE9A700B2F973 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5F1D94216FE9A600B2F973 /* RtMidi.cpp */; };
 		9D5F1DE7216FE9A700B2F973 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9D5F1D96216FE9A600B2F973 /* README.md */; };
 		9D5F1DE8216FE9A700B2F973 /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9D5F1D98216FE9A600B2F973 /* PGMidiFind.mm */; };
@@ -753,6 +754,7 @@
 		9D2560362026B976003989FB /* FluxlyClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxlyClasses.h; sourceTree = "<group>"; };
 		9D256037202C0802003989FB /* eyesClosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyesClosed.png; sourceTree = "<group>"; };
 		9D256039202C0823003989FB /* eyesOpen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyesOpen.png; sourceTree = "<group>"; };
+		9D263B91223739C900C8A684 /* pd-game1new.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pd-game1new.pd"; sourceTree = "<group>"; };
 		9D5F1D94216FE9A600B2F973 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
 		9D5F1D95216FE9A600B2F973 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
 		9D5F1D96216FE9A600B2F973 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1857,6 +1859,7 @@
 		9DC4079C21D979CF0022CD3A /* patches */ = {
 			isa = PBXGroup;
 			children = (
+				9D263B91223739C900C8A684 /* pd-game1new.pd */,
 				9DD3EA69220C78BE008D1F25 /* articulate.pd */,
 				9DD3EA71220C78C0008D1F25 /* avian-syrinx-model.pd */,
 				9DD3EA6E220C78BF008D1F25 /* pd-birdcall.pd */,
@@ -2539,6 +2542,7 @@
 				9DF4135320925FB000D0358F /* mesh63.png in Resources */,
 				9D0043C9205F63B9001DFF83 /* mesh139.png in Resources */,
 				9DD3EA76220C78C0008D1F25 /* trachea.pd in Resources */,
+				9D263B92223739C900C8A684 /* pd-game1new.pd in Resources */,
 				9D0043D5205F63B9001DFF83 /* mesh19.png in Resources */,
 				9D004332205DA7C0001DFF83 /* sample7.wav in Resources */,
 				9DD3EA7A220C78C0008D1F25 /* cicada1.pd in Resources */,

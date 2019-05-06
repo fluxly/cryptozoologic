@@ -15,17 +15,17 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>147</bx>
-            <by>76</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>BP1</bLabel>
+            <bx>12</bx>
+            <by>29</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>OSC1</bLabel>
             <bValue>0</bValue>
-            <x>181</x>
-            <y>183</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <x>65</x>
+            <y>41</y>
+            <w>65</w>
+			<density>2</density>
+            <rotation>-1905.454467773</rotation>
         </circle>
         <circle>
             <id>1</id>
@@ -37,17 +37,17 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>387</bx>
-            <by>89</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>BW1</bLabel>
-            <bValue>0</bValue>
-            <x>445</x>
-            <y>208</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <bx>12</bx>
+            <by>102</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>OSC2</bLabel>
+            <bValue>-1</bValue>
+            <x>65</x>
+            <y>115</y>
+            <w>65</w>
+			<density>2</density>
+            <rotation>2759.277587891</rotation>
         </circle>
         <circle>
             <id>2</id>
@@ -59,17 +59,17 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>653</bx>
-            <by>139</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>BP2</bLabel>
+            <bx>12</bx>
+            <by>193</by>
+            <bw>50</bw>
+           <bh>20</bh>
+            <bLabel>OSC3</bLabel>
             <bValue>0</bValue>
-            <x>689</x>
-            <y>92</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <x>65</x>
+            <y>201</y>
+            <w>65</w>
+			<density>2</density>
+            <rotation>3085.864013672</rotation>
         </circle>
         <circle>
             <id>3</id>
@@ -81,17 +81,17 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>885</bx>
-            <by>140</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>BW2</bLabel>
+            <bx>12</bx>
+            <by>247</by>
+            <bw>50</bw>
+           <bh>20</bh>
+            <bLabel>OSC4</bLabel>
             <bValue>0</bValue>
-            <x>937</x>
-            <y>99</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <x>65</x>
+            <y>283</y>
+            <w>65</w>
+            <density>2</density>
+            <rotation>3779.253662109</rotation>
         </circle>
         <circle>
             <id>4</id>
@@ -103,17 +103,20 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>167</bx>
-            <by>407</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>RM</bLabel>
-            <bValue>0</bValue>
-            <x>189</x>
-            <y>345</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <bx>184</bx>
+            <by>7</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>PULSE1</bLabel>
+            <bValue>-1</bValue>
+            <x>184</x>
+            <y>28</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>-8430.675781250</rotation>
         </circle>
         <circle>
             <id>5</id>
@@ -125,17 +128,20 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>413</bx>
-            <by>402</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>MOD</bLabel>
-            <bValue>0</bValue>
-            <x>445</x>
-            <y>345</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <bx>184</bx>
+            <by>310</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>STEP1</bLabel>
+            <bValue>-4</bValue>
+            <x>184</x>
+            <y>300</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>6810.634765625</rotation>
         </circle>
         <circle>
             <id>6</id>
@@ -147,17 +153,20 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>648</bx>
-            <by>395</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>BF</bLabel>
-            <bValue>0</bValue>
-            <x>691</x>
-            <y>340</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <bx>259</bx>
+            <by>7</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>PULSE2</bLabel>
+            <bValue>STEP2</bValue>
+            <x>259</x>
+            <y>28</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>28189.855468750</rotation>
         </circle>
         <circle>
             <id>7</id>
@@ -169,17 +178,20 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>891</bx>
-            <by>401</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>PW</bLabel>
+            <bx>259</bx>
+            <by>310</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>STEP2</bLabel>
             <bValue>0</bValue>
-            <x>936</x>
-            <y>348</y>
-            <w>55</w>
-			<density>1</density>
-            <rotati8on>0</rotation>
+            <x>259</x>
+            <y>300</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>-13811.564453125</rotation>
         </circle>
         <circle>
             <id>8</id>
@@ -191,17 +203,20 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>172</bx>
-            <by>701</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>TF1</bLabel>
+            <bx>335</bx>
+            <by>7</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>PULSE3</bLabel>
             <bValue>0</bValue>
-            <x>181</x>
-            <y>649</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <x>335</x>
+            <y>28</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>-10287.387695312</rotation>
         </circle>
         <circle>
             <id>9</id>
@@ -213,121 +228,197 @@
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>419</bx>
-            <by>643</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>TF2</bLabel>
-            <bValue>0</bValue>
-            <x>441</x>
-            <y>596</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
+            <bx>335</bx>
+            <by>310</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>STEP3</bLabel>
+            <bValue>-8</bValue>
+            <x>335</x>
+            <y>300</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>-5963.227539062</rotation>
         </circle>
         <circle>
             <id>10</id>
-			<type>11</type>
-            <eyeState>0</e6yeState>
+            <type>11</type>
+            <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>657</bx>
-            <by>670</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>AMP</bLabel>
-            <bValue>0</bValue>
-            <x>693</x>
-            <y>756</y>
-            <w>55</w>
-			<density>1</density>
-            <rotation>0</rotation>
-        </circle>     
+            <bx>411</bx>
+            <by>7</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>PULSE4</bLabel>
+            <bValue>1</bValue>
+            <x>411</x>
+            <y>28</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>12898.695312500</rotation>
+        </circle>
         <circle>
             <id>11</id>
-			<type>144</type>
-            <eyeState>0</e6yeState>
+            <type>12</type>
+            <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>615</bx>
-            <by>54</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>REVERB</bLabel>
+            <bx>411</bx>
+            <by>310</by>
+             <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>STEP4</bLabel>
             <bValue>0</bValue>
-            <x>900</x>
-            <y>735</y>
-            <w>100</w>
-			<density>1</density>
-            <rotation>0</rotation>
-        </circle>   
+            <x>411</x>
+            <y>300</y>
+            <w>38</w>
+            <density>1</density>
+            <bounce>0</bounce>
+            <friction>0</friction>
+            <senseType>2</senseType>
+            <rotation>14440.137695312</rotation>
+        </circle>
         <circle>
             <id>12</id>
-			<type>13</type>
-            <eyeState>0</e6yeState>
+            <type>13</type>
+            <eyeState>0</eyeState>
             <onOffState>0</onOffState>
             <spinning>0</spinning>
             <wasntSpinning>0</wasntSpinning>
             <dampingX>0.000000000</dampingX>
             <dampingY>0.000000000</dampingY>
             <instrument>0</instrument>
-            <bx>872</bx>
-            <by>552</by>
-            <bw>55.000000000</bw>
-            <bh>30.000000000</bh>
-            <bLabel>DURATION</bLabel>
+            <bx>495</bx>
+            <by>23</by>
+            <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>SPEED</bLabel>
             <bValue>0</bValue>
-            <x>779</x>
-            <y>656</y>
-            <w>100</w>
-			<density>1</density>
-            <rotation>0</rotation>
-        </circle>           
+            <x>495</x>
+            <y>90</y>
+            <w>65</w>
+			<density>2</density>
+            <rotation>-690.791809082</rotation>
+        </circle>
+        <circle>
+            <id>13</id>
+            <type>144</type>
+            <eyeState>0</eyeState>
+            <onOffState>0</onOffState>
+            <spinning>0</spinning>
+            <wasntSpinning>0</wasntSpinning>
+            <dampingX>0.000000000</dampingX>
+            <dampingY>0.000000000</dampingY>
+            <instrument>0</instrument>
+            <bx>495</bx>
+            <by>310</by>
+            <bw>50</bw>
+            <bh>20</bh>
+            <bLabel>REVERB</bLabel>
+            <bValue>0</bValue>
+            <x>495</x>
+            <y>225</y>
+            <w>65</w>
+			<density>2</density>
+            <rotation>-690.791809082</rotation>
+        </circle>
     </circles>
 	<edges>
         <edge>
             <draw>0</draw>
-            <x1>-10</x1>
-            <y1>257</y1>
-            <x2>1050</x2>
-            <y2>257</y2>
-        </edge>
-        <edge>
-            <draw>0</draw>
-            <x1>-10</x1>
-            <y1>512</y1>
-            <x2>512</x2>
-            <y2>257</y2>
-        </edge>
-        <edge>
-            <draw>0</draw>
-            <x1>254</x1>
+            <x1>129</x1>
             <y1>-10</y1>
-            <x2>254</x2>
-            <y2>860</y2>
+            <x2>129</x2>
+            <y2>360</y2>
         </edge>
         <edge>
             <draw>0</draw>
-            <x1>508</x1>
+            <x1>165</x1>
             <y1>-10</y1>
-            <x2>508</x2>
-            <y2>860</y2>
+            <x2>165</x2>
+            <y2>360</y2>
         </edge>
-        <edge>
+		<edge>
             <draw>0</draw>
-            <x1>763</x1>
-            <y1>-10</y1>
-            <x2>763</x2>
-            <y2>860</y2>
-        </edge>
+			<x1>203</x1>
+			<y1>-10</y1>
+			<x2>203</x2>
+			<y2>360</y2>
+		</edge>
+		<edge>
+            <draw>0</draw>
+			<x1>240</x1>
+			<y1>-10</y1>
+			<x2>240</x2>
+			<y2>360</y2>
+	    </edge>
+		<edge>
+            <draw>0</draw>
+			<x1>278</x1>
+			<y1>-10</y1>
+			<x2>278</x2>
+			<y2>360</y2>
+		</edge>
+		<edge>
+            <draw>0</draw>
+			<x1>316</x1>
+			<y1>-10</y1>
+			<x2>316</x2>
+			<y2>360</y2>
+	    </edge>
+		<edge>
+            <draw>0</draw>
+			<x1>354</x1>
+			<y1>-10</y1>
+			<x2>354</x2>
+			<y2>360</y2>
+	    </edge>
+		<edge>
+            <draw>0</draw>
+			<x1>391</x1>
+			<y1>-10</y1>
+			<x2>391</x2>
+			<y2>360</y2>
+	    </edge>
+		<edge>
+            <draw>0</draw>
+			<x1>430</x1>
+			<y1>-10</y1>
+			<x2>430</x2>
+			<y2>360</y2>
+	    </edge>
 	</edges>
     <joints></joints>
+	<hints>
+		<hint>
+		  <timer>600</timer>
+		  <showCircle>0</showCircle>
+		  <showCircle>1</showCircle>
+		  <hintText>Start with the Speed Control</hintText>
+		  <hintX>100</hintX>
+	      <hintY>100</hintY>
+	    </hint>
+		<hint>
+		  <timer>600</timer>
+		  <showCircle>2</showCircle>
+		  <hintText>Change the formula with the pink one</hintText>
+		  <hintX>100</hintX>
+	      <hintY>300</hintY>
+	    </hint>
+	</hints>
 </settings>

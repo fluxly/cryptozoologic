@@ -1,7 +1,5 @@
-//  iOS version of Fluxly, the musical physics looper
+//  Cryptozoologic
 //
-//  Created by Shawn Wallace on 11/14/17.
-//  Released April 2018 to the App Store
 //  See the LICENSE file for copyright information
 
 #include "ofApp.h"
@@ -155,16 +153,15 @@ void ofApp::setupPostSplashscreen() {
     
     for (int i=0; i<numFiles; ++i) {
         if (dir.getName(i) == "menuSettings.xml") {
-         //   firstRun = false;    // change these back after testing hints
-        //    hintOn = false;      // change these back after testing hints
+            firstRun = false;    // change these back after testing hints
+        //  hintOn = false;      // change these back after testing hints
             helpOn = false;        // turn off help layer if not first run
             helpWasOn = false;
         }
         //cout << "Path at index " << i << " = " << dir.getName(i) << endl;
     }
-   // if (firstRun) {
-    // FIXME: overwrites each time
-        // ofLog(OF_LOG_VERBOSE, "First Run: copies files to documents from bundle.");
+    if (firstRun) {
+    // ofLog(OF_LOG_VERBOSE, "First Run: copies files to documents from bundle.");
         file.copyFromTo("menuSettings.xml", ofxiOSGetDocumentsDirectory()+"menuSettings.xml", true, true);
         file.copyFromTo("sampleSettings.xml", ofxiOSGetDocumentsDirectory()+"sampleSettings.xml", true, true);
         for (int i=0; i < SCENES_IN_BUNDLE; i++) {
@@ -176,12 +173,12 @@ void ofApp::setupPostSplashscreen() {
                 file.copyFromTo("game"+to_string(i)+".png", ofxiOSGetDocumentsDirectory()+"game"+to_string(i)+".png", true, true);
             }
         }
-    if (device == TABLET) {
-        file.copyFromTo("links-ipad.png", ofxiOSGetDocumentsDirectory()+"links.png", true, true);
-    } else {
-        file.copyFromTo("links.png", ofxiOSGetDocumentsDirectory()+"links.png", true, true);
+        if (device == TABLET) {
+            file.copyFromTo("links-ipad.png", ofxiOSGetDocumentsDirectory()+"links.png", true, true);
+        } else {
+            file.copyFromTo("links.png", ofxiOSGetDocumentsDirectory()+"links.png", true, true);
+        }
     }
-    //}
     ofLog(OF_LOG_VERBOSE, "set samplerate");
     // try to set the preferred iOS sample rate, but get the actual sample rate
     // being used by the AVSession since newer devices like the iPhone 6S only
@@ -208,7 +205,7 @@ void ofApp::setupPostSplashscreen() {
     // the queued messages are processed there, this is normal
     //
     ofLog(OF_LOG_VERBOSE, "init libPd");
-    if(!pd.init(2, 1, sampleRate, ticksPerBuffer-1, false)) {
+    if (!pd.init(2, 1, sampleRate, ticksPerBuffer-1, false)) {
         OF_EXIT_APP(1);
     }
     
@@ -217,7 +214,6 @@ void ofApp::setupPostSplashscreen() {
     bytebeat_tilde_setup();
     scale_setup();
 
-    
     midiChan = 1; // midi channels are 1-16
     
     // subscribe to receive source names
@@ -340,9 +336,7 @@ void ofApp::setupPostSplashscreen() {
     if (device == PHONE) {
         game2ledX[4] = 495 * retinaScaling;
     }
-    
     ofLog(OF_LOG_VERBOSE, "end Setup");
-    
 }
 
 void ofApp::loadGame(int gameId) {
@@ -358,10 +352,9 @@ void ofApp::loadGame(int gameId) {
     
     switch (gameId) {
         case 0: currentPatch = pd.openPatch("pd-bytebeat.pd"); break;
-        case 1: currentPatch = pd.openPatch("pd-benjolin2.pd"); break;
-        case 2: currentPatch = pd.openPatch("pd-irishYeti2.pd"); break;
-        case 3: currentPatch = pd.openPatch("pd-birdcall.pd"); break;
-        case 4: currentPatch = pd.openPatch("pd-creature-factory.pd"); break;
+        case 1: currentPatch = pd.openPatch("pd-game1new.pd"); break;
+        case 2: currentPatch = pd.openPatch("pd-benjolin2.pd"); break;
+        case 3: currentPatch = pd.openPatch("pd-irishYeti2.pd"); break;
     }
     
     //send screen width for panning calculation in Pd
@@ -552,7 +545,9 @@ static bool shouldRemoveBubble(shared_ptr<FluxlyBubble>shape) {
 static bool shouldRemoveEdge(shared_ptr<ofxBox2dEdge>shape) {
     return true;
 }
-
+static bool shouldRemoveHint(shared_ptr<FluxlyHint>shape) {
+    return true;
+}
 //--------------------------------------------------------------
 void ofApp::update() {
     switch (scene) {
@@ -624,7 +619,15 @@ void ofApp::update() {
                                 float val = ((float)circles[i]->x/screenW);
                                 ofLog(OF_LOG_VERBOSE, "Sent x of %d: %f", circles[i].get()->id, val);
                                 pd.sendFloat("control"+to_string(circles[i].get()->id), val);
-                                if (helpOn) bubbles[i].get()->bValue = formulaStr[(int)(val*94)];   // FIXME: Hardcoded for game 0
+                                if (helpOn) {
+                                    int formula = (int)(val*94);
+                                    if ((formula == 5) || (formula == 9) || (formula == 33) || (formula == 34)) {
+                                        bubbles[i]->fontSize = 0;
+                                    } else {
+                                        bubbles[i]->fontSize = 1;
+                                    }
+                                    bubbles[i].get()->bValue = formulaStr[formula];   // FIXME: Hardcoded for game 0
+                                }
                                 break;
                             }
                             case (2): {
@@ -636,6 +639,8 @@ void ofApp::update() {
                                 break;
                             }
                             case (3): {
+                                /*
+                                // NOT USED
                                 int col = i % 4;
                                 int row = (int)i/4;
                                 float xVal = (float)(circles[i]->x-(256*retinaScaling*col))*retinaScaling;
@@ -645,8 +650,10 @@ void ofApp::update() {
                                 for (int j=0; j<5; j++) {
                                     game3Scopes[i][(int)xVal+j] = yVal;
                                 }
+                                 */
                                 break;
                             }
+                            
                         }
                         circles[i].get()->sendControl = false;
                     }
@@ -658,10 +665,10 @@ void ofApp::update() {
                     pd.readArray("scope0", backgroundScopeArray);
                     break;
                 case 1:
+                    pd.readArray("scope0", backgroundScopeArray);
                   /*  for (int i=0; i<8; i++) {
                          pd.readArray("scope"+to_string(i), circles[i].get()->scopeArray);
                     }*/
-                     pd.readArray("scope7", backgroundScopeArray1);
                     break;
                 case 2:
                     pd.readArray("scope4", backgroundScopeArray1);
@@ -700,6 +707,7 @@ void ofApp::draw() {
             }
             mainMenu->draw();
             mainMenu->drawBorder(currentGame);
+            if (firstRun) currentHintState = 0;
             break;
         case GAME_SCENE:
             //ofTranslate(0, screenH*.3); // Hack for iPad demo
@@ -800,6 +808,7 @@ void ofApp::draw() {
             //saveGame();
             destroyGame();
             scene = MENU_SCENE;
+            currentHintState = -1;
            // mainMenu->menuItems[currentGame]->reloadThumbnail();
             break;
     }
@@ -834,6 +843,20 @@ void ofApp::drawVisualization(int gameId) {
             ofSetLineWidth(4*retinaScaling);
             float x1 = 0;
             float h =screenH/2;
+            float step = screenW/backgroundScopeArray.size();
+            ofSetColor(ofColor::fromHex(0xffffff));
+            
+            for (int j = 0; j < backgroundScopeArray.size()-1; j++) {
+                ofDrawLine(x1,backgroundScopeArray[j]*h+h, x1+step, backgroundScopeArray[j+1]*h+h);
+                x1 += step;
+            }
+            ofFill();
+            break;
+        }
+        case 2: {
+            ofSetLineWidth(4*retinaScaling);
+            float x1 = 0;
+            float h =screenH/2;
             float step = screenW/backgroundScopeArray1.size();
             ofSetColor(ofColor::fromHex(0xffffff));
             
@@ -844,7 +867,7 @@ void ofApp::drawVisualization(int gameId) {
             ofFill();
             break;
         }
-        case 2: {
+        case 3: {
             float y1 = 0;
             float h =screenH/2;
             float w1 = 100*retinaScaling;
@@ -882,7 +905,7 @@ void ofApp::drawVisualization(int gameId) {
             ofFill();
             break;
         }
-        case (3): {
+        case 4: {
             int x1 = 25*retinaScaling;
             int y1 = 25*retinaScaling;
             int w1 = 200*retinaScaling;
@@ -977,18 +1000,12 @@ void ofApp::saveGame() {
     outputSettings.popTag();
     outputSettings.popTag();
     outputSettings.saveFile(ofxiOSGetDocumentsDirectory()+"game"+to_string(currentGame)+".xml");
-    
 }
 
 void ofApp::destroyGame() {
     
     pd.sendFloat("masterVolume", 0.0);
-    
     pd.closePatch(currentPatch);
-    
-    for (int i=0; i < circles.size(); i++) {
-        pd.sendFloat("toggle"+to_string(circles[i].get()->instrument), 0.0);
-    }
     
     for (int i=0; i < joints.size(); i++) {
         // remove joint from world
@@ -1014,6 +1031,7 @@ void ofApp::destroyGame() {
     ofRemove(edges, shouldRemoveEdge);
     ofRemove(circles, shouldRemoveCircle);
     ofRemove(bubbles, shouldRemoveBubble);
+    ofRemove(hints, shouldRemoveHint);
 }
 
 
@@ -1555,11 +1573,15 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
                 //b->setRotation(gameSettings.getValue("rotation", 0));
                 b->init();
                 
-
                 if ((currentGame == 0) && (i == 2)) {
                     // FIXME: move to game object init at some point
-                    bubbles[i]->fontSize = 0;
-                    bubbles[i]->bValue = formulaStr[(int)((float)(circles[i]->x/screenW)*94)];
+                    int formula = (int)((float)(circles[i]->x/screenW)*94);
+                    if ((formula == 5) || (formula == 9) || (formula == 33) || (formula == 34)) {
+                        bubbles[i]->fontSize = 0;
+                    } else {
+                        bubbles[i]->fontSize = 1;
+                    }
+                    bubbles[i]->bValue = formulaStr[formula];
                 }
                 if (currentGame == 0) {
                     if (i != 2) {
@@ -1593,22 +1615,19 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     
     void ofApp::helpLayerDisplay() {
         if (scene == MENU_SCENE) {
-            ofSetColor(255, 255, 255);
-            drawHelpString("(Scroll down for more)", screenW/2, screenH/2-40, 0, 0);
+            drawHelpString("(Scroll down for more)", screenW/2, screenH*.9, 0, 0);
         }
         if (scene == GAME_SCENE) {
-            ofSetColor(255, 255, 255);
             //int yOffset = circles[0]->w/2+helpTextHeight*(1+device*.8)*deviceScale;  // add space if tablet
             ofLog(OF_LOG_VERBOSE, "currentHintState %i", currentHintState);
             drawHelpString(hints[currentHintState]->hintText, hints[currentHintState]->hintX, hints[currentHintState]->hintY, 0, 0);
-            
-            }
-            ofSetColor(255, 255, 255);
-        
+        }
     }
     
     void ofApp::drawHelpString(string s, int x1, int y1, int yOffset, int row) {
+        ofSetColor(34, 255, 128);
         helpFont.drawString(s, x1 - helpFont.stringWidth(s)/2, y1 + yOffset + helpTextHeight * row) ;
+        ofSetColor(255, 255, 255);
     }
     
     //--------------------------------------------------------------
