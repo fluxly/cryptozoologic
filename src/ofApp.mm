@@ -33,7 +33,6 @@ void ofApp::setup(){
     NSLog(@"deviceOSVersion: %@", platform);
     NSLog(@"iPad version: %i", version);
     NSLog(@"iPad subversion: %i", subversion);
-    
     */
     
     ofSetOrientation(OF_ORIENTATION_90_LEFT);
@@ -108,7 +107,7 @@ void ofApp::setup(){
     ofLog(OF_LOG_VERBOSE, "Text line height: %d", helpTextHeight);
     
     // Set control coordinates and dimensions
-    for (int i=0; i< 5; i++) {
+    for (int i=0; i < 5; i++) {
         controlW[i] = 32 * retinaScaling;
         controlHalfW[i] = 18 * retinaScaling;
     }

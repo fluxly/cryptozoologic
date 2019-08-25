@@ -127,7 +127,7 @@
 #X connect 54 0 48 0;
 #X connect 54 0 62 0;
 #X restore 46 75 pd scopes;
-#N canvas 82 25 1004 695 output-stage 1;
+#N canvas 82 23 1004 695 output-stage 0;
 #X obj 267 203 r masterVolume;
 #N canvas 381 87 381 409 channel0 0;
 #X obj 96 15 catch~ audioOut0;
@@ -443,7 +443,7 @@
 #X msg 403 421 wet \$1;
 #X msg 451 421 dry \$1;
 #X obj 401 369 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 9071 1;
+-1 -1 907 1;
 #N canvas 1 80 450 300 inv 0;
 #X obj 154 69 inlet;
 #X obj 154 179 outlet;
@@ -495,6 +495,8 @@
 #X msg 709 442 1;
 #X msg 714 369 1;
 #X msg 617 187 \; tempo8 5 \; \;;
+#X obj 577 400 vsl 15 128 0 1 0 0 masterVolume empty empty 0 -9 0 10
+-262144 -1 -1 3000 1;
 #X connect 0 0 37 0;
 #X connect 0 0 39 0;
 #X connect 1 0 2 0;
@@ -875,11 +877,13 @@
 #X connect 33 0 21 0;
 #X restore 47 49 pd timers;
 #X text 264 58 F2 G#2 C3 C#3 D#3 F3 G#3;
+#X text 267 123 https://www.philharmonia.co.uk/explore/sound_samples
+;
 #X msg 47 167 \; masterVolume 1 \; \; filename0 sample0.wav \; filename1
 sample1.wav \; filename2 sample2.wav \; filename3 sample3.wav \; filename4
 sample4.wav \; filename5 sample5.wav \; filename6 sample6.wav \; \;
-tempo8 5 \; \; pan0 0 \; pan1 53 \; pan2 108 \; pan3 161 \; pan4 214
-\; pan5 267 \; pan6 320 \; \; loopLength0 4000 \; loopLength1 4100
+tempo8 0.5 \; \; pan0 0 \; pan1 53 \; pan2 108 \; pan3 161 \; pan4
+214 \; pan5 267 \; pan6 320 \; \; loopLength0 4000 \; loopLength1 4100
 \; loopLength2 4200 \; loopLength3 4300 \; loopLength4 4400 \; loopLength5
 4500 \; loopLength6 4600 \; \;;
-#X connect 2 0 6 0;
+#X connect 2 0 7 0;
